@@ -1,0 +1,62 @@
+# repo config
+repo_name: 'cloudfoundry/docs-kubo'
+repo_url: 'https://github.com/cloudfoundry/docs-kubo'
+edit_uri: edit/master/docs/
+site_name: Kubo 
+theme: 'material'
+theme_dir: 'theme-overrides'
+
+# # versioning
+# local_url_prefix: p-mysql/1-9
+# local_product_version: 1.9
+# other_versions:
+#   - url_prefix: https://docs.pivotal.io/p-mysql/1-8
+#     display_name: v1.8
+#   - url_prefix: https://docs.pivotal.io/p-mysql/1-7
+#     display_name: v1.7
+#   - url_prefix: https://docs.pivotal.io/archives/mysql-docs-1.6.pdf
+#     display_name: v1.6
+#   - url_prefix: https://docs.pivotal.io/archives/mysql-docs-1.5.pdf
+#     display_name: v1.5
+#   - url_prefix: https://docs.pivotal.io/archives/mysql-docs-1.4.pdf
+#     display_name: v1.4
+
+# left nav
+pages:
+  - Kubo:
+    - 'Home': 'index.md'
+
+# palette, logo, css, markdown extensions
+extra:
+  palette:
+    primary: 'teal'
+    accent: 'deep orange'
+  logo: 'images/common/pivotal-logo.png'
+  feature:
+    tabs: true
+extra_css:
+    - 'css/highlight-fix.css'
+    - 'css/solarized_dark.css'
+    - 'css/extras.css'
+    # - 'css/all.css'
+    # - 'css/print.css'
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.codehilite(linenums=true)
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc(permalink=true)
+  - pymdownx.arithmatex
+  - pymdownx.betterem(smart_enable=all)
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist(custom_checkbox=true)
+  - pymdownx.tilde
