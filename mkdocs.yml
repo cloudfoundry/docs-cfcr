@@ -23,8 +23,15 @@ theme_dir: 'theme-overrides'
 
 # left nav
 pages:
-  - Kubo:
-    - 'Home': 'index.md'
+  - Overview:
+    - 'Welcome to Kubo': 'index.md'
+    - 'What is Kubo?': 'overview/what-is-kubo.md'
+    - 'Product Architecture': 'overview/architecture.md'
+    - 'Release Notes': 'overview/release-notes.md'
+  - Installing and Configuring:
+    - 'Installing': 'installing/index.md'
+  - Managing and Troubleshooting:
+    - 'Managing': 'managing/index.md'
 
 # palette, logo, css, markdown extensions
 extra:
