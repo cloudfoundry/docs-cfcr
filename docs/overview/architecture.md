@@ -1,14 +1,18 @@
 #Product Architecture
 
-This topic describes the product architecture and components of Kubo.
+This topic describes the product architecture of Kubo.
 
 ## Overview
 
-The BOSH Director manages the VMs for the Kubo instance. The Director handles VM creation, health checking, and resurrection of missing or unhealthy VMs. The Director uses CredHub and PowerDNS to handle certificate generation within the Kubo clusters. Credhub is also used to store the auto-generated passwords.
+In Kubo, the [BOSH Director](https://bosh.io/docs/bosh-components.html#director) manages the VMs for the Kubo instance. The Director handles VM creation, health checking, and resurrection of missing or unhealthy VMs. 
+
+The Director uses [CredHub](https://github.com/cloudfoundry-incubator/credhub) and [PowerDNS](https://doc.powerdns.com/) to handle certificate generation within the Kubo clusters. Credhub is also used to store the auto-generated passwords.
 
 ##Kubo Components
 
-Kubo provisions a fully working Kubernetes cluster. By default, Kubo deploys
+Kubo provisions a fully working Kubernetes cluster. See the [Kubernetes Components](#kubernetes-components) section below for more information about how a Kubernetes cluster works.
+
+By default, Kubo deploys the following components:
 
 * 2 master nodes
 * 3 worker nodes
@@ -16,57 +20,78 @@ Kubo provisions a fully working Kubernetes cluster. By default, Kubo deploys
 * 1 proxy node
 
 	!!! note
-		A single proxy front-loads all the kube-proxy running on each worker node (Note: For IAAS that support LBs, the proxy node is not required)
+		The single proxy node front-loads the [kube-proxy](#kubernetes-components), the Kubernetes network proxy that runs on each worker node. For IaaSes that support load balancers, the proxy node is not required.
 
-##Internal cluster communication
+### Internal Component Communication
 
-[Flannel](https://github.com/coreos/flannel) is used to create an overlay network for the Worker Nodes, such that they can all share a virtual IP subnet, regardless of their IP addressing as set by the underlying IAAS. Flannel was chosen because is the recognized standard for Kubernetes clusters.
+Kubo uses [Flannel](https://github.com/coreos/flannel) to create an overlay network for the worker nodes, so that they can all share a virtual IP subnet, regardless of the IP addressing set by the underlying IaaS. Flannel is the recognized standard for Kubernetes clusters.
 
+The [API server](#kubernetes-components) on the master nodes handles the communication between them and the worker nodes.
 
-Worker (Kubelet) to master communication is done through the apiserver. 
-
-For master to worker communication (from the master controllers to the kubelets), the hostname of the worker nodes is announced as its IP address.
-
+For master to worker communication, the worker node uses its hostname as its IP address.
 
 ##Kubernetes Components
 
+Every Kubernetes cluster is made up of the following components:
 
-Kubernetes is designed around a few core principles that we'll briefly describe here. For more information see the Kubernetes documentation.
+* One or more [master nodes](#master-nodes)
+* One or more [worker nodes](#worker-nodes), previously called “minions”
+* A watchable, distributed [datastore](#datastore) that uses [etcd](https://github.com/coreos/etcd) to store cluster metadata
 
-There are three logical components to every Kubernetes cluster:
+For more information about Kubernetes clusters, see the [Kubernetes documentation](https://kubernetes.io/docs/home/).
 
-* One or more master nodes
-* One or more worker nodes (also previously referred to as “minions”)
-* A watchable, distributed datastore (etcd) used to store cluster metadata
+###Master Nodes
 
-The master is responsible for scheduling and controlling the workloads on the workers. It is made up of a few loosely coupled components:
+The master nodes schedule and control the workloads on the worker nodes. 
 
-* The API (apiserver): provides a means of interacting with the master for both end-users and other internal components. The API itself is stateless and all data is stored in etcd.
-* The scheduler: this component is responsible for picking a worker for a particular workload.
-* The controller manager: this component is responsible for checking if a desired state is reached, and if not, to submit commands to master to work towards it.
+Each master node is made up of the following components:
 
-The worker is also made up of a few components:
+* The **API server** provides a means of interacting with the master node for both internal components and end users. The API itself is stateless and all data is stored in the datastore nodes.
+* The **scheduler** selects a worker node for a particular workload.
+* The **controller manager** checks if a desired state is reached. If not, it submits commands to the master node to work towards it.
 
-* The kubelet: this component is in charge of the worker node and is the entrypoint for communication from the master. It keeps track of available resources and running processes, amongst other things.
-* The proxy: the kube-proxy makes sure the service CIDR is routable and packets are forwarded correctly. (you can have a look at iptables -L -t nat to witness this magic).
-* The container runtime (docker for kubo): used to run the containers/pods.
+###Worker Nodes
 
-The etcd nodes store all the metadata used by the scheduler and controller manager to operate the cluster. This includes current state of each worker, pods running in the cluster, etc as well as the desired state as defined by the users of the cluster.
+Each worker node is made up of the following components:
 
-## Networking Topology using IaaS Load Balancers
+* The **kubelet** controls the worker node and serves as the entrypoint for communication from the master node. It keeps track of available resources and running processes.
+* The **kube-proxy** ensures the service CIDR is routable and that packets are forwarded correctly. 
+* The **container runtime** runs the containers and pods, which are groups of one or more containers.
 
-The nodes that run the Kubernetes API (master nodes) are exposed through an IaaS specific load balancer. The load balancer will have an external static IP address that is used as a public and internal endpoint for traffic to the Kubernetes API.
+###Datastore Nodes
 
-Kubernetes services can be exposed using a second IaaS specific load balancer which forwards traffic to the Kubernetes worker nodes.
+The etcd datastore nodes store the metadata used by the scheduler and the controller manager to operate the cluster. This metadata includes current state of each worker, the pods running in the cluster, as well as the desired state as defined by the users of the cluster.
+
+##Network Topologies 
+
+Kubo can use different routing options to expose the applications run by the Kubernetes cluster.
+
+###IaaS Load Balancers
+
+If your IaaS provides load balancers, you can use them to handle traffic for your Kubo instance.
+
+Consult the following diagram for an example network topology.
 
 ![Kubo Topology for IaaS LBs](../images/architecture.png)
 
-## Networking Topology using Cloud Foundry Routing
+The IaaS-specific load balancer exposes the master nodes that run the Kubernetes API. The load balancer has an external static IP address that acts as both the public and the internal endpoint for traffic to the Kubernetes API.
 
-The nodes that run the Kubernetes API (master nodes) register themselves with the Cloud Foundry TCP router. The TCP Router acts as both public and internal endpoint for the Kubernetes API to route traffic to the master nodes of a Kubo instance. All traffic to the API goes through the Cloud Foundry TCP router and then to a healthy node.
+You can also configure a second IaaS-specific load balancer to forward traffic to the Kubernetes worker nodes.
 
-The Cloud Foundry subnet must be able to route traffic directly to the Kubo subnet. It is recommended to keep them in separate subnets when possible to avoid the BOSH directors from trying to provision the same addresses. This diagram specifies CIDR ranges for demonstration purposes as well as a public router in front of the Cloud Foundry gorouter and tcp-router which is typical.
+###Cloud Foundry Routing
+
+If you deploy Kubo alongside [Cloud Foundry], the Cloud Foundry routers handle traffic for your Kubo instance.
+
+Consult the following diagram for an example network topology.
 
 ![Kubo Topology for Cloud Foundry](../images/architecture-cf.png)
+
+The master nodes that run the Kubernetes API register themselves with the Cloud Foundry TCP router. The TCP router acts as both the public and internal endpoint for the Kubernetes API to route traffic to the master nodes of a Kubo instance. All traffic to the API goes through the Cloud Foundry TCP router and then to a healthy node.
+
+You should keep Cloud Foundry and Kubo in separate subnets, to avoid the BOSH Directors from trying to provision the same addresses. But the Cloud Foundry subnet must be able to route traffic directly to the Kubo subnet. 
+
+The diagram above specifies CIDR ranges for demonstration purposes, as well as a public router in front of the Cloud Foundry `gorouter` and `tcp-router`, which is typical in Cloud Foundry deployments.
+
+
 
 

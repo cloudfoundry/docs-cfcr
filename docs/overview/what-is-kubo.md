@@ -2,7 +2,9 @@
 
 This topic provides an overview of Kubo.
 
-Kubo is a [BOSH release](https://github.com/cloudfoundry-incubator/kubo-release) that offers a uniform way to instantiate, deploy, and manage highly available Kubernetes clusters on any cloud platform using BOSH. 
+Kubo is a [BOSH release](https://github.com/cloudfoundry-incubator/kubo-release) that offers a uniform way to instantiate, deploy, and manage highly available Kubernetes clusters on a cloud platform using BOSH. 
+
+You can deploy Kubo on Google Cloud Platform (GCP), vSphere, Amazon Web Services (AWS), and OpenStack.
 
 Kubo relies on **Kubernetes** and **BOSH**:
 
