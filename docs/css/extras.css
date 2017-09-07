@@ -8,7 +8,6 @@
   overflow: auto;
   font-family: monospace, monospace;
   page-break-inside: avoid;
-  overflow: visible;
   box-sizing: border-box;
   webkit-font-smoothing: antialiased;
   margin: 1em 0px 1em;
