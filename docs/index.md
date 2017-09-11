@@ -8,8 +8,8 @@ See [What is Kubo?](overview/what-is-kubo/) to learn more about Kubo.
 
 ##I want to install and configure Kubo
 
-See [Installing and Configuring](installing/index/) to install and configure Kubo on your cloud platform.
+See [Installing and Configuring](installing/) to install and configure Kubo on your cloud platform.
 
 ##I want to manage and troubleshoot Kubo
 
-See [Managing and Troubleshooting](managing/index/) to manage and troubleshoot your Kubo deployment.
+See [Managing and Troubleshooting](managing/) to manage and troubleshoot your Kubo deployment.
