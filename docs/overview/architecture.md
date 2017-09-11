@@ -72,7 +72,7 @@ If your IaaS provides load balancers, you can use them to handle traffic for you
 
 Consult the following diagram for an example network topology.
 
-![Kubo Topology for IaaS LBs](../images/architecture.png)
+![Kubo Topology for IaaS LBs](../images/diagrams/topology-iaas-lbs.png)
 
 The IaaS-specific load balancer exposes the master nodes that run the Kubernetes API. The load balancer has an external static IP address that acts as both the public and the internal endpoint for traffic to the Kubernetes API.
 
@@ -84,7 +84,7 @@ If you deploy Kubo alongside [Cloud Foundry], the Cloud Foundry routers handle t
 
 Consult the following diagram for an example network topology.
 
-![Kubo Topology for Cloud Foundry](../images/architecture-cf.png)
+![Kubo Topology for Cloud Foundry](../images/topology-cf-routers.png)
 
 The master nodes that run the Kubernetes API register themselves with the Cloud Foundry TCP router. The TCP router acts as both the public and internal endpoint for the Kubernetes API to route traffic to the master nodes of a Kubo instance. All traffic to the API goes through the Cloud Foundry TCP router and then to a healthy node.
 
