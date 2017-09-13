@@ -25,6 +25,10 @@ To a file a pull request, perform the following steps:
 
 You can also [create an issue](https://github.com/cloudfoundry/docs-kubo/issues/new). Issues are repo-wide, so please indicate which topic or topics you are leaving feedback for.
 
+## How To Style and Format Your Changes
+
+The Kubo documentation is written in Markdown, but it also uses an MkDocs extension called Admonition that enables block-styled side content, such as notes, hints or warnings. See the [Admonition](https://squidfunk.github.io/mkdocs-material/extensions/admonition/) documentation for more information about usage.
+
 ## How To Preview Your Changes with MkDocs
 
 You can use MkDocs to view a live version of the Kubo documentation on your local machine. This can be useful if you are submitting a pull request with substantial changes to the documentation.
