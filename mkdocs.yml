@@ -30,14 +30,16 @@ pages:
     - 'Release Notes': 'overview/release-notes.md'
   - Installing and Configuring:
     - 'Home': 'installing/index.md'
-    - Preparing GCP for Kubo:
+    - Preparing GCP:
       - 'Preparing GCP for Kubo': 'installing/gcp/index.md'
-    - Preparing vSphere for Kubo: 
+      - 'Deploying BOSH for Kubo on GCP': 'installing/gcp/deploying-bosh-gcp.md'
+      - 'Configuring IaaS Routing for GCP': 'installing/gcp/routing-gcp.md'
+    - Preparing vSphere: 
       - 'Preparing vSphere for Kubo': 'installing/vsphere/index.md'
-    - Preparing AWS for Kubo:
+    - Preparing AWS:
       - 'Preparing AWS for Kubo': 'installing/aws/index.md'
     - Preparing OpenStack for Kubo: 
-      - 'Preparing OpenStack for Kubo': 'installing/openstack/index.md'
+      - 'Preparing OpenStack': 'installing/openstack/index.md'
     - 'Deploying Kubo': 'installing/deploying-kubo.md'
   - Managing and Troubleshooting:
     - 'Home': 'managing/index.md'

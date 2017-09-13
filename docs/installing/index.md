@@ -8,7 +8,7 @@ To install Kubo, follow the procedures in the topics below.
 
 ##Step 1: Prepare Your IaaS
 
-The procedures to deploy BOSH for Kubo and configure routing vary depending on your IaaS.
+Follow the procedures below for your IaaS. You must deploy BOSH for Kubo and configure routing before deploying Kubo.
 
 * [Preparing GCP for Kubo](gcp/)
 * [Preparing vSphere for Kubo](vsphere/)
