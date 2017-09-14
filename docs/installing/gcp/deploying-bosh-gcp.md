@@ -58,7 +58,7 @@ Perform the following steps to set up a GCP account for Terraform:
 
 Perform the following steps to deploy a bastion VM with a set of firewall rules that secures access to the Kubo deployment:
 
-1. From the Google Cloud Shell, change into the user directory. Enter the following command:
+1. From the Google Cloud Shell, change into the home directory. Enter the following command:
 	<p class="terminal">$ cd ~</p>
 1. Get the latest version of `kubo-deployment`. Enter the following command:
 	<p class="terminal">$ wget http<span>s://</span>storage.googleapis.com/kubo-public/kubo-deployment-latest.tgz</p>
