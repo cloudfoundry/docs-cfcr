@@ -93,7 +93,7 @@ Perform the following steps to deploy a bastion VM with a set of firewall rules 
 
 1. Copy the service account key to the newly created bastion VM. Enter the following command:
 	<p class="terminal">$ gcloud compute scp ~/terraform.key.json "${prefix}bosh-bastion":./ --zone ${zone}</p>
-	If prompted to create SSH keys, enter `Y`.
+	If prompted to create SSH keys, enter `Y` and use an empty passphrase.
 
 ##Step 4: Deploy BOSH Director
 
@@ -138,5 +138,5 @@ $ export kubo_env_path="\${kubo_envs}/\${kubo_env_name}"</p>
 		!!! note
 			Subsequent runs of `deploy_bosh` will use `creds.yml` and `state.json` to apply changes to the BOSH environment.
 
-After deploying the BOSH Director, continue to the [Configure IaaS Routing for GCP](routing-gcp.html) topic.
+After deploying the BOSH Director, continue to the [Configure IaaS Routing for GCP](routing-gcp/) topic.
 
