@@ -38,7 +38,7 @@ pages:
       - 'Preparing vSphere for Kubo': 'installing/vsphere/index.md'
     - Preparing AWS:
       - 'Preparing AWS for Kubo': 'installing/aws/index.md'
-    - Preparing OpenStack for Kubo: 
+    - Preparing OpenStack: 
       - 'Preparing OpenStack': 'installing/openstack/index.md'
     - 'Deploying Kubo': 'installing/deploying-kubo.md'
   - Managing and Troubleshooting:
