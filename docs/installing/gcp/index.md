@@ -21,7 +21,7 @@ Pave your infrastructure and deploy the BOSH Director for Kubo by following the 
 
 ##Step 2: Configure IaaS Routing for GCP
 
-Configure your load balancers for Kubo by following the procedures in the [Configure IaaS Routing for GCP](routing-gcp/) topic.
+Configure your load balancers for Kubo by following the procedures in the [Configuring IaaS Routing for GCP](routing-gcp/) topic.
 
 ##Step 3: Deploy Kubo
 

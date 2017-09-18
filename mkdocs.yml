@@ -36,6 +36,8 @@ pages:
       - 'Configuring IaaS Routing for GCP': 'installing/gcp/routing-gcp.md'
     - Preparing vSphere: 
       - 'Preparing vSphere for Kubo': 'installing/vsphere/index.md'
+      - 'Deploying BOSH for Kubo on vSphere': 'installing/vsphere/deploying-bosh-vsphere.md'
+      - 'Configuring HAProxy for vSphere': 'installing/vsphere/routing-vsphere.md'
     - Preparing AWS:
       - 'Preparing AWS for Kubo': 'installing/aws/index.md'
     - Preparing OpenStack: 
