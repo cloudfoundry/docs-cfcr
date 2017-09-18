@@ -95,14 +95,14 @@ If you configured Cloud Foundry to handle routing for Kubo, perform the followin
 	<p class="terminal">$ kubectl label services my-service tcp-route-sync=443</p>
 	
 	!!! note
-		It may take up to sixty seconds to create the route.
+		It may take up to 60 seconds to create the route.
 
 1. Use a browser to access your service at `CLOUD-FOUNDRY-TCP-URL`:`FRONT-END-PORT`.
 1. Add a label to your service named `http-route-sync`, and set the value of the label to the route you want to create for your application. For example:
 	<p class="terminal">$ kubectl label services my-service http-route-sync=web-app</p>
 	
 	!!! note
-		It may take up to sixty seconds to create the route.
+		It may take up to 60 seconds to create the route.
 
 1. Use a browser to access your service at `ROUTE-NAME.CLOUD-FOUNDRY-APPS-DOMAIN`.
 
