@@ -80,11 +80,11 @@ You can also configure a second IaaS-specific load balancer to forward traffic t
 
 ###Cloud Foundry Routing
 
-If you deploy Kubo alongside [Cloud Foundry], the Cloud Foundry routers handle traffic for your Kubo instance.
+If you deploy Kubo alongside [Cloud Foundry](https://docs.cloudfoundry.org), the Cloud Foundry routers handle traffic for your Kubo instance.
 
 Consult the following diagram for an example network topology.
 
-![Kubo Topology for Cloud Foundry](../images/topology-cf-routers.png)
+![Kubo Topology for Cloud Foundry](../images/diagrams/topology-cf-routers.png)
 
 The master nodes that run the Kubernetes API register themselves with the Cloud Foundry TCP router. The TCP router acts as both the public and internal endpoint for the Kubernetes API to route traffic to the master nodes of a Kubo instance. All traffic to the API goes through the Cloud Foundry TCP router and then to a healthy node.
 
