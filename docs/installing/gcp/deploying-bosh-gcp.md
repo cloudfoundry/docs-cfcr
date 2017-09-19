@@ -2,7 +2,7 @@
 
 This topic describes how to deploy BOSH for Kubo on Google Cloud Platform (GCP). Installing Kubo requires deploying a BOSH Director. 
 
-After completing the procedures in this topic, continue to the [Configure IaaS Routing for GCP](routing-gcp/) topic.
+After completing the procedures in this topic, continue to the [Configuring IaaS Routing for GCP](routing-gcp/) topic.
 
 In the procedures below, you use [Terraform](https://www.terraform.io/docs/) to pave your infrastructure and create a bastion VM. Then you deploy a BOSH Director from the bastion VM. 
 
