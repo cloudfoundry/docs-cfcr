@@ -39,6 +39,8 @@ pages:
       - 'Deploying BOSH for Kubo on vSphere': 'installing/vsphere/deploying-bosh-vsphere.md'
     - Preparing AWS:
       - 'Preparing AWS for Kubo': 'installing/aws/index.md'
+      - 'Deploying BOSH for Kubo on AWS': 'installing/aws/deploying-bosh-aws.md'
+      - 'Configuring IaaS Routing for AWS': 'installing/aws/routing-aws.md'
     - Preparing OpenStack: 
       - 'Preparing OpenStack': 'installing/openstack/index.md'
     - 'Deploying Kubo': 'installing/deploying-kubo.md'
