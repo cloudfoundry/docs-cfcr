@@ -7,7 +7,7 @@ After completing the procedures in this topic, continue to the [Configuring IaaS
 In the procedures below, you use [Terraform](https://www.terraform.io/docs/) to pave your infrastructure and create a bastion VM. Then you deploy a BOSH Director from the bastion VM. 
 ##Step 1: Set Up Your Shell Environment
 
-1. Install the latest version of [Terraform](https://www.terraform.io/intro/getting-started/install.html). You must have Terraform 0.10.x to perform the procedures in this topic.
+1. Install the latest version of [Terraform](https://www.terraform.io/intro/getting-started/install.html). You must have Terraform v0.10.2 or greater to perform the procedures in this topic.
 1. Log in to the AWS Console and create an EC2 key pair named `deployer`. For more information, see the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair).
 1. The private key file is automatically downloaded by your browser. Move the file to your home directory by entering the following command:
 	<p class="terminal">$ mv ~/Downloads/deployer.pem ~/deployer.pem</p>
