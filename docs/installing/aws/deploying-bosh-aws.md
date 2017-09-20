@@ -28,17 +28,20 @@ $ export AWS_SECRET_ACCESS_KEY=dsfSDFKOSDFKOasdmasdKSADOK</p>
 	<p class="terminal">$ export key_name=deployer
 $ export private_key_filename="~/${key_name}.pem"</p>
 
-1. Set the region and zone where you want to deploy Kubo as environment variables named `region` and zone`. For example:
+1. Set the region and zone where you want to deploy Kubo as environment variables named `region` and `zone`. For example:
 	<p class="terminal">$ export region=us-west-2
 $ export zone=us-west-2a</p>
 
 1. Set the IP address prefix of the public subnet that will be used by the bastion VM, NAT gateway, and load balancers as an environment variable named `public_subnet_ip_prefix`. For example:
 	<p class="terminal">$ export public_subnet_ip_prefix="10.0.1"</p>
 
-1. Set the IP address prefix of the private subnet that will be used for Kubo VMs and the BOSH Director. For example:
+1. Set the IP address prefix of the private subnet that will be used for Kubo VMs and the BOSH Director as an environment variable named `private_subnet_ip_prefix`. For example:
 	<p class="terminal">$ export private_subnet_ip_prefix="10.0.2"</p>
 
-1. Set the path of the Terraform state file. Enter the following command:
+	!!! note
+		You create the public and private subnets with Terraform in a later step, so you do not need to create them in the AWS Console.
+
+1. Set the path of the Terraform state file as an environment variable named `kubo_terraform_state`. Enter the following command:
 	<p class="terminal">$ export kubo_terraform_state=~/terraform.tfstate</p>
 
 ##Step 2: Deploy Bastion VM
@@ -164,11 +167,11 @@ Perform the following steps to create a new IAM user to deploy the BOSH Director
 
 1. Click **Apply Policy**.
 
-##Step 4: Deploy BOSH Director
+##Step 5: Deploy BOSH Director
 
 Perform the following steps to deploy a BOSH Director from the bastion VM:
 
-1. Open `${kubo_env_path}/director-secrets.yml` and enter the `access_key_id` and `secret_access_key` for your newly created user.
+1. Open `${kubo_env_path}/director-secrets.yml` and fill in the `access_key_id` and `secret_access_key` for your newly created user.
 
 	!!! warning
 		The `director-secrets.yml` file contains sensitive information and should not be under version control.
