@@ -7,8 +7,7 @@ This topic describes how to prepare Amazon Web Services (AWS) for Kubo.
 You must have the following to install Kubo on AWS:
 
 1. An existing AWS account
-1. A shell environment with the [Terraform CLI](https://www.terraform.io/intro/getting-started/install.html) installed
-1. An access key ID and access key secret for an IAM user with administrator access
+1. An access key ID and secret access key for an IAM user with the AdministratorAccess policy
 1. A VPC in the zone where you want to deploy Kubo, with a CIDR range that has at least an `/22` netmask
 
 	!!! warning
