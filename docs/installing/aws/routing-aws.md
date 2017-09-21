@@ -37,8 +37,9 @@ $ export AWS_SECRET_ACCESS_KEY=dsfSDFKOSDFKOasdmasdKSADOK</p>
 1. Set the `master_target_pool` and `kubernetes_master_host` environment variables with the following commands:
 	<p class="terminal">$ export master_target_pool=\$(terraform output -state=${kubo_terraform_state} kubo_master_target_pool) 
 $ export kubernetes_master_host=\$(terraform output -state=${kubo_terraform_state} master_lb_ip_address) </p>
-1. Update the Kubo environment by running the the following command:
-	<p class="terminal">$ . /share/kubo-deployment/docs/user-guide/platforms/aws/setup_helpers set_iaas_routing "${state_dir}/director.yml"</p>
+1. Update the Kubo environment by running the the following commands:
+	<p class="terminal">$ . /share/kubo-deployment/docs/user-guide/platforms/aws/setup_helpers
+$ set_iaas_routing "${state_dir}/director.yml"</p>
 
 	!!! tip
 		You can also set the configuration manually by editing `KUBO_ENV/director.yml`.
