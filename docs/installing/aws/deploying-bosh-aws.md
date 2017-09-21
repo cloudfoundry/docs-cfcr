@@ -99,8 +99,9 @@ $ export kubo_env_path="\${kubo_envs}/\${kubo_env_name}"</p>
 
 1. Generate a Kubo configuration template. Enter the following command:
 	<p class="terminal">$ ./bin/generate_env_config "\${kubo_envs}" "\${kubo_env_name}" aws</p>
-1. Execute the `update_aws_env` script to apply the default network settings configured during the infrastructure paving to the template. Enter the following command:
-	<p class="terminal">$ . docs/user-guide/platforms/aws/setup_helpers update_aws_env "${kubo_env_path}/director.yml"</p>
+1. Apply the default network settings configured during the infrastructure paving to the template. Enter the following commands:
+	<p class="terminal">$ . docs/user-guide/platforms/aws/setup_helpers</p>
+$ update_aws_env "${kubo_env_path}/director.yml"</p>
 
 	!!! tip
 		You can directly edit the configuration file located at `${kubo_env_path}/director.yml`.
