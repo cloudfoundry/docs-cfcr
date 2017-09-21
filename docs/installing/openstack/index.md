@@ -27,7 +27,7 @@ You must have the following to install Kubo on OpenStack:
 		Nova networking is known to work, but the Kubo team does not actively test it because it is deprecated.
 		    
 1. An existing OpenStack project
-
+1. An OpenStack key pair
 1. A network configured to allow the following:
     - Incoming TCP traffic on port 8443 for the Kubernetes API server 
     - Incoming TCP traffic for port range 30000—32765

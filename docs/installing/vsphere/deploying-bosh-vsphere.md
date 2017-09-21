@@ -2,7 +2,7 @@
 
 This topic describes how to deploy BOSH for Kubo on vSphere. Installing Kubo requires deploying a BOSH Director. 
 
-After completing the procedures in this topic, continue to the [Configuring HAProxy for vSphere](routing-vsphere/) topic.
+After completing the procedures in this topic, continue to the [Deploying Kubo](../deploying-kubo/) topic. 
 
 ##Step 1: Create User Accounts
 
@@ -130,6 +130,8 @@ Perform the following steps to configure HAProxy:
 The current implementation of HAProxy routing is a single-port TCP pass-through. In order to route traffic to multiple Kubernetes services, use an Ingress controller. For more information, see the [Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/) and the [Ingress examples readme](https://github.com/kubernetes/ingress/tree/master/examples#ingress-examples)  in the Kubernetes GitHub repo.
 
 ##Step 4: Deploy BOSH
+
+Perform the following steps to deploy a BOSH Director:
 
 1. Continue working in the `director.yml` file to configure BOSH by populating the remaining uncommented lines. You will need the vSphere configuration details you retrieved in [Step 2: Retrieve Information](#Step-2-Retrieve-Information).
 1. In the same directory, open the `director-secrets.yml` file. 
