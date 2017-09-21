@@ -11,7 +11,11 @@ Access your Kubo environment. This is the environment that contains the `KUBO_EN
 Follow the steps for your IaaS:
 
 * **Google Cloud Platform (GCP)**: Open the Google Cloud Shell and use `gcloud compute ssh` to SSH into your bastion VM. For more information, see the [(Optional) Step 1: Set Up Your Environment](./gcp/routing-gcp/#optional-step-1-set-up-your-environment) section of the <em>Configuring IaaS Routing for GCP</em>.
-* **Amazon Web Services (AWS)**: SSH into the bastion VM from your local machine. For more information, see the [Deploying BOSH for Kubo on AWS](../aws/deploying-bosh-aws/).
+* **Amazon Web Services (AWS)**: SSH onto the bastion VM from your local machine by performing the following the steps:
+	1. Change into your Terraform working directory with the following command:
+		<p class="terminal">$ cd ~/kubo-deployment/docs/user-guide/platforms/aws</p>
+	1. SSH onto the bastion VM with the following command:
+		<p class="terminal">$ ssh -i ~/deployer.pem ubuntu@$(terraform output bosh-bastion-ip)</p>
 * **vSphere or OpenStack**: If you deployed BOSH for Kubo from a bastion VM, SSH into the VM. Otherwise, navigate to the Kubo environment on your local machine.
 
 ##(Optional) Step 2: Configure Proxy Access

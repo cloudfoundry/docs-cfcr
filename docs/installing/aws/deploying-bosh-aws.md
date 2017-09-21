@@ -5,6 +5,7 @@ This topic describes how to deploy BOSH for Kubo on Amazon Web Services (AWS). I
 After completing the procedures in this topic, continue to the [Configuring IaaS Routing for AWS](routing-aws/) topic.
 
 In the procedures below, you use [Terraform](https://www.terraform.io/docs/) to pave your infrastructure and create a bastion VM. Then you deploy a BOSH Director from the bastion VM. 
+
 ##Step 1: Set Up Your Shell Environment
 
 1. Install the latest version of [Terraform](https://www.terraform.io/intro/getting-started/install.html). You must have Terraform v0.10.2 or greater to perform the procedures in this topic.
