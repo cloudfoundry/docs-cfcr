@@ -223,7 +223,7 @@ When using the BOSH CLI v2, you encounter a 401 error from the User Account and 
 Using environment 'my-kubo.example.com' as '?'
 
 Finding deployments:
-  Performing request GET 'https://p-kubo.p.kubo.cf-app.com:25555/deployments':
+  Performing request GET 'https://my-kubo.example.com:25555/deployments':
     Performing GET request:
       Refreshing token: UAA responded with non-successful status code '401' response '{"error":"invalid_token","error_description":"The token expired, was revoked, or the token ID is incorrect: acc3bc0eeb2b4323995f6d5873d9f52e-r"}'
 
