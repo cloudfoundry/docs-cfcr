@@ -6,6 +6,9 @@ You can install Kubo on Google Cloud Platform (GCP), vSphere, Amazon Web Service
 
 To install Kubo, follow the procedures in the topics below.
 
+!!! tip
+	If you encounter problems when installing Kubo, see the [Troubleshooting Kubo](../managing/troubleshooting.md) topic.
+
 ##Step 1: Prepare Your IaaS
 
 Follow the procedures below for your IaaS. You must deploy BOSH for Kubo and configure routing before deploying Kubo.

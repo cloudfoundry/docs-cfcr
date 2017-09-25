@@ -125,26 +125,6 @@ Try the following solutions:
 * Check the fields `routing-cf-client-id` in `KUBO_ENV/director.yml` and `routing-cf-client-secret` in `KUBO_ENV/director-secrets.yml` to ensure that the UAAC credentials that you are using are valid. You can use the [UAAC CLI](https://docs.cloudfoundry.org/adminguide/uaa-user-management.html) to create and manage credentials.
 * Check  that the route to the TCP routing API URL is accessible. The URL is defined in the field `routing-cf-api-url` in `KUBO_ENV/director.yml`.
 
----
-
-### Timeout Failures When Deploying 
-
-#### Symptom
-
-
-#### Explanation
-
-
-kubo [OSS deployment](https://github.com/cloudfoundry-incubator/bosh-google-cpi-release/tree/master/docs/cloudfoundry) may fail due to timeouts.
-
-#### Solution
-
-Retry the deployment commands. This can be caused by the default preemptable compilation VMs or by failure to resolve the `xip.io` domain.
-
-If you have access to a domain then you can increase reliability by using it for your Cloud Foundry deployment. If you do not mind the increased cost you can remove the [preemptable](https://github.com/cloudfoundry-incubator/bosh-google-cpi-release/tree/master/src/bosh-google-cpi#bosh-resource-pool-options) property from the compilation workers in the Cloud Foundry manifest.
-
----
-
 ### Kubernetes Deployment Fails After BOSH is Redeployed
 
 #### Symptom
