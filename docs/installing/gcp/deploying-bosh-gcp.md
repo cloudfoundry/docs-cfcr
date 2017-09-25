@@ -124,7 +124,7 @@ $ export kubo_env_path="\${kubo_envs}/\${kubo_env_name}"</p>
 1. Deploy the BOSH Director for Kubo. Enter the following command:
 	<p class="terminal">$ ./bin/deploy_bosh "${kubo_env_path}" ~/terraform.key.json</p>
 
-	The `deploy_bosh` script deploys a BOSH Director with all of the necessary components to install Kubo. 
+	The `deploy_bosh` script uses the Kubo configuration and the GCP key generated previously to deploy a BOSH Director with all of the necessary components to install Kubo. 
 
 	After the script completes, `KUBO_ENV` contains the following:
 
