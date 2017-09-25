@@ -47,6 +47,8 @@ pages:
     - 'Deploying Kubo': 'installing/deploying-kubo.md'
   - Managing and Troubleshooting:
     - 'Home': 'managing/index.md'
+    - 'Troubleshooting Kubo': 'managing/troubleshooting.md'
+    - 'Deleting Kubo': 'managing/deleting.md'
 
 # palette, logo, css, markdown extensions
 extra:
