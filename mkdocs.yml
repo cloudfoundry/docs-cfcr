@@ -45,6 +45,7 @@ pages:
       - 'Preparing OpenStack for Kubo': 'installing/openstack/index.md'
       - 'Deploying BOSH for Kubo on OpenStack': 'installing/openstack/deploying-bosh-openstack.md'
     - 'Deploying Kubo': 'installing/deploying-kubo.md'
+    - 'Customizing Kubo': 'installing/customizing-kubo.md'
   - Managing and Troubleshooting:
     - 'Home': 'managing/index.md'
     - 'Troubleshooting Kubo': 'managing/troubleshooting.md'
