@@ -4,6 +4,8 @@ This topic describes how to deploy Kubo.
 
 Before completing the procedures in this topic, you must have deployed BOSH for Kubo and configured routing. For more information, see the [Preparing](/installing/#step-1-prepare-your-iaas) section for your IaaS.
 
+This topic describes how to deploy a standard Kubo installation. If you want to deploy a customized Kubo installation, see the [Customizing Kubo](customizing-kubo/) topic.
+
 !!! tip
 	If you encounter problems when installing Kubo, see the [Troubleshooting Kubo](../managing/troubleshooting.md) topic.
 

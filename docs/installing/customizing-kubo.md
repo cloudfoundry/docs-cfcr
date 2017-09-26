@@ -6,6 +6,9 @@ You can edit the [cloud config](https://bosh.io/docs/terminology.html#cloud-conf
 
 Before completing the procedures in this topic, you must have deployed BOSH for Kubo and configured routing. For more information, see the [Preparing](/installing/#step-1-prepare-your-iaas) section for your IaaS.
 
+!!! tip
+	If you encounter problems when installing Kubo, see the [Troubleshooting Kubo](../managing/troubleshooting.md) topic.
+
 ##Step 1: Set Up Cloud Config
 
 Perform the following steps to create and apply a modified cloud config:
@@ -67,21 +70,8 @@ Perform the following steps to generate and modify the deployment manifest for K
 		    version: 0.99.0
     	```
 
-1. If you created a variables file or an operations file, generate the new Kubo manifest. Run the following command:<br>
-	`bosh-cli interpolate -d DEPLOYMENT_NAME --ops-file KUBO_ENV/YOUR_OPS_FILE --vars-file KUBO_ENV/YOUR_VARS_FILE > KUBO_ENV/kubo-manifest.yml`
-
-	Where:
-
-	* `DEPLOYMENT_NAME`: This is the name of your Kubo deployment.
-	* `KUBO_ENV`: This is the directory that contains the Kubo configuration.
-	* `YOUR_OPS_FILE`: This is the name of your operations file.
-	* `YOUR_VARS_FILE`: This is the name of your variables file.
-
-	For example:
-	<p class="terminal">$ bosh-cli interpolate -d my-kubo \
---ops-file ~/kubo-env/kubo/my-kubo.yml \
---vars-file ~/kubo-env/kubo/my-kubo-vars.yml \
-\> ~/kubo-env/kubo/kubo-manifest.yml</p>
+1. If you created a variables file or an operations file, re-run the `./bin/generate_kubo_manifest` script, providing the same arguments as before. The script will automatically detect the variables file and operations file. For example:
+	<p class="terminal">$ ./bin/generate_kubo_manifest ~/kubo-env/kubo my-kubo > KUBO_ENV/kubo-manifest.yml</p>
 
 ##Step 3: Deploy Kubo
 

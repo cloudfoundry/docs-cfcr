@@ -21,3 +21,5 @@ Follow the procedures below for your IaaS. You must deploy BOSH for Kubo and con
 ##Step 2: Deploy  
 
 * [Deploying Kubo](deploying-kubo/)
+
+[Deploying Kubo](deploying-kubo/) describes how to deploy a standard Kubo installation. If you want to deploy a customized Kubo installation, see [Customizing Kubo](customizing-kubo/).
