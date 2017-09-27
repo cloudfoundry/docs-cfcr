@@ -95,7 +95,7 @@ If you configured IaaS load balancers to handle routing for Kubo, you can expose
 
 ###Cloud Foundry Routing
 
-If you configured Cloud Foundry to handle routing for Kubo, perform the following steps to expose both TCP and HTTP routes to the Kubernetes services:
+If you [configured Cloud Foundry](cf-routing/) to handle routing for Kubo, perform the following steps to expose both TCP and HTTP routes to the Kubernetes services:
 
 !!! note
 	You must expose your Kubernetes services using a single `NodePort`. See the [Kubernetes documentation](https://kubernetes.io/docs/tutorials/kubernetes-basics/expose-intro/) for more information.
