@@ -11,7 +11,7 @@ If you want to use Cloud Foundry for routing instead of IaaS load balancers, see
 
 ##(Optional) Step 1: Set Up Your Environment
 
-If you are still working in the same Google Cloud Shell session from the [Deploying BOSH for Kubo on GCP](deploying-bosh-gcp/) topic, skip to [Step 2: Configure Load Balancers](#Step-2-Configure-Load-Balancers).
+If you are still working in the same Google Cloud Shell session from the [Deploying BOSH for Kubo on GCP](deploying-bosh-gcp/) topic, skip to [Step 2: Configure Load Balancers](#step-2-configure-load-balancers).
 
 If you have started a new Google Cloud Shell session, perform the following steps:
 
