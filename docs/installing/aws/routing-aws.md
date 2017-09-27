@@ -4,6 +4,10 @@ This topic describes how to configure the Amazon Web Services (AWS) load balance
 
 Before completing the procedures in this topic, you must have performed the steps in [Deploying BOSH for Kubo on AWS](deploying-bosh-aws/). After finishing this topic, continue to [Deploying Kubo](../deploying-kubo/).
 
+If you want to use Cloud Foundry for routing instead of IaaS load balancers, see the [Configuring Cloud Foundry Routing](../cf-routing/) topic.
+
+##Configure IaaS Routing
+
 1. If you are not in the same shell session as you were when completing the procedures in [Deploying BOSH for Kubo on AWS](deploying-bosh-aws/), perform the following steps:
 	1. Change into your Terraform working directory with the following command:
 		<p class="terminal">$ cd ~/kubo-deployment/docs/user-guide/platforms/aws</p>

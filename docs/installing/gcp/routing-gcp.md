@@ -4,6 +4,8 @@ This topic describes how to configure the Google Cloud Platform (GCP) load balan
 
 Before completing the procedures in this topic, you must have performed the steps in [Deploying BOSH for Kubo on GCP](deploying-bosh-gcp/). After finishing this topic, continue to [Deploying Kubo](../deploying-kubo/).
 
+If you want to use Cloud Foundry for routing instead of IaaS load balancers, see the [Configuring Cloud Foundry Routing](../cf-routing/) topic.
+
 !!!note
 		Execute all of the commands in this topic from the Google Cloud Shell, not from your local machine.
 

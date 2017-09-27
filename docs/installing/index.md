@@ -22,4 +22,7 @@ Follow the procedures below for your IaaS. You must deploy BOSH for Kubo and con
 
 * [Deploying Kubo](deploying-kubo/)
 
-[Deploying Kubo](deploying-kubo/) describes how to deploy a standard Kubo installation. If you want to deploy a customized Kubo installation, see [Customizing Kubo](customizing-kubo/).
+##Deployment Options
+
+* [Customizing Kubo](customizing-kubo/): Deploy a customized Kubo installation.
+* [Configuring Cloud Foundry Routing](cf-routing/): Use Cloud Foundry to handle routing for Kubo instead of IaaS load balancers or HAProxy.

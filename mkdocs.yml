@@ -46,6 +46,7 @@ pages:
       - 'Deploying BOSH for Kubo on OpenStack': 'installing/openstack/deploying-bosh-openstack.md'
     - 'Deploying Kubo': 'installing/deploying-kubo.md'
     - 'Customizing Kubo': 'installing/customizing-kubo.md'
+    - 'Configuring Cloud Foundry Routing': 'installing/cf-routing.md'
   - Managing and Troubleshooting:
     - 'Home': 'managing/index.md'
     - 'Troubleshooting Kubo': 'managing/troubleshooting.md'

@@ -34,6 +34,8 @@ $ export kubo_env_path="\${kubo_env}/\${kubo_env_name}"</p>
 
 OpenStack does not have first-party load-balancing support. But you can configure HAProxy to handle external access to the Kubernetes master nodes for administration traffic, and the Kubernetes worker nodes for application traffic.
 
+If you want to use Cloud Foundry for routing instead of HAProxy, see the [Configuring Cloud Foundry Routing](../cf-routing/) topic.
+
 Perform the following steps to configure HAProxy:
 
 1. Navigate to `KUBO_ENV` and open the newly created `director.yml` file.

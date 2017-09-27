@@ -117,10 +117,12 @@ $ export kubo_env_path="\${kubo_env}/\${kubo_env_name}"</p>
 
 vSphere does not have first-party load-balancing support. But you can configure HAProxy to handle external access to the Kubernetes master nodes for administration traffic, and the Kubernetes worker nodes for application traffic.
 
+If you want to use Cloud Foundry for routing instead of HAProxy, see the [Configuring Cloud Foundry Routing](../cf-routing/) topic.
+
 Perform the following steps to configure HAProxy:
 
 1. Navigate to `KUBO_ENV` and open the newly created `director.yml` file.
-1. Uncomment the `Proxy routing mode settings` section and comment the `IaaS routing mode settings`.
+1. Uncomment the `Proxy routing mode settings` section and comment out the `IaaS routing mode settings` section.
 1. Set the `kubernetes_master_host` to the IP address of the HAProxy master node.
 1. Set the `kubernetes_master_port` to the port for the Kubernetes API server on the HAProxy master node.
 1. Set the `worker_haproxy_ip_addresses` to the IP address(es) of the HAProxy worker node(s).

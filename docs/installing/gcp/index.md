@@ -23,6 +23,8 @@ Pave your infrastructure and deploy the BOSH Director for Kubo by following the 
 
 Configure your load balancers for Kubo by following the procedures in the [Configuring IaaS Routing for GCP](routing-gcp/) topic.
 
+If you want to use Cloud Foundry for routing instead of IaaS load balancers, see the [Configuring Cloud Foundry Routing](../cf-routing/) topic.
+
 ##Step 3: Deploy Kubo
 
 After deploying BOSH for Kubo and configuring your load balancers, continue to the [Deploying Kubo](../deploying-kubo/) topic to finish the Kubo installation.
