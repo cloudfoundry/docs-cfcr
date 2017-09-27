@@ -29,5 +29,5 @@ Kubo aims to solve a range of problems that operators and developers face when d
 * **High-availability and multi-AZ support**: BOSH can deploy multiple master/etcd/worker nodes across multiple availability zones, and monitor their health.
 * **Scaling**: BOSH allows the operator to scale the number of instances in the cluster up and down by modifying the manifest.
 * **VM Healing**: BOSH continuously monitors the health of all VM instances and recreates VMs. 
-Self-healing VMs and monitoring via BOSH
+Self-healing VMs and monitoring via BOSH.
 * **Upgrades**: BOSH manages the rolling upgrade process for a fleet of Kubernetes clusters.
