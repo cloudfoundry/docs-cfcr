@@ -2,6 +2,6 @@
 
 This section describes how to manage and troubleshoot Kubo.
 
-* [Troubleshooting Kubo](troubleshooting/)
-* [Deleting Kubo](deleting/) 
+* [Troubleshooting Kubo](troubleshooting/): Troubleshoot commonly encountered problems with installing and running Kubo.
+* [Deleting Kubo](deleting/): Delete your Kubo deployment and destroy your BOSH environment. 
 

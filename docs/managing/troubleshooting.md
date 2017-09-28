@@ -219,7 +219,7 @@ You may not be logged in to the BOSH Director.
 #### Solution
 
 Ensure you are logged in to the BOSH Director as admin. For example:
-<p class="terminal">$ bosh-cli -e my-kubo log-in
+<p class="terminal">$ bosh-cli -e my-bosh log-in
 User (): admin
 Password ():
 </p>
