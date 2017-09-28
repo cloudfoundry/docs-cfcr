@@ -12,38 +12,73 @@ Log in to vCenter and then complete the procedures in the sections below to crea
 
 BOSH needs a user account with a particular set of privileges. This topic refers to this account as the "BOSH user." 
 
-The role associated with the BOSH user must grant the following privileges:    
-    
-- **Data Store**
-    - `Allocate space`
-    - `Browse datastore`
-    - `Low level file operations`
-    - `Remove file`
-    - `Update virtual machine files`
-    - `Update virtual machine metadata`
-- **Folder** 
-- **Global**
-    - `Manage custom attributes`
-    - `Set custom attribute`
-- **Host**
-    - `Inventory`
-        - `Modify cluster`
-    - `Local operations`
-- **Network**
-- **Resource**
-    - `Assign virtual machine to resource pool`
-    - `Migrate powered off virtual machine`
-    - `Migrate powered on virtual machine`
-- **Virtual Machine**
-    - `Configuration`
-    - `Guest Operations`
-    - `Interaction`
-    - `Inventory`
-    - `Provisioning`
-    - `Service configuration`
-    - `Snapshot management`
-- **vApp**
-- **vCenter Inventory Service**
+The role associated with the BOSH user must grant the privileges described in the following table.
+
+<table>
+<tr>
+<th>Privilege Type</th>    
+<th>Privilege Name</th>
+</tr>
+<tr>
+<td><strong>Datastore</strong></td>
+<td><ul><li><code>Allocate space</code></li>
+<li><code>Browse datastore</li></code>
+<li><code>Low level file operations</li></code>
+<li><code>Remove file</li></code>
+<li><code>Update virtual machine files</li></code>
+<li><code>Update virtual machine metadata</li></code>
+</td>
+</tr>
+<tr>
+<td><strong>Folder</strong></td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>Global</strong></td>
+<td><ul><li><code>Manage custom attributes</code></li>
+<li><code>Set custom attribute</code></li></ul>
+</tr>
+<tr>
+<td><strong>Host</strong></td>
+<td><ul><li><code>Inventory</code></li>
+    <ul><li><code>Modify cluster</code></li></ul>
+    <li><code>Local operations</code></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><strong>Network</strong></td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>Resource</strong></td>
+<td><ul><li><code>Assign virtual machine to resource pool</code></li>
+    <li><code>Migrate powered off virtual machine</code></li>
+    <li><code>Migrate powered on virtual machine</li></code>
+</ul>
+</td>
+</tr>
+<tr>
+<td><strong>Virtual Machine</strong></td>
+<td><ul><li><code>Configuration</code></li>
+<li><code>Guest Operations</li></code>
+<li><code>Interaction</li></code>
+<li><code>Inventory</li></code>
+<li><code>Provisioning</li></code>
+<li><code>Service configuration</li></code>
+<li><code>Snapshot management</li></code>
+</ul>
+</td>
+</tr>
+<tr>
+<td><strong>vApp</strong></td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>vCenter Inventory Service</strong></td>
+<td>All</td>
+</tr>
+</table>
 
 For more information about user accounts and roles, see the [vSphere documentation](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.security.doc/GUID-18071E9A-EED1-4968-8D51-E0B4F526FDA3.html).
 
@@ -51,29 +86,55 @@ For more information about user accounts and roles, see the [vSphere documentati
 
 If you plan to provide your Kubernetes applications with access to persistent volumes, create a separate user account with a smaller set of privileges. This topic refers to this account as the "persistence user."
 
-The role associated with the persistence user must grant the following privileges:    
+The role associated with the persistence user must grant the privileges described in the following table.    
 
-- **Datastore**
-    - `Allocate space`
-    - `Low level file Operations`
-- **Virtual Machine**
-    - `Configuration`
-        - `Add existing disk`
-        - `Add or remove device`
-        - `Remove disk`
+<table>
+<tr>
+<th>Privilege Type</th>
+<th>Privilege Name</th>
+</tr>
+<tr>
+<td><strong>Datastore</strong></td>
+<td><ul><li><code>Allocate space</code></li>
+<li><code>Low level file Operations</code></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><strong>Virtual Machine</strong></td>
+<td><ul><li><code>Configuration</code></li>
+<li><code>Add existing disk</code></li>
+<li><code>Add or remove device</code></li>
+<li><code>Remove disk</code></li>
+</td>
+</tr>
+</table>
 
-If you plan to use the VSAN-policy-based volume provisioning feature in Kubernetes, the persistence user must grant the following additional privileges:
-    
-- **Network**
-    - `Assign network`
-- **Virtual machine**
-    - `Configuration`
-        - `Add new disk`
-- **Virtual Machine**
-    - `Inventory`
-        - `Create new`
-- **Resource**
-    - `Assign virtual machine to resource pool`
+If you plan to use the VSAN-policy-based volume provisioning feature in Kubernetes, the persistence user must grant the additional privileges described in the following table.
+
+<table>
+<tr>
+<th>Privilege Type</th>
+<th>Privilege Name</th>
+</tr>
+<tr>
+<td><strong>Network</strong></td>
+<td><ul><li><code>Assign network</code></li></ul></td>
+</tr>
+<tr>
+<td><strong>Virtual Machine</strong></td>
+<td><ul><li><code>Configuration</code></li>
+    <ul><li><code>Add new disk</code></li></ul>
+</li></ul>
+<ul><li><code>Inventory</code></li>
+    <ul><li><code>Create new</code></li></ul>
+</td>
+</tr>
+<tr>
+<td><strong>Resource</strong></td>
+<td><ul><li><code>Assign virtual machine to resource pool</code></li></ul></td>
+</tr>
+</table>
 
 ##Step 2: Retrieve Information
 
