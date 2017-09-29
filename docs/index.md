@@ -2,6 +2,8 @@
 
 This is the documentation for Kubo, an open-source project that provides a solution for deploying and managing [Kubernetes](https://kubernetes.io/docs/home/) clusters using [BOSH](https://bosh.io/docs).
 
+Kubo uses BOSH to improve the Kubernetes experience for both operators and developers. By leveraging BOSH, Kubo adds capabilities such as high availability, scaling, and self-healing to Kubernetes clusters.
+
 ##I want to learn more
 
 See [What is Kubo?](overview/what-is-kubo/) to learn more about Kubo.
