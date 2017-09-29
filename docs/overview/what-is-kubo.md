@@ -16,7 +16,7 @@ Kubo relies on **Kubernetes** and **BOSH**:
 
 ##What problems does Kubo solve?
 
-Kubo aims to solve a range of problems that operators and developers face when deploying and managing fleets of Kubernetes clusters, on both [Day 1](#day-1-solutions) and [Day 2](#day-2-solutions).
+Kubo aims to solve a range of problems that operators and developers face when deploying and managing fleets of Kubernetes clusters.
 
 ###Deploying Solutions
 
