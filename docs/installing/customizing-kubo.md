@@ -17,12 +17,12 @@ Perform the following steps to create and apply a modified cloud config:
 1. In your Kubo environment, navigate to the `kubo-deployment` directory. Enter the following command:
 	<p class="terminal">$ cd /share/kubo-deployment</p>
 1. Run the following command:<br>
-	`./bin/generate_cloud_config KUBO_ENV KUBO_ENV/cloud-config.yml`
+	`./bin/generate_cloud_config KUBO_ENV > KUBO_ENV/cloud-config.yml`
 
 	Where `KUBO_ENV` is the directory that contains the Kubo configuration.
 
 	For example:
-	<p class="terminal">$ ./bin/generate_cloud_config ~/kubo-env/kubo ~/kubo-env/kubo/cloud-config.yml</p>
+	<p class="terminal">$ ./bin/generate_cloud_config ~/kubo-env/kubo > ~/kubo-env/kubo/cloud-config.yml</p>
 
 1. Modify the generated cloud config file as necessary.
 1. Log in to the BOSH Director as admin. Use the admin password located in `KUBO_ENV/creds.yml`. For example:
@@ -45,7 +45,7 @@ Password ():</p>
 Perform the following steps to generate and modify the deployment manifest for Kubo:
 
 1. In the `kubo-deployment` directory, run the following command:<br>
-	`./bin/generate_kubo_manifest KUBO_ENV DEPLOYMENT_NAME  KUBO_ENV/kubo-manifest.yml`
+	`./bin/generate_kubo_manifest KUBO_ENV DEPLOYMENT_NAME > KUBO_ENV/kubo-manifest.yml`
 
 	Where:
 
