@@ -25,8 +25,9 @@ Consult the following list of prerequisites before performing the procedures in 
 You must edit your IaaS firewall rules to enable communication between the Cloud Foundry components and the Kubo VMs. The procedures will vary by IaaS, but you must do the following:
 
 * Ensure that the Cloud Foundry routing components can reach your Kubo cluster on the `NodePort` port range.
+* Ensure that the Cloud Foundry TCP Router can reach the Kubo master nodes on port 8443 to communicate with the Kubernetes API server.
 * Ensure that the Kubo components can reach the Cloud Foundry NAT servers on port 4222.
-* Ensure that the Kubo components can reach the Cloud Foundry API and UAA endpoints.
+* Ensure that the Kubo components can reach the Cloud Foundry API and UAA endpoints. Both are HTTPS endpoints in the Cloud Foundry system domain, accessible on port 443. 
 
 ##Step 2: Create a Routing UAA Client
 
