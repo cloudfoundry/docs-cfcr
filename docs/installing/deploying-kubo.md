@@ -25,7 +25,10 @@ Follow the steps for your IaaS:
 
 ##(Optional) Step 2: Configure Proxy Access
 
-If you want to configure Docker to allow proxy access, edit the `KUBO_ENV/director.yml` file to set the `http_proxy`, `https_proxy`, and `no_proxy` variables. 
+If you want to configure Docker to allow proxy access, edit the `KUBO_ENV/director.yml` file to set the `http_proxy`, `https_proxy`, and `no_proxy` variables.
+
+!!! note
+	You must perform this procedure if you have proxy access requirements to reach internal or external Docker registries. 
 
 The `http_proxy` is the proxy server for HTTP traffic, `https_proxy` is the proxy server for HTTPS traffic, and `no_proxy` specifies addresses to exclude from proxying.
 
@@ -36,6 +39,8 @@ http_proxy: http://my.proxy.local:73636
 https_proxy: https://secure.proxy.local:5566
 no_proxy: '192.0.2.0,192.0.2.1'
 ```
+
+Kubo passes these settings to the Docker Engine daemon that runs in the Kubo workers.
 
 ##Step 3: Deploy Kubo
 

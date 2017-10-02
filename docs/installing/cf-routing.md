@@ -12,13 +12,23 @@ Consult the following list of prerequisites before performing the procedures in 
 
 * You must have a running Cloud Foundry deployment. For more information, see the [Deploying Cloud Foundry](https://docs.cloudfoundry.org/deploying/index.html) section of the Cloud Foundry documentation.
 
+* You must have deployed Kubo to the same network as Cloud Foundry.
+
 * You must have completed both the pre-deployment and post-deployment procedures in the [Enabling TCP Routing](http://docs.cloudfoundry.org/adminguide/enabling-tcp-routing.html) topic of the Cloud Foundry documentation to enable TCP routing in your Cloud Foundry deployment. Ensure that you have created a shared domain for the TCP domain and configured a quota for TCP routes.
 
 * You must have installed the [UAA Command Line Client](https://github.com/cloudfoundry/cf-uaac) (UAAC). 
 
 * You must have [prepared your IaaS for Kubo](/installing/#step-1-prepare-your-iaas) to the point of generating a `director.yml` and `director-secrets.yml` file in your `KUBO_ENV`, but not yet deploying a BOSH Director.
 
-##Step 1: Create a Routing UAA Client
+##Step 1: Enable Internal Communication
+
+You must edit your IaaS firewall rules to enable communication between the Cloud Foundry components and the Kubo VMs. The procedures will vary by IaaS, but you must do the following:
+
+* Ensure that the Cloud Foundry routing components can reach your Kubo cluster on the `NodePort` port range.
+* Ensure that the Kubo components can reach the Cloud Foundry NAT servers on port 4222.
+* Ensure that the Kubo components can reach the Cloud Foundry API and UAA endpoints.
+
+##Step 2: Create a Routing UAA Client
 
 Perform the following steps to create a UAA client for Kubo routing:
 
@@ -39,7 +49,7 @@ Perform the following steps to create a UAA client for Kubo routing:
 --authorities "routing.router_groups.read,routing.routes.write,cloud_controller.admin" --authorized_grant_type "client_credentials"</p>
 	When prompted, enter a secret for the new client. Record this secret.
 
-##Step 2: Configure Kubo for Cloud Foundry Routing
+##Step 3: Configure Kubo for Cloud Foundry Routing
 
 Perform the following steps to configure Kubo for Cloud Foundry routing:
 
@@ -53,7 +63,11 @@ Perform the following steps to configure Kubo for Cloud Foundry routing:
 1. Open the `director.yml` file.
 
 1. Uncomment the `CF routing mode settings` section and comment out the `IaaS routing mode settings`.
-1. Set the `kubernetes_master_host` to the TCP router hostname for Cloud Foundry, such as `tcp.apps.cf-example.com`.
+1. Set the `kubernetes_master_host` to the TCP router hostname or IP address for Cloud Foundry. This is typically `tcp.YOUR-APPS-DOMAIN`, such as `tcp.apps.cf-example.com`.
+
+	!!! tip
+		If you are using a domain, ensure that the DNS resolves correctly. For more information, see the [Pre-Deployment Steps](https://docs.cloudfoundry.org/adminguide/enabling-tcp-routing.html#-pre-deployment-steps) section of the <em>Enabling TCP Routing</em> topic in the Cloud Foundry documentation.
+
 1. Leave the `kubernetes_master_port` commmented out. This property is ignored when deploying Kubo with Cloud Foundry routing.
 1. Set the `routing-cf-api-url` to the Cloud Foundry API URL, such as `https://api.sys.cf-example.com`.
 1. Set the `routing-cf-client-id` to `routing_api_client`.
