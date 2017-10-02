@@ -25,6 +25,9 @@ $ export AWS_SECRET_ACCESS_KEY=dsfSDFKOSDFKOasdmasdKSADOK</p>
 	!!! tip
 		To retrieve the ID for a VPC, navigate to the VPC Dashboard of the AWS Console and locate the **VPC ID** column.
 
+	!!! tip
+		If you plan to use [Cloud Foundry to handle routing](../cf-routing.html) for Kubo, deploy Kubo in the same VPC as Cloud Foundry.
+
 1. Set the name of the private key to use on Kubo VMs and the location of the private key file as environment variables named `key_name` and `private_key_filename`. Enter the following commands:
 	<p class="terminal">$ export key_name=deployer
 $ export private_key_filename="~/${key_name}.pem"</p>
@@ -57,6 +60,27 @@ Perform the following steps to deploy a bastion VM with a set of security group 
 	<p class="terminal">$ tar -xvf kubo-deployment-latest.tgz</p>
 1. Change into the directory that contains the AWS Terraform templates. Enter the following command:
 	<p class="terminal">$ cd kubo-deployment/docs/user-guide/platforms/aws</p>
+1. From the AWS Console, check if your VPC has an existing Internet Gateway (IGW) attached. If it does, perform the following steps to edit the Terraform template:
+	1. Open `kubo-infrastructure.tf`.
+	1. Use `//` to comment out the `aws_internet_gateway` section so that it looks like the following:
+		```
+		//resource "aws_internet_gateway" "gateway" {
+		//    vpc_id = "${var.vpc_id}"
+		//}
+		```
+	1. Retrieve the value of your VPC's IGW from the AWS Console.
+	1. Under `resource "aws_route_table" "public"`, set the value of `gateway_id` to the value of your VPC's IGW. For example:
+
+		```
+		resource "aws_route_table" "public" {
+		...
+		    route {
+		      cidr_block = "0.0.0.0/0"
+		      gateway_id = "igw-871b9de1"
+		    }
+		}
+		```
+		
 1. Initialize the Terraform working directory. Enter the following command:
 	<p class="terminal">$ terraform init</p>
 1. Create the bastion and other resources. Enter the following command:
