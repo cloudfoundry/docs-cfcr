@@ -37,12 +37,20 @@ Perform the following steps to preview your changes:
 
 1. Install MkDocs on your machine by following the [instructions](http://www.mkdocs.org/#installation) on the MkDocs site.
 1. Use `pip` to install the latest version of the Material theme:
+
 	`$ pip install mkdocs-material`
+	
 1. Use `pip` to install the PyMdown Extensions:
+
 	`$ pip install pymdown-extensions`
+	
 1. Clone this repo:
+
 	`$ git clone https://github.com/cloudfoundry/docs-kubo.git`
+	
 1. Navigate to the repo on your machine.
 1. Launch the MkDocs development server:
+
 	`$ mkdocs serve`
+	
 1. Navigate to `localhost:8000` to see a local version of the documentation. The site will update automatically as you make changes to the Markdown files.
