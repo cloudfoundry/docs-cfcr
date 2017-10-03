@@ -36,7 +36,7 @@ You must have the following to install Kubo on OpenStack:
     - Outgoing TCP traffic for port 53 within the Kubo network
    
     !!! tip
-    	You can find the network settings in Compute > Access & Security, clicking the Manage Rules button for your security group.
+    	You can find the network settings in **Compute** > **Access & Security**, clicking the Manage Rules button for your security group.
     
 	*(Optional)* If you plan to configure Cloud Foundry to handle routing for Kubo, the network must also allow the following:
 
