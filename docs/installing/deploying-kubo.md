@@ -147,7 +147,7 @@ Perform the following steps to enable persistent storage for your Kubo cluster:
 ci-claim   Bound     pvc-3e11131e-a1a0-11a1-3a2a-0a111e11111e   1Gi        RWO           ci-storage     </p>
 1. Create a pod with persistent storage by providing a configuration file that specifies the newly created StorageClass and PersistentVolumeClaim. See the `pv-guestbook.yml` configuration [file](https://github.com/pivotal-cf-experimental/kubo-ci/blob/master/specs/pv-guestbook.yml) as an example. For more information about configuring a pod for persistent storage, see the [Kubernetes documentation](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/).
 
-	Run `kubectl create -f POD-CONFIGURATION.yml` where `POD-CONFIGURATION` is the name of the pod configuration file.For example: 
+	Run `kubectl create -f POD-CONFIGURATION.yml` where `POD-CONFIGURATION` is the name of the pod configuration file. For example: 
 	<p class="terminal">$ kubectl create -f pv-guestbook.yml</p>
 
 ### Additional Information
