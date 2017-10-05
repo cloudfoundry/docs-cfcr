@@ -124,6 +124,34 @@ If you [configured Cloud Foundry](cf-routing/) to handle routing for Kubo, perfo
 
 ##(Optional) Step 6: Configure Persistence
 
+Persistent storage in Kubo requires configuring the `cloud-provider` job on the master and worker nodes. On AWS, GCP, and vSphere, Kubo deployments have the `cloud-provider` job enabled by default. For more information, see the `cloud-provider` [spec](https://github.com/cloudfoundry-incubator/kubo-release/blob/master/jobs/cloud-provider/spec) in `kubo-release` and the [Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
+
+Perform the following steps to enable persistent storage for your Kubo cluster:
+
+1. Download the [StorageClass](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#storageclasses) spec for your IaaS to your Kubo environment. Run the command for your IaaS:
+
+	* **AWS**: `wget https://raw.githubusercontent.com/pivotal-cf-experimental/kubo-ci/master/specs/storage-class-aws.yml`
+	* **GCP**: `wget https://raw.githubusercontent.com/pivotal-cf-experimental/kubo-ci/master/specs/storage-class-gcp.yml`
+	* **vSphere**: `wget https://raw.githubusercontent.com/pivotal-cf-experimental/kubo-ci/master/specs/storage-class-vsphere.yml`
+
+1. Apply the StorageClass. Run `kubectl create -f STORAGE-CLASS-SPEC.yml` where `STORAGE-CLASS-SPEC` is the name of your StorageClass spec file. For example:
+	<p class="terminal">$ kubectl create -f storage-class-gcp.yml</p>
+1. Download the [PersistentVolumeClaim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) spec. Run the following command:
+	<p class="terminal">$ wget http<span>s:</span>//raw.githubusercontent.com/pivotal-cf-experimental/kubo-ci/master/specs/persistent-volume-claim.yml</p> 
+1. Apply the PersistentVolumeClaim. Run the following command:
+	<p class="terminal">$ kubectl create -f persistent-volume-claim.yml</p>
+1. Confirm that the PersistentVolumeClaim is running. Run the following command:
+	<p class="terminal">$ kubectl get pvc -o wide</p>
+	The output should resemble the following:
+	<p class="terminal">NAME       STATUS    VOLUME                                     CAPACITY   ACCESSMODES   STORAGECLASS   AGE
+ci-claim   Bound     pvc-3e11131e-a1a0-11a1-3a2a-0a111e11111e   1Gi        RWO           ci-storage     </p>
+1. Create a pod with persistent storage by providing a configuration file that specifies the newly created StorageClass and PersistentVolumeClaim. See the `pv-guestbook.yml` configuration [file](https://github.com/pivotal-cf-experimental/kubo-ci/blob/master/specs/pv-guestbook.yml) as an example. For more information about configuring a pod for persistent storage, see the [Kubernetes documentation](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/).
+
+	Run `kubectl create -f POD-CONFIGURATION.yml` where `POD-CONFIGURATION` is the name of the pod configuration file.For example: 
+	<p class="terminal">$ kubectl create -f pv-guestbook.yml</p>
+
+### Additional Information
+
 Kubo clusters support the following Kubernetes volume types:
 
 * `emptyDir`
@@ -133,10 +161,6 @@ Kubo clusters support the following Kubernetes volume types:
 * `AWSElasticBlockStore`
 
 For more information about volumes, see the [Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/volumes/).
-
-To use storage in the Kubo clusters, you must configure the `cloud-provider` job on the master and worker nodes. See the `cloud-provider` [spec](https://github.com/cloudfoundry-incubator/kubo-release/blob/master/jobs/cloud-provider/spec) in `kubo-release` for more information on the properties that are required for each `cloud-provider` type.
-
-For more information on configuring Kubernetes to access storage for your `cloud-provider` type, see the [Kubo documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 
 !!! warning 
 	Any resources that are provisioned by Kubernetes will not be deleted by BOSH if you delete your Kubo deployment. 
