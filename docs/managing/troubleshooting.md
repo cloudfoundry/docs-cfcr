@@ -171,7 +171,7 @@ The master port for the second Kubernetes cluster may be in use.
 
 #### Solution
 
-Ensure the port specified as `kubernetes-master-port` is not already in use by another Kubernetes cluster. You can override the value in `director.yml` using [var-files](./docs/guides/customized-installation.md#generate-manifest-and-deploy) for different clusters.   
+Ensure the port specified as `kubernetes-master-port` is not already in use by another Kubernetes cluster. You can override the value in `director.yml` using variables files for different clusters.   
 
 ---
 
