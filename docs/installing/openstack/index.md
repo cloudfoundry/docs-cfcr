@@ -8,7 +8,7 @@ You must have the following to install Kubo on OpenStack:
 
 1. An OpenStack environment running one of the following supported releases:
 
-    - [Mitaka](http://www.openstack.org/software/mitaka)
+    - *(Recommended)* [Mitaka](http://www.openstack.org/software/mitaka)
 
     	!!! note
     		The Kubo team actively tests on Mitaka.
