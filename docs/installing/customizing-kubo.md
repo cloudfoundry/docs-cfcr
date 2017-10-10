@@ -13,7 +13,7 @@ Before completing the procedures in this topic, you must have deployed BOSH for 
 
 Perform the following steps to create and apply a modified cloud config:
 
-1. Access your Kubo environment. This is the environment that contains the `KUBO_ENV` directory with your Kubo configuration. For more information, see the [Step 1: Access Your Kubo Environment](deploying-kubo/#step-1-access-your-kubo-environment).
+1. Access your Kubo environment. This is the environment that contains the `KUBO_ENV` directory with your Kubo configuration. For more information, see the [Step 1: Access Your Kubo Environment](deploying-kubo/#step-1-access-your-kubo-environment) section of the *Deploying Kubo* topic.
 1. In your Kubo environment, navigate to the `kubo-deployment` directory. Enter the following command:
 	<p class="terminal">$ cd /share/kubo-deployment</p>
 1. Run the following command:<br>
