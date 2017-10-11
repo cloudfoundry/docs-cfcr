@@ -128,11 +128,11 @@ Persistent storage in Kubo requires configuring the `cloud-provider` job on the 
 
 ### Create a StorageClass
 
-To enable persistent storage for your  cluster, you must declare the type of persistent volume that your cluster can use by creating a [StorageClass](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#storageclasses).
+Kubo supports [dynamic volume provisioning](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#dynamic), to allow storage volumes to be created on-demand. The dynamic provisioning feature eliminates the need to pre-provision persistent storage.
 
-A StorageClass gives operators a way to describe the different classes of storage that a cluster offers.
+To enable this feature for your cluster, you must define one or more [StorageClass](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#storageclasses) objects. Each StorageClass object enables operators to define and expose a different class of storage in the cluster.
 
-Perform the following steps to create a StorageClass:
+Perform the following steps to define a StorageClass:
 
 1. Download the StorageClass spec for your IaaS to your Kubo environment. Run the command for your IaaS:
 
@@ -147,16 +147,27 @@ You can also enable more than one type of persistent volume with additional Stor
 
 ### Create a PersistentVolumeClaim
 
-A [PersistentVolumeClaim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) is a request for storage by a user. A claim specifies the desired [access mode](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) and storage capacity.
+A [PersistentVolumeClaim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) is a request for storage by a user. A claim enables a user to define the desired [access mode](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) and storage capacity, among other configuration details. 
 
-A user will configure different claims for different workloads, depending on the storage requirements of an application.
+Typically a user will configure different claims for different workloads, depending on the storage requirements of an application.
 
-The following procedure applies an example PersistentVolumeClaim that uses the above StorageClass. Kubernetes then creates the requested volume dynamically when the user deploys a pod.
+The following procedure applies an example PersistentVolumeClaim that uses the above StorageClass. After applying the PersistentVolumeClaim, Kubernetes creates the requested volume dynamically when the user deploys a pod.
 
 Perform the following steps:
 
-1. Download the example [PersistentVolumeClaim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) spec. Run the following command:
-	<p class="terminal">$ wget http<span>s:</span>//raw.githubusercontent.com/pivotal-cf-experimental/kubo-ci/master/specs/persistent-volume-claim.yml</p> 
+1. Download the example PersistentVolumeClaim spec. Run the following command:
+	<p class="terminal">$ wget http<span>s:</span>//raw.githubusercontent.com/pivotal-cf-experimental/kubo-ci/master/specs/persistent-volume-claim.yml</p>
+1. Modify the storage size of the volume to meet the requirements of your workload by editing the value for `spec.resources.storage`. See the following example:
+	```
+	spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 2Gi
+      storageClassName: ci-storage
+	```
+
 1. Apply the PersistentVolumeClaim. Run the following command:
 	<p class="terminal">$ kubectl create -f persistent-volume-claim.yml</p>
 1. Confirm that the PersistentVolumeClaim is configured. Run the following command:
@@ -164,10 +175,13 @@ Perform the following steps:
 	The output should resemble the following:
 	<p class="terminal">NAME       STATUS    VOLUME                                     CAPACITY   ACCESSMODES   STORAGECLASS   AGE
 ci-claim   Bound     pvc-3e11131e-a1a0-11a1-3a2a-0a111e11111e   1Gi        RWO           ci-storage     </p>
-1. Create a pod with persistent storage by providing a configuration file that specifies the newly created StorageClass and PersistentVolumeClaim. See the `pv-guestbook.yml` configuration [file](https://github.com/pivotal-cf-experimental/kubo-ci/blob/master/specs/pv-guestbook.yml) as an example. For more information about configuring a pod for persistent storage, see the [Kubernetes documentation](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/).
+1. Create a pod with persistent storage by providing a configuration file that specifies the newly created PersistentVolumeClaim. See the `pv-guestbook.yml` configuration [file](https://github.com/pivotal-cf-experimental/kubo-ci/blob/master/specs/pv-guestbook.yml) as an example. For more information about configuring a pod for persistent storage, see the [Kubernetes documentation](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/).
 
 	Run `kubectl create -f POD-CONFIGURATION.yml` where `POD-CONFIGURATION` is the name of the pod configuration file. For example: 
 	<p class="terminal">$ kubectl create -f pv-guestbook.yml</p>
+
+!!! tip
+	You can also create persistent volumes by pre-provisioning storage at the IaaS level and later declaring a persistent volume manually.
 
 ### Additional Information
 
