@@ -49,6 +49,7 @@ pages:
     - 'Configuring Cloud Foundry Routing': 'installing/cf-routing.md'
   - Managing and Troubleshooting:
     - 'Home': 'managing/index.md'
+    - 'Using Docker Registries': 'managing/using-docker.md'
     - 'Troubleshooting Kubo': 'managing/troubleshooting.md'
     - 'Deleting Kubo': 'managing/deleting.md'
 
