@@ -57,7 +57,7 @@ Perform the following steps to deploy Kubo:
 	* `KUBO_ENV`: This is the directory that contains the Kubo configuration.
 	* `CLUSTER_NAME`: Choose a unique name for your Kubernetes cluster.
 	* `RELEASE_SOURCE`. Optionally select one of the following values to specify where to find the Kubo BOSH release. If you do not select an option, the script defaults to `local`: 
-		* `dev`: Manually builds a development release from the local version of the `kubo-deployment` repo
+		* `dev`: Manually builds a development release from the local version of the `kubo-release` repo
 		* `public`: Uses the published precompiled release on the internet, downloaded from the URL supplied by the `kubo_release_url` variable in `KUBO_ENV/director.yml`
 		* `local`: Uses the local tarball release
 		* `skip`: Uses the release already uploaded to the BOSH Director
