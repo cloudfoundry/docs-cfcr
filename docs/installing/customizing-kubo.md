@@ -17,7 +17,7 @@ Perform the following steps to create and apply a modified cloud config:
 1. In your Kubo environment, navigate to the `kubo-deployment` directory. Enter the following command:
 	<p class="terminal">$ cd /share/kubo-deployment</p>
 1. Run the following command:<br>
-	`./bin/generate_cloud_config KUBO_ENV > KUBO_ENV/cloud-config.yml`
+	<p class="terminal">./bin/generate_cloud_config KUBO_ENV > KUBO_ENV/cloud-config.yml</p>
 
 	Where `KUBO_ENV` is the directory that contains the Kubo configuration.
 
