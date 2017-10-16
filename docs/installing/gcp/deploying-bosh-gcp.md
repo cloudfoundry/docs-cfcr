@@ -59,6 +59,9 @@ Perform the following steps to set up a GCP account for Terraform:
 1. Set your service account key as an environment variable. Enter the following command:
 	<p class="terminal">$ export GOOGLE_CREDENTIALS=$(cat ~/terraform.key.json)</p>
 
+	If Terraform refuses to accept the JSON key as the content of `GOOGLE_CREDENTIALS`, provide the path to the file instead, using `GOOGLE_APPLICATION_CREDENTIALS`. Enter the following command:
+		<p class="terminal">$ export GOOGLE_APPLICATION_CREDENTIALS=~/terraform.key.json</p>
+
 ##Step 3: Deploy Bastion VM
 
 Perform the following steps to deploy a bastion VM with a set of firewall rules that secures access to the Kubo deployment:
