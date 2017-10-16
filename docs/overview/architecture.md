@@ -6,7 +6,7 @@ This topic describes the product architecture of Kubo.
 
 In Kubo, the [BOSH Director](https://bosh.io/docs/bosh-components.html#director) manages the VMs for the Kubo instance. The Director handles VM creation, health checking, and resurrection of missing or unhealthy VMs. 
 
-The Director uses [CredHub](https://github.com/cloudfoundry-incubator/credhub) and [PowerDNS](https://doc.powerdns.com/) to handle certificate generation within the Kubo clusters. Credhub is also used to store the auto-generated passwords.
+The Director uses [CredHub](https://github.com/cloudfoundry-incubator/credhub) and BOSH's [local DNS](https://bosh.io/docs/dns.html#enable) to handle certificate generation within the Kubo clusters. Credhub is also used to store the auto-generated passwords.
 
 ##Kubo Components
 
