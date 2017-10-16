@@ -175,6 +175,38 @@ Ensure the port specified as `kubernetes-master-port` is not already in use by a
 
 ---
 
+### Deprecated Disk Property
+
+#### Symptom
+
+When using Terraform to [provision the bastion VM and other resources](https://docs-kubo.cfapps.io/installing/gcp/deploying-bosh-gcp/) required to deploy Kubo on GCP, you encounter an error similar to the following:
+
+<p class="terminal">2 error(s) occurred:
+
+* google_compute_instance.bosh-bastion: "disk": [REMOVED] Use boot_disk, scratch_disk, and attached_disk instead
+* google_compute_instance.nat-instance-private-with-nat-primary: "disk": [REMOVED] Use boot_disk, scratch_disk, and attached_disk instead</p>
+
+#### Explanation
+
+This error is due to a deprecated `disk` property in Terraform.
+
+#### Solution
+
+From the Google Cloud Shell, download the latest version of `kubo-deployment`. Enter the following command:
+
+<p class="terminal">$ wget https://storage.googleapis.com/kubo-public/kubo-deployment-latest.tgz
+</p> 
+
+You can also update your existing `kubo-infrastructre.tf` file. Replace the `disk` block with the following:
+
+```
+boot_disk {
+  initialize_params = {
+    image = "${var.latest_ubuntu}"
+  }
+}
+```
+
 ### Other Connectivity Issues
 
 #### Symptom
