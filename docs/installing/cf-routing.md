@@ -69,7 +69,7 @@ Perform the following steps to configure Kubo for Cloud Foundry routing:
 	!!! tip
 		If you are using a domain, ensure that the DNS resolves correctly. For more information, see the [Pre-Deployment Steps](https://docs.cloudfoundry.org/adminguide/enabling-tcp-routing.html#-pre-deployment-steps) section of the <em>Enabling TCP Routing</em> topic in the Cloud Foundry documentation.
 
-1. Leave the `kubernetes_master_port` commmented out. This property is ignored when deploying Kubo with Cloud Foundry routing.
+1. Set the `kubernetes_master_port` to point to an available port on the Cloud Foundry TCP router.
 1. Set the `routing-cf-api-url` to the Cloud Foundry API URL, such as `https://api.sys.cf-example.com`.
 1. Set the `routing-cf-client-id` to `routing_api_client`.
 `. 
