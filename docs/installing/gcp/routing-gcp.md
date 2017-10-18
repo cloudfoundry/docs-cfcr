@@ -31,14 +31,23 @@ $ export zone=us-west1-a</p>
 1. Export your state information as environment variables with the following commands:
 	<p class="terminal">$ export state_dir=~/kubo-env/${kubo_env_name}
 $ export kubo_terraform_state=${state_dir}/terraform.tfstate</p>
+1. Initialize the Terraform cloud provider. Enter the following command:
+        <p class="terminal">docker run -i -t \
+  -v $(pwd):/$(basename $(pwd)) \
+  -w /$(basename $(pwd)) \
+  hashicorp/terraform:light init</p>
 1. Use Terraform to create the GCP resources for Kubo:
-	<p class="terminal">$ terraform apply \
-    -var network=\${network} \
-    -var projectid=\${project_id} \
-    -var region=\${region} \
-    -var prefix=\${prefix} \
-    -var ip_cidr_range="\${subnet_ip_prefix}.0/24" \
-    -state=\${kubo_terraform_state}</p>
+	<p class="terminal">$ docker run -i -t \
+  -e CHECKPOINT_DISABLE=1 \
+  -e "GOOGLE_CREDENTIALS=${GOOGLE_CREDENTIALS}" \
+  -v $(pwd):/$(basename $(pwd)) \
+  -w /$(basename $(pwd)) \
+  hashicorp/terraform:light apply \
+    -var projectid=${project_id} \
+    -var network=${network} \
+    -var region=${region} \
+    -var prefix=${prefix} \
+    -var subnet_ip_prefix=${subnet_ip_prefix}</p>
 1. Set the master target pool from the outputted Terraform state file as an environment variable. Enter the following command:
 	<p class="terminal">$ export master_target_pool=\$(terraform output -state=\${kubo_terraform_state} kubo_master_target_pool)</p>
 1. Set the Kubernetes master host from the outputted Terraform state file as an environment variable. Enter the following command:
