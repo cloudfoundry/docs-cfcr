@@ -75,7 +75,7 @@ Perform the following steps to configure Kubo for Cloud Foundry routing:
 `. 
 1. Set the `routing-cf-uaa-url` to the Cloud Foundry UAA URL, such as `https://uaa.sys.cf-example.com`.
 1. Set the `routing-cf-app-domain-name` to the Cloud Foundry apps domain, such as `apps.cf-example.com.`
-1. Set the `routing-cf-nats-internal-ips` to the array of internal IP addresses used by Cloud Foundry NATS, such as `[192.168.16.13]`. To obtain the IP addresses for your NATS instances, log in to your BOSH Director and run `bosh -e YOUR-ENV instances`.
+1. Set the `routing-cf-nats-internal-ips` to the array of internal IP addresses used by Cloud Foundry NATS, such as `[192.168.16.13]`. To obtain the IP addresses for your NATS instances, log in to the BOSH Director you used to deploy Cloud Foundry and run `bosh -e YOUR-ENV instances`.
 
 After configuring the `director-secrets.yml` and `director.yml` files, deploy BOSH for Kubo with the `deploy_bosh` script by following the [procedures for your IaaS](/installing/#step-1-prepare-your-iaas). 
  
