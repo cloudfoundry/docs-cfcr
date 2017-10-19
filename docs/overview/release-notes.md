@@ -32,11 +32,9 @@ The following table lists the component versions for Kubo v1.0.
   </thead>
   <tbody>
   <tr>
-    <td>Stemcell</td><td>3445.11</td>
+    <td>Component one</td><td>Version number</td>
   </tr><tr>
-    <td>binary-offline-buildpack</td><td>1.0.14</td>
-  </tr><tr>
-    <td>capi</td><td>1.40.0\*</td>
+    <td>Component two</td><td>Version number</td>
   </tr>
   </tbody>
   </table>
