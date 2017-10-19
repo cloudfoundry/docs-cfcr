@@ -12,8 +12,6 @@ Consult the following list of prerequisites before performing the procedures in 
 
 * You must have a running Cloud Foundry deployment. For more information, see the [Deploying Cloud Foundry](https://docs.cloudfoundry.org/deploying/index.html) section of the Cloud Foundry documentation.
 
-* You must have deployed Kubo to the same network as Cloud Foundry.
-
 * You must have completed both the pre-deployment and post-deployment procedures in the [Enabling TCP Routing](http://docs.cloudfoundry.org/adminguide/enabling-tcp-routing.html) topic of the Cloud Foundry documentation to enable TCP routing in your Cloud Foundry deployment. Ensure that you have created a shared domain for the TCP domain and configured a quota for TCP routes.
 
 * You must have installed the [UAA Command Line Client](https://github.com/cloudfoundry/cf-uaac) (UAAC). 
