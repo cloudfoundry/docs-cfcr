@@ -85,10 +85,6 @@ After deploying the cluster, perform the following steps:
 	monitoring-influxdb-564852376-67fdd      1/1       Running   0          2d
 	</p>
 
-After configuring `kubectl`, you can use the Kubernetes [Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). To access the Dashboard, run `kubectl proxy` and navigate to `http://localhost:8001/ui` in a browser. 
-
-For more information about using `kubectl`, see the [Kubernetes documentation](https://kubernetes.io/docs/user-guide/kubectl-overview/).
-
 ##Step 5: Enable Application Access
 
 The procedure for exposing applications run by the Kubernetes cluster to the internet varies depending on your routing configuration.

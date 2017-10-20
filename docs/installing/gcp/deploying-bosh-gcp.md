@@ -8,7 +8,6 @@ In the procedures below, you use [Terraform](https://www.terraform.io/docs/) to 
 
 Perform the following steps to set up your Google Cloud Shell environment: 
 
-1. Install the latest version of [Terraform](https://www.terraform.io/intro/getting-started/install.html). You must have Terraform v0.10.2 or greater to perform the procedures in this topic.
 1. Log in to the GCP Console.
 1. From the left-hand navigation, click **VPC network**.
 1. Click **Create VPC Network**.
@@ -16,7 +15,9 @@ Perform the following steps to set up your Google Cloud Shell environment:
 	!!! tip
 		If you plan to use [Cloud Foundry to handle routing](../cf-routing.html) for Kubo, do not create a new network. Instead, deploy Kubo in the same network as Cloud Foundry.
 
-1. Enter a name for your network, such as `kubo-network`, and click **Create**. 
+1. Enter a name for your network, such as `kubo-network`.
+1. The form will force you to create a subnet for the VPC network. After the VPC has been created, you can delete this subnet.
+1. Click **Create**.
 1. Open the Google Cloud Shell by clicking the `>_` icon in the upper right of the GCP Console.
 
 	!!!note
