@@ -10,33 +10,33 @@ See [What is Kubo?](./overview/what-is-kubo/) to learn more about Kubo.
 
 The following topics describe how to install and configure Kubo on your cloud platform.
 
-* [Home](./installing/)
+[Home](./installing/)
 
-* [Preparing GCP for Kubo](./installing/gcp/)  
-* [Preparing BOSH for Kubo on GCP](./installing/gcp/deploying-bosh-gcp/)  
-* [Configuring IaaS Routing for GCP](./installing/gcp/routing-gcp/)  
+[Preparing GCP for Kubo](./installing/gcp/)  
+[Preparing BOSH for Kubo on GCP](./installing/gcp/deploying-bosh-gcp/)  
+[Configuring IaaS Routing for GCP](./installing/gcp/routing-gcp/)  
 
-* [Preparing vSphere for Kubo](./installing/vsphere/)  
-* [Deploying BOSH for Kubo on vSphere](./installing/vsphere/deploying-bosh-vsphere/)
+[Preparing vSphere for Kubo](./installing/vsphere/)  
+[Deploying BOSH for Kubo on vSphere](./installing/vsphere/deploying-bosh-vsphere/)
 
-* [Preparing AWS for Kubo](./installing/aws/)  
-* [Deploying BOSH for Kubo on AWS](./installing/aws/deploying-bosh-aws/)  
-* [Configuring IaaS Routing for AWS](./installing/aws/routing-aws/)  
+[Preparing AWS for Kubo](./installing/aws/)  
+[Deploying BOSH for Kubo on AWS](./installing/aws/deploying-bosh-aws/)  
+[Configuring IaaS Routing for AWS](./installing/aws/routing-aws/)  
 
-* [Preparing OpenStack for Kubo](./installing/openstack/)  
-* [Deploying BOSH for Kubo on Openstack](./installing/openstack/)  
+[Preparing OpenStack for Kubo](./installing/openstack/)  
+[Deploying BOSH for Kubo on Openstack](./installing/openstack/)  
 
-* [Deploying Kubo](./installing/deploying-kubo/)
-* [Customizing Kubo](./installing/customizing-kubo/)
-* [Configuring Cloud Foundry Routing](./installing/cf-routing/)  
-* [Configuring HAProxy](./installing/haproxy/) 
+[Deploying Kubo](./installing/deploying-kubo/)  
+[Customizing Kubo](./installing/customizing-kubo/)  
+[Configuring Cloud Foundry Routing](./installing/cf-routing/)  
+[Configuring HAProxy](./installing/haproxy/) 
 
 ##Managing and Troubleshooting
 
 The following topics describe how to manage and troubleshoot Kubo.
 
-* [Home](./managing/)  
-* [Using Docker Registries](./managing/using-docker/)  
-* [Deploying Tested Workloads](./managing/tested-workloads/)  
-* [Troubleshooting Kubo](./managing/troubleshooting/)  
-* [Deleting Kubo](./managing/deleting/)  
+[Home](./managing/)  
+[Using Docker Registries](./managing/using-docker/)  
+[Deploying Tested Workloads](./managing/tested-workloads/)  
+[Troubleshooting Kubo](./managing/troubleshooting/)  
+[Deleting Kubo](./managing/deleting/)  
