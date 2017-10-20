@@ -50,6 +50,7 @@ pages:
   - Managing and Troubleshooting:
     - 'Home': 'managing/index.md'
     - 'Using Docker Registries': 'managing/using-docker.md'
+    - 'Deploying Tested Workloads': 'managing/tested-workloads.md'
     - 'Troubleshooting Kubo': 'managing/troubleshooting.md'
     - 'Deleting Kubo': 'managing/deleting.md'
 
