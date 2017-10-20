@@ -19,7 +19,7 @@ You must have the following to install Kubo on GCP:
 
 Pave your infrastructure and deploy the BOSH Director for Kubo by following the procedures in the [Deploying BOSH for Kubo on GCP](deploying-bosh-gcp/) topic.
 
-##Step 2: Configure IaaS Routing for GCP
+##Step 2: Configure Routing
 
 Configure your load balancers for Kubo by following the procedures in the [Configuring IaaS Routing for GCP](routing-gcp/) topic.
 

@@ -22,7 +22,7 @@ You must have the following to install Kubo on AWS:
 
 Pave your infrastructure and deploy the BOSH Director for Kubo by following the procedures in the [Deploying BOSH for Kubo on AWS](deploying-bosh-aws/) topic.
 
-##Step 2: Configure IaaS Routing for AWS
+##Step 2: Configure Routing
 
 Configure your load balancers for Kubo by following the procedures in the [Configuring IaaS Routing for AWS](routing-aws/) topic.
 

@@ -174,25 +174,16 @@ $ export kubo_env_path="\${kubo_env}/\${kubo_env_name}"</p>
 1. Generate a Kubo configuration template:
    <p class="terminal">$ ./bin/generate_env_config "${kubo_env}" ${kubo_env_name} vsphere</p>
 
-##Step 4: Configure HAProxy
+##Step 4: Configure Routing
 
-vSphere does not have first-party load-balancing support. But you can configure HAProxy to handle external access to the Kubernetes master nodes for administration traffic, and the Kubernetes worker nodes for application traffic.
+If you want to configure Cloud Foundry to handle routing for Kubo, perform the procedures in [Configuring Cloud Foundry Routing](../cf-routing/).
 
-If you want to use Cloud Foundry for routing instead of HAProxy, see the [Configuring Cloud Foundry Routing](../cf-routing/) topic.
+If you want to configure HAProxy to handle routing for Kubo, perform the procedures in [Configuring HAProxy](../haproxy/).
 
-Perform the following steps to configure HAProxy:
+!!! note 
+	vSphere does not have first-party load-balancing support. You can configure HAProxy to handle external access to the Kubernetes master nodes for administration traffic, and the Kubernetes worker nodes for application traffic.
 
-1. Navigate to `KUBO_ENV` and open the newly created `director.yml` file.
-1. Uncomment the `Proxy routing mode settings` section and comment out the `IaaS routing mode settings` section.
-1. Set the `kubernetes_master_host` to the IP address of the HAProxy master node.
-1. Set the `kubernetes_master_port` to the port for the Kubernetes API server on the HAProxy master node.
-1. Set the `worker_haproxy_ip_addresses` to the IP address(es) of the HAProxy worker node(s).
-1. Set the `worker_haproxy_tcp_frontend_port` to the front-end port for the HAProxy TCP pass-through.
-1. Set the `worker_haproxy_tcp_backend_port` to the back-end port for the HAProxy TCP pass-through.
-
-The current implementation of HAProxy routing is a single-port TCP pass-through. In order to route traffic to multiple Kubernetes services, use an Ingress controller. For more information, see the [Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/) and the [Ingress examples readme](https://github.com/kubernetes/ingress/tree/master/examples#ingress-examples)  in the Kubernetes GitHub repo.
-
-##Step 4: Deploy BOSH
+##Step 5: Deploy BOSH
 
 Perform the following steps to deploy a BOSH Director:
 

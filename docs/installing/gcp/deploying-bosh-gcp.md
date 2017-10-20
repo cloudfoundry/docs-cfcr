@@ -2,8 +2,6 @@
 
 This topic describes how to deploy BOSH for Kubo on Google Cloud Platform (GCP). Installing Kubo requires deploying a BOSH Director. 
 
-After completing the procedures in this topic, continue to the [Configuring IaaS Routing for GCP](routing-gcp/) topic.
-
 In the procedures below, you use [Terraform](https://www.terraform.io/docs/) to pave your infrastructure and create a bastion VM. Then you deploy a BOSH Director from the bastion VM. 
 
 ##Step 1: Set Up Your Shell Environment
@@ -103,9 +101,9 @@ Perform the following steps to deploy a bastion VM with a set of firewall rules 
 	<p class="terminal">$ gcloud compute scp ~/terraform.key.json "${prefix}bosh-bastion":./ --zone ${zone}</p>
 	If prompted to create SSH keys, enter `Y` and use an empty passphrase.
 
-##Step 4: Deploy BOSH Director
+##Step 4: Generate BOSH Configuration
 
-Perform the following steps to deploy a BOSH Director from the bastion VM:
+Perform the following steps to generate the configuration for your BOSH Director:
 
 1. From the Google Cloud Shell, SSH onto the bastion VM. Enter the following command:
 	<p class="terminal">$ gcloud compute ssh "${prefix}bosh-bastion" --zone ${zone}</p>
@@ -129,6 +127,13 @@ $ export kubo_env_path="\${kubo_envs}/\${kubo_env_name}"</p>
 	!!! tip
 		You can directly edit the configuration file located at `${kubo_env_path}/director.yml`.
 
+	!!! warning
+		If you want to configure Cloud Foundry to handle routing for Kubo, **do not continue to the next section**. Perform the procedures in [Configuring Cloud Foundry Routing](../cf-routing/) before deploying the BOSH Director. 
+
+##Step 5: Deploy BOSH Director
+
+Perform the following steps to deploy a BOSH Director from the bastion VM:
+
 1. Deploy the BOSH Director for Kubo. Enter the following command:
 	<p class="terminal">$ ./bin/deploy_bosh "${kubo_env_path}" ~/terraform.key.json</p>
 
@@ -146,5 +151,6 @@ $ export kubo_env_path="\${kubo_envs}/\${kubo_env_name}"</p>
 		!!! note
 			Subsequent runs of `deploy_bosh` will use `creds.yml` and `state.json` to apply changes to the BOSH environment.
 
-After deploying the BOSH Director, continue to the [Configure IaaS Routing for GCP](routing-gcp/) topic.
+If you plan to use IaaS routing for Kubo, continue to [Configure IaaS Routing for GCP](routing-gcp/).
 
+If you have configured Cloud Foundry routing, continue to [Deploying Kubo](../deploying-kubo/).

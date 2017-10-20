@@ -2,8 +2,6 @@
 
 This topic describes how to deploy BOSH for Kubo on Amazon Web Services (AWS). Installing Kubo requires deploying a BOSH Director. 
 
-After completing the procedures in this topic, continue to the [Configuring IaaS Routing for AWS](routing-aws/) topic.
-
 In the procedures below, you use [Terraform](https://www.terraform.io/docs/) to pave your infrastructure and create a bastion VM. Then you deploy a BOSH Director from the bastion VM. 
 
 ##Step 1: Set Up Your Shell Environment
@@ -193,6 +191,9 @@ Perform the following steps to create a new IAM user to deploy the BOSH Director
 
 1. Click **Apply Policy**.
 
+	!!! warning
+		If you want to configure Cloud Foundry to handle routing for Kubo, **do not continue to the next section**. Perform the procedures in [Configuring Cloud Foundry Routing](../cf-routing/) before deploying the BOSH Director. 
+
 ##Step 5: Deploy BOSH Director
 
 Perform the following steps to deploy a BOSH Director from the bastion VM:
@@ -217,4 +218,6 @@ Perform the following steps to deploy a BOSH Director from the bastion VM:
 		!!! note
 			Subsequent runs of `deploy_bosh` will use `creds.yml` and `state.json` to apply changes to the BOSH environment.
 
-After deploying the BOSH Director, continue to the [Configure IaaS Routing for AWS](routing-aws/) topic.
+If you plan to use IaaS routing for Kubo, continue to [Configure IaaS Routing for AWS](routing-aws/).
+
+If you have configured Cloud Foundry routing, continue to [Deploying Kubo](../deploying-kubo/).

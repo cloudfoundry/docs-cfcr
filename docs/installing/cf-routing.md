@@ -4,8 +4,6 @@ This topic describes how to configure Cloud Foundry to handle routing for Kubo.
 
 You configure Cloud Foundry routing by editing the BOSH configuration files before deploying BOSH for Kubo. The procedure for generating these files and using them to deploy BOSH for Kubo will vary depending on your IaaS.
 
-After finishing this topic, continue to the [Deploying Kubo](deploying-kubo/) topic.
-
 ##Prerequisites
 
 Consult the following list of prerequisites before performing the procedures in this topic:
@@ -16,7 +14,12 @@ Consult the following list of prerequisites before performing the procedures in 
 
 * You must have installed the [UAA Command Line Client](https://github.com/cloudfoundry/cf-uaac) (UAAC). 
 
-* You must have [prepared your IaaS for Kubo](/installing/#step-1-prepare-your-iaas) to the point of generating a `director.yml` and `director-secrets.yml` file in your `KUBO_ENV`, but not yet deploying a BOSH Director.
+* You must have completed the following procedures specific to your IaaS:
+
+	* If you are deploying Kubo on GCP, you must have completed [Step 1: Set Up Your Shell Environment](./gcp/deploying-bosh-gcp/#step-1-set-up-your-shell-environment) through [Step 4: Generate BOSH Configuration](./gcp/deploying-bosh-gcp/#step-4-generate-bosh-configuration) of the *Deploying BOSH for Kubo on GCP* topic.
+	* If you are deploying Kubo on vSphere, you must have completed [Step 1: Create User Accounts](./vsphere/deploying-bosh-vsphere/#step-1-create-user-accounts) through [Step 3: Generate a Configuration Template](./vsphere/deploying-bosh-vsphere/#step-3-generate-a-configuration-template) of the *Deploying BOSH for Kubo on vSphere* topic. 
+	* If you are deploying Kubo on AWS, you must have completed [Step 1: Set Up Your Shell Environment](./aws/deploying-bosh-aws/#step-1-set-up-your-shell-environment) through [Step 4: Create IAM User](./aws/deploying-bosh-aws/#step-4-create-iam-user) of the *Deploying BOSH for Kubo on AWS* topic.
+	* If you are deploying Kubo on OpenStack, you must have completed [Step 1: Generate a Configuration Template](./openstack/deploying-bosh-openstack/#step-1-generate-a-configuration-template) of the *Deploying BOSH for Kubo on OpenStack* topic.
 
 ##Step 1: Enable Internal Communication
 
@@ -74,8 +77,8 @@ Perform the following steps to configure Kubo for Cloud Foundry routing:
 1. Set the `routing-cf-uaa-url` to the Cloud Foundry UAA URL, such as `https://uaa.sys.cf-example.com`.
 1. Set the `routing-cf-app-domain-name` to the Cloud Foundry apps domain, such as `apps.cf-example.com.`
 1. Set the `routing-cf-nats-internal-ips` to the array of internal IP addresses used by Cloud Foundry NATS, such as `[192.168.16.13]`. To obtain the IP addresses for your NATS instances, log in to the BOSH Director you used to deploy Cloud Foundry and run `bosh -e YOUR-ENV instances`.
-
-After configuring the `director-secrets.yml` and `director.yml` files, deploy BOSH for Kubo with the `deploy_bosh` script by following the [procedures for your IaaS](/installing/#step-1-prepare-your-iaas). 
- 
-
-
+1. Deploy BOSH for Kubo by performing the procedures specific to your IaaS:
+	* [Deploy on GCP](./gcp/deploying-bosh-gcp/#step-5-deploy-bosh-director)
+	* [Deploy on vSphere](./vsphere/deploying-bosh-vsphere/#step-5-deploy-bosh)
+	* [Deploy on AWS](./aws/deploying-bosh-aws/#step-5-deploy-bosh-director)
+	* [Deploy on OpenStack](./openstack/deploying-bosh-openstack/#step-3-deploy-bosh)

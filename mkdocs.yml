@@ -47,6 +47,7 @@ pages:
     - 'Deploying Kubo': 'installing/deploying-kubo.md'
     - 'Customizing Kubo': 'installing/customizing-kubo.md'
     - 'Configuring Cloud Foundry Routing': 'installing/cf-routing.md'
+    - 'Configuring HAProxy': 'installing/haproxy.md'
   - Managing and Troubleshooting:
     - 'Home': 'managing/index.md'
     - 'Using Docker Registries': 'managing/using-docker.md'
