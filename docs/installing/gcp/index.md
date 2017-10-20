@@ -12,8 +12,8 @@ You must have the following to install Kubo on GCP:
 
 1. You must enable the Google Identity and Access Management (IAM) and Google Cloud Resource Manager APIs. To enable these APIs, perform the following steps:
 	1. Navigate to the GCP Console.
-	1. From the left-hand navigation, select **APIs & services > Dashboard**.
-	1. Locate the **Google Cloud Resource Manager API** and the **Google Identity and Access Management API** entries. If they are disabled, click the **Enable** link to enable them.
+	1. From the left-hand navigation, select **APIs & services > Library**.
+	1. Search for the **Google Cloud Resource Manager API** and the **Google Identity and Access Management API** entries. If they are disabled, click the **Enable** button to enable them.
 
 ##Step 1: Deploy BOSH for Kubo on GCP
 
