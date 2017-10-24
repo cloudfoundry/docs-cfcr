@@ -1,6 +1,6 @@
-#Release Notes
+# Release Notes
 
-## v0.8
+## 0.8
 
 **Release Date**: November xx, 2017
 
@@ -63,3 +63,18 @@ See [Deploying Bosh Director](https://docs-kubo.cfapps.io/installing/gcp/deployi
 ### Upgrade your Kubo cluster
 See [Deploying Kubo](https://docs-kubo.cfapps.io/installing/deploying-kubo/#step-3-deploy-kubo)
 
+
+## 0.7
+
+**Release Date**: September 7, 2017
+
+## Features
+* kubo-release tarball bundled with the kubo-deployment
+* The deploy-k8s script deploys local release by default
+* Cluster self healing capabilities: recover worker vms
+* Support for persistent volumes in GCP, AWS and vSphere
+* Improved documentation to install on GCP and AWS
+
+## Bug Fixes
+* Removed AWS-related tags for other platforms
+* Password issues in vSphere [GitHub issue #102](https://github.com/cloudfoundry-incubator/kubo-release/issues/102)
