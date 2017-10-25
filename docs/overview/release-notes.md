@@ -19,30 +19,46 @@
 * Config file missing for vSphere [GitHub issue #110](https://github.com/cloudfoundry-incubator/kubo-release/issues/110)
 
 ### Component Versions
-The following table lists the component versions for Kubo v1.0.
+The following table lists the component versions for Kubo v0.8.
 
   <table>
   <thead>
   <tr>
     <th>Component</th>
     <th>Version</th>
+     <th>Details</th>
   </tr>
   </thead>
   <tbody>
   <tr>
-    <td>Kubernetes</td><td>Version number</td>
+    <td>Kubernetes</td>
+    <td>Version number</td>
+    <td>Details</td>
   </tr>
   <tr>
-    <td>Flannel</td><td>Version number</td>
+    <td>Flannel</td>
+    <td>Version number</td>
+    <td>Details</td>
   </tr>
   <tr>
-    <td>Routesync</td><td>Version number</td>
+    <td>Routesync</td>
+    <td>Version number</td>
+    <td>Details</td>
   </tr>
   <tr>
-    <td>Flannel</td><td>Version number</td>
+    <td>Flannel</td>
+    <td>Version number</td>
+        <td>Details</td>
   </tr>
    <tr>
-    <td>ETCD</td><td>Version number</td>
+    <td>ETCD</td>
+     <td>Version number</td>
+     <td>Details</td>
+  </tr>
+     <tr>
+    <td>Stemcell</td>
+    <td>3445.11</td>
+    <td>Details</td>
   </tr>
   </tbody>
   </table>
