@@ -194,6 +194,12 @@ Perform the following steps to deploy a BOSH Director:
 	!!! warning
 		The `director-secrets.yml` file contains sensitive information and should not be under version control.
 
+1. Ensure your vSphere hostname can be resolved using `8.8.8.8` as the nameserver. For example:
+
+	<p class="terminal">$ dig @8.8.8.8 ab2-host-a101-11.foo-12.bar.cf-example.com</p>
+
+	If the hostname cannot be resolved, open `~/kubo-deployment/bosh-deployment/bosh.yml` and locate the `dns` property. Replace `8.8.8.8` with the nameserver of your vSphere environment.
+
 1. Deploy the BOSH Director for Kubo. Enter the following command:
 
 	<p class="terminal">$ ./bin/deploy_bosh "${kubo_env_path}"</p>
