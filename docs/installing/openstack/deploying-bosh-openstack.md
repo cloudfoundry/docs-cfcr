@@ -1,12 +1,15 @@
-#Deploying BOSH for Kubo on OpenStack
+#Deploying BOSH for CFCR on OpenStack
 
-This topic describes how to deploy BOSH for Kubo on OpenStack. Installing Kubo requires deploying a BOSH Director. 
+This topic describes how to deploy BOSH for Cloud Foundry Container Runtime (CFCR) on OpenStack. Installing CFCR requires deploying a BOSH Director. 
 
-After completing the procedures in this topic, continue to the [Deploying Kubo](../deploying-kubo/) topic. 
+After completing the procedures in this topic, continue to the [Deploying CFCR](../deploying-cfcr/) topic. 
+
+!!! note
+	CFCR was formerly known as Kubo, and many CFCR assets described in this topic still use the Kubo name.
 
 ##Step 1: Generate a Configuration Template
 
-Perform the following steps to generate a Kubo configuration template:
+Perform the following steps to generate a CFCR configuration template:
 
 1. Ensure you are using a machine that has access to the VMs on the OpenStack network. Depending on your network topology, you may need to execute the commands below on a bastion host.
 1. Change into the home directory. Enter the following command:
@@ -23,18 +26,18 @@ $ export kubo_env_name=kubo
 $ export kubo_env_path="\${kubo_env}/\${kubo_env_name}"</p>
 
     !!! note
-		`kubo_env_path` points to the directory containing the Kubo configuration. Later topics will refer to this path as `KUBO_ENV`.
+		`kubo_env_path` points to the directory containing the CFCR configuration. Later topics will refer to this path as `KUBO_ENV`.
 
 1. Make a new directory path with the following command:
 	<p class="terminal">$ mkdir -p "${kubo_env}"</p>
-1. Generate a Kubo configuration template:
+1. Generate a CFCR configuration template:
    <p class="terminal">$ ./bin/generate_env_config "${kubo_env}" ${kubo_env_name} openstack</p>
 
 ##Step 2: Configure Routing
 
-If you want to configure Cloud Foundry to handle routing for Kubo, perform the procedures in [Configuring Cloud Foundry Routing](../cf-routing/).
+If you want to configure Cloud Foundry to handle routing for CFCR, perform the procedures in [Configuring Cloud Foundry Routing](../cf-routing/).
 
-If you want to configure HAProxy to handle routing for Kubo, perform the procedures in [Configuring HAProxy](../haproxy/).
+If you want to configure HAProxy to handle routing for CFCR, perform the procedures in [Configuring HAProxy](../haproxy/).
 
 !!! note 
 	OpenStack does not have first-party load-balancing support. You can configure HAProxy to handle external access to the Kubernetes master nodes for administration traffic, and the Kubernetes worker nodes for application traffic.
@@ -50,11 +53,11 @@ Perform the following steps to deploy a BOSH Director:
 	!!! warning
 		The `director-secrets.yml` file contains sensitive information and should not be under version control.
 
-1. Deploy the BOSH Director for Kubo, supplying the path to the private key file as an argument. This is the private key whose name you set as `default_key_name` in `director.yml`. For example:
+1. Deploy the BOSH Director for CFCR, supplying the path to the private key file as an argument. This is the private key whose name you set as `default_key_name` in `director.yml`. For example:
 
 	<p class="terminal">$ ./bin/deploy_bosh "${kubo_env_path}" private_key.pem</p>
 
-	The `deploy_bosh` script deploys a BOSH Director with all of the necessary components to install Kubo. 
+	The `deploy_bosh` script deploys a BOSH Director with all of the necessary components to install CFCR. 
 
 	After the script completes, `KUBO_ENV` contains the following:
 
@@ -68,4 +71,4 @@ Perform the following steps to deploy a BOSH Director:
 		!!! note
 			Subsequent runs of `deploy_bosh` will use `creds.yml` and `state.json` to apply changes to the BOSH environment.
 
-After deploying the BOSH Director, continue to the [Deploying Kubo](../deploying-kubo/) topic.
+After deploying the BOSH Director, continue to the [Deploying CFCR](../deploying-cfcr/) topic.

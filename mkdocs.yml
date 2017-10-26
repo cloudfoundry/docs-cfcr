@@ -2,65 +2,50 @@
 repo_name: 'cloudfoundry/docs-kubo'
 repo_url: 'https://github.com/cloudfoundry/docs-kubo'
 edit_uri: edit/master/docs/
-site_name: Kubo 
+site_name: CFCR 
 theme: 'material'
 theme_dir: 'theme-overrides'
-
-# # versioning
-# local_url_prefix: p-mysql/1-9
-# local_product_version: 1.9
-# other_versions:
-#   - url_prefix: https://docs.pivotal.io/p-mysql/1-8
-#     display_name: v1.8
-#   - url_prefix: https://docs.pivotal.io/p-mysql/1-7
-#     display_name: v1.7
-#   - url_prefix: https://docs.pivotal.io/archives/mysql-docs-1.6.pdf
-#     display_name: v1.6
-#   - url_prefix: https://docs.pivotal.io/archives/mysql-docs-1.5.pdf
-#     display_name: v1.5
-#   - url_prefix: https://docs.pivotal.io/archives/mysql-docs-1.4.pdf
-#     display_name: v1.4
 
 # left nav
 pages:
   - Overview:
-    - 'Welcome to Kubo': 'index.md'
-    - 'What is Kubo?': 'overview/what-is-kubo.md'
+    - 'Welcome to CFCR': 'index.md'
+    - 'What is CFCR?': 'overview/what-is-cfcr.md'
     - 'Product Architecture': 'overview/architecture.md'
     - 'Release Notes': 'overview/release-notes.md'
   - Installing and Configuring:
     - 'Home': 'installing/index.md'
     - Preparing GCP:
-      - 'Preparing GCP for Kubo': 'installing/gcp/index.md'
-      - 'Deploying BOSH for Kubo on GCP': 'installing/gcp/deploying-bosh-gcp.md'
+      - 'Preparing GCP for CFCR': 'installing/gcp/index.md'
+      - 'Deploying BOSH for CFCR on GCP': 'installing/gcp/deploying-bosh-gcp.md'
       - 'Configuring IaaS Routing for GCP': 'installing/gcp/routing-gcp.md'
     - Preparing vSphere: 
-      - 'Preparing vSphere for Kubo': 'installing/vsphere/index.md'
-      - 'Deploying BOSH for Kubo on vSphere': 'installing/vsphere/deploying-bosh-vsphere.md'
+      - 'Preparing vSphere for CFCR': 'installing/vsphere/index.md'
+      - 'Deploying BOSH for CFCR on vSphere': 'installing/vsphere/deploying-bosh-vsphere.md'
     - Preparing AWS:
-      - 'Preparing AWS for Kubo': 'installing/aws/index.md'
-      - 'Deploying BOSH for Kubo on AWS': 'installing/aws/deploying-bosh-aws.md'
+      - 'Preparing AWS for CFCR': 'installing/aws/index.md'
+      - 'Deploying BOSH for CFCR on AWS': 'installing/aws/deploying-bosh-aws.md'
       - 'Configuring IaaS Routing for AWS': 'installing/aws/routing-aws.md'
     - Preparing OpenStack: 
-      - 'Preparing OpenStack for Kubo': 'installing/openstack/index.md'
-      - 'Deploying BOSH for Kubo on OpenStack': 'installing/openstack/deploying-bosh-openstack.md'
-    - 'Deploying Kubo': 'installing/deploying-kubo.md'
-    - 'Customizing Kubo': 'installing/customizing-kubo.md'
+      - 'Preparing OpenStack for CFCR': 'installing/openstack/index.md'
+      - 'Deploying BOSH for CFCR on OpenStack': 'installing/openstack/deploying-bosh-openstack.md'
+    - 'Deploying CFCR': 'installing/deploying-cfcr.md'
+    - 'Customizing CFCR': 'installing/customizing-cfcr.md'
     - 'Configuring Cloud Foundry Routing': 'installing/cf-routing.md'
     - 'Configuring HAProxy': 'installing/haproxy.md'
   - Managing and Troubleshooting:
     - 'Home': 'managing/index.md'
     - 'Using Docker Registries': 'managing/using-docker.md'
     - 'Deploying Tested Workloads': 'managing/tested-workloads.md'
-    - 'Troubleshooting Kubo': 'managing/troubleshooting.md'
-    - 'Deleting Kubo': 'managing/deleting.md'
+    - 'Troubleshooting CFCR': 'managing/troubleshooting.md'
+    - 'Deleting CFCR': 'managing/deleting.md'
 
 # palette, logo, css, markdown extensions
 extra:
   palette:
     primary: 'teal'
     accent: 'deep orange'
-  logo: 'images/common/pivotal-logo.png'
+  logo: 'images/common/cfcr-logo.png'
   feature:
     tabs: true
 extra_css:

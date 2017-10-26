@@ -1,14 +1,17 @@
 #Configuring IaaS Routing for AWS
 
-This topic describes how to configure the Amazon Web Services (AWS) load balancers to handle routing for Kubo.
+This topic describes how to configure the Amazon Web Services (AWS) load balancers to handle routing for Cloud Foundry Container Runtime (CFCR).
 
-Before completing the procedures in this topic, you must have performed the steps in [Deploying BOSH for Kubo on AWS](deploying-bosh-aws/). After finishing this topic, continue to [Deploying Kubo](../deploying-kubo/).
+Before completing the procedures in this topic, you must have performed the steps in [Deploying BOSH for CFCR on AWS](deploying-bosh-aws/). After finishing this topic, continue to [Deploying CFCR](../deploying-cfcr/).
 
 If you want to use Cloud Foundry for routing instead of IaaS load balancers, see the [Configuring Cloud Foundry Routing](../cf-routing/) topic.
 
+!!! note
+	CFCR was formerly known as Kubo, and many CFCR assets described in this topic still use the Kubo name.
+
 ##Configure IaaS Routing
 
-1. If you are not in the same shell session as you were when completing the procedures in [Deploying BOSH for Kubo on AWS](deploying-bosh-aws/), perform the following steps:
+1. If you are not in the same shell session as you were when completing the procedures in [Deploying BOSH for CFCR on AWS](deploying-bosh-aws/), perform the following steps:
 	1. Change into your Terraform working directory with the following command:
 		<p class="terminal">$ cd ~/kubo-deployment/docs/user-guide/platforms/aws</p>
 	1. SSH onto the bastion VM with the following command:
@@ -26,7 +29,7 @@ If you want to use Cloud Foundry for routing instead of IaaS load balancers, see
 $ export AWS_SECRET_ACCESS_KEY=dsfSDFKOSDFKOasdmasdKSADOK</p>
 
 	!!! note
-		This is the same IAM user whose credentials you exported in the [Step 1: Set Up Your Shell Environment](deploying-bosh-aws/#step-1-set-up-your-shell-environment) section of the <em>Deploying BOSH for Kubo on AWS</em> topic. This is not the IAM user you created for BOSH in the [Step 4: Create IAM User](deploying-bosh-aws/#step-4-create-iam-user) section of the same topic. 
+		This is the same IAM user whose credentials you exported in the [Step 1: Set Up Your Shell Environment](deploying-bosh-aws/#step-1-set-up-your-shell-environment) section of the <em>Deploying BOSH for CFCR on AWS</em> topic. This is not the IAM user you created for BOSH in the [Step 4: Create IAM User](deploying-bosh-aws/#step-4-create-iam-user) section of the same topic. 
 
 1. Initialize the Terraform working directory. Enter the following command:
 	<p class="terminal">$ terraform init</p>
@@ -41,11 +44,11 @@ $ export AWS_SECRET_ACCESS_KEY=dsfSDFKOSDFKOasdmasdKSADOK</p>
 1. Set the `master_target_pool` and `kubernetes_master_host` environment variables with the following commands:
 	<p class="terminal">$ export master_target_pool=\$(terraform output -state=${kubo_terraform_state} kubo_master_target_pool) 
 $ export kubernetes_master_host=\$(terraform output -state=${kubo_terraform_state} master_lb_ip_address) </p>
-1. Update the Kubo environment by running the the following commands:
+1. Update the CFCR environment by running the the following commands:
 	<p class="terminal">$ . /share/kubo-deployment/docs/user-guide/platforms/aws/setup_helpers
 $ set_iaas_routing "${state_dir}/director.yml"</p>
 
 	!!! tip
 		You can also set the configuration manually by editing `KUBO_ENV/director.yml`.
 
-After configuring routing, continue to the [Deploying Kubo](../deploying-kubo/) topic.
+After configuring routing, continue to the [Deploying CFCR](../deploying-cfcr/) topic.

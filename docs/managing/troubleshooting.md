@@ -1,6 +1,9 @@
-#Troubleshooting Kubo
+#Troubleshooting CFCR
 
-This topic describes how to troubleshoot commonly encountered problems with [installing](#troubleshoot-a-failed-installation) and [running](#troubleshoot-a-running-installation) Kubo.
+This topic describes how to troubleshoot commonly encountered problems with [installing](#troubleshoot-a-failed-installation) and [running](#troubleshoot-a-running-installation) Cloud Foundry Container Runtime (CFCR).
+
+!!! note
+  CFCR was formerly known as Kubo, and many CFCR assets described in this topic still use the Kubo name.
 
 ##Troubleshoot a Failed Installation
 
@@ -8,7 +11,7 @@ This topic describes how to troubleshoot commonly encountered problems with [ins
 
 #### Symptom
 
-When [deploying BOSH for Kubo on Google Cloud Platform (GCP)](../installing/gcp/deploying-bosh-gcp/), you cannot create a Google Storage Bucket. An error similar to the following occurs:
+When [deploying BOSH for CFCR on Google Cloud Platform (GCP)](../installing/gcp/deploying-bosh-gcp/), you cannot create a Google Storage Bucket. An error similar to the following occurs:
 
 <p class="terminal">CmdError{"type":"Bosh::Clouds::CloudError","message":
 "Creating stemcell: Creating Google Storage Bucket: 
@@ -23,7 +26,7 @@ Your service account for Terraform may be misconfigured.
 
 #### Solution
 
-Ensure you have created a service account for Terraform, and that you have successfully configured it, by performing the procedures in the [Step 1: Set Up Your Shell Environment](../installing/gcp/deploying-bosh-gcp/#step-1-set-up-your-shell-environment) and [Step 2: Set Up a GCP Account for Terraform](../installing/gcp/deploying-bosh-gcp/#step-2-set-up-a-gcp-account-for-terraform) sections of the <em>Deploying BOSH for Kubo on GCP</em> topic.
+Ensure you have created a service account for Terraform, and that you have successfully configured it, by performing the procedures in the [Step 1: Set Up Your Shell Environment](../installing/gcp/deploying-bosh-gcp/#step-1-set-up-your-shell-environment) and [Step 2: Set Up a GCP Account for Terraform](../installing/gcp/deploying-bosh-gcp/#step-2-set-up-a-gcp-account-for-terraform) sections of the <em>Deploying BOSH for CFCR on GCP</em> topic.
 
 ---
 
@@ -31,7 +34,7 @@ Ensure you have created a service account for Terraform, and that you have succe
 
 #### Symptom
 
-When [deploying BOSH for Kubo on GCP](../installing/gcp/deploying-bosh-gcp/), you encounter service account permission issues.
+When [deploying BOSH for CFCR on GCP](../installing/gcp/deploying-bosh-gcp/), you encounter service account permission issues.
 
 #### Explanation
 
@@ -39,7 +42,7 @@ Your service account for Terraform may not have the correct permissions.
 
 #### Solution
 
-Ensure you have granted the Terraform service account owner access to your project, by performing the procedures in the [Step 2: Set Up a GCP Account for Terraform](../installing/gcp/deploying-bosh-gcp/#step-2-set-up-a-gcp-account-for-terraform) section of the <em>Deploying BOSH for Kubo on GCP</em> topic.
+Ensure you have granted the Terraform service account owner access to your project, by performing the procedures in the [Step 2: Set Up a GCP Account for Terraform](../installing/gcp/deploying-bosh-gcp/#step-2-set-up-a-gcp-account-for-terraform) section of the <em>Deploying BOSH for CFCR on GCP</em> topic.
 
 You can also verify that the correct permissions are applied by logging into the GCP Console and navigating to the **IAM & admin** section. 
 
@@ -79,7 +82,7 @@ Restart the `sshuttle` connection.
 
 #### Symptom
 
-Deploying BOSH or Kubo fails because CredHub authentication fails. The following error occurs:
+Deploying BOSH or CFCR fails because CredHub authentication fails. The following error occurs:
 
 <p class="terminal">The provided username and password combination are incorrect. Please validate your input and retry your request.</p>
 
@@ -116,7 +119,7 @@ Error: 'master/0 (20f5c31f-4329-46a7-ae03-484f0a17f6a3)' is not running after up
 
 #### Explanation
 
-This error occurs if any of the jobs deployed in the master VM fail to start. This typically happens when using Cloud Foundry to handle routing for Kubo. 
+This error occurs if any of the jobs deployed in the master VM fail to start. This typically happens when using Cloud Foundry to handle routing for CFCR. 
 
 #### Solution
 
@@ -179,7 +182,7 @@ Ensure the port specified as `kubernetes-master-port` is not already in use by a
 
 #### Symptom
 
-When using Terraform to [provision the bastion VM and other resources](https://docs-kubo.cfapps.io/installing/gcp/deploying-bosh-gcp/) required to deploy Kubo on GCP, you encounter an error similar to the following:
+When using Terraform to [provision the bastion VM and other resources](https://docs-kubo.cfapps.io/installing/gcp/deploying-bosh-gcp/) required to deploy CFCR on GCP, you encounter an error similar to the following:
 
 <p class="terminal">2 error(s) occurred:
 
@@ -242,7 +245,7 @@ Finding deployments:
 Exit code 1
 </p>
 
-BOSH for Kubo deploys a UAA server to handle user management. For more information, see the [BOSH documentation](https://bosh.io/docs/director-users-uaa.html).
+BOSH for CFCR deploys a UAA server to handle user management. For more information, see the [BOSH documentation](https://bosh.io/docs/director-users-uaa.html).
 
 #### Explanation
 
