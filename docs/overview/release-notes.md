@@ -45,13 +45,18 @@ The following table lists the component versions for Kubo 0.8.0
     <td>ETCD</td>
      <td>3.1.8</td>
      <td>https://github.com/coreos/etcd/releases/tag/v3.1.8</td>
-  </tr>
-     <tr>
+  </tr>   
+  <tr>
     <td>Docker</td>
     <td>TBC</td>
     <td>Details</td>
   </tr>
-     <tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.5.2</td>
+    <td>https://github.com/containernetworking/cni/releases/tag/v0.5.2</td>
+  </tr>
+  <tr>
     <td>Stemcell (GCP)</td>
     <td>3445.11</td>
     <td>http://bosh.cloudfoundry.org/stemcells/bosh-google-kvm-ubuntu-trusty-go_agent</td>
