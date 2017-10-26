@@ -1,6 +1,6 @@
 # Release Notes
 
-## 0.8
+## 0.8.0
 
 **Release Date**: November xx, 2017
 
@@ -8,7 +8,7 @@
 * Upgraded Kubernetes version to 1.8.1
 * Bosh DNS replaces Power DNS
 * Memory limit is configurable
-* Kubelet resource reservation flags exposed (review exposed flags)
+* Kubelet resource reservation flags exposed, `kube-reserved`, `system-reserved`, `eviction-hard`. See [Kubernetes docs] (https://kubernetes.io/docs/tasks/administer-cluster/reserve-compute-resources/) for more info
 * Added support for RBAC authorisation mode in Kubernetes (default option for Kubo since v0.8)
 * Internal routing from workers to masters through Bosh DNS (no need for HAProxy or LB to route cluster internal traffic) 
 
@@ -20,7 +20,7 @@
 * Config file missing for vSphere [GitHub issue #110](https://github.com/cloudfoundry-incubator/kubo-release/issues/110)
 
 ### Component Versions
-The following table lists the component versions for Kubo v0.8.
+The following table lists the component versions for Kubo 0.8.0
 
   <table>
   <thead>
@@ -34,7 +34,7 @@ The following table lists the component versions for Kubo v0.8.
   <tr>
     <td>Kubernetes</td>
     <td>1.8.1</td>
-    <td>Details</td>
+    <td>https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.8.md#v181</td>
   </tr>
   <tr>
     <td>Flannel</td>
@@ -44,7 +44,7 @@ The following table lists the component versions for Kubo v0.8.
    <tr>
     <td>ETCD</td>
      <td>3.1.8</td>
-     <td>Details</td>
+     <td>https://github.com/coreos/etcd/releases/tag/v3.1.8</td>
   </tr>
      <tr>
     <td>Docker</td>
@@ -54,30 +54,30 @@ The following table lists the component versions for Kubo v0.8.
      <tr>
     <td>Stemcell (GCP)</td>
     <td>3445.11</td>
-    <td>Details</td>
+    <td>http://bosh.cloudfoundry.org/stemcells/bosh-google-kvm-ubuntu-trusty-go_agent</td>
   </tr>
   <tr>
     <td>Stemcell (AWS)</td>
-    <td>3445.7</td>
-    <td>Details</td>
+    <td>TBC</td>
+    <td>http://bosh.cloudfoundry.org/stemcells/bosh-aws-xen-ubuntu-trusty-go_agent</td>
   </tr>
   <tr>
     <td>Stemcell (vSphere)</td>
     <td>TBC</td>
-    <td>Details</td>
+    <td>http://bosh.cloudfoundry.org/stemcells/bosh-vsphere-esxi-ubuntu-trusty-go_agent</td>
   </tr>
      <tr>
     <td>Stemcell (OpenStack)</td>
     <td>TBC</td>
-    <td>Details</td>
+    <td>http://bosh.cloudfoundry.org/stemcells/bosh-openstack-kvm-ubuntu-trusty-go_agent</td>
   </tr>
   </tbody>
   </table>
 
-### Upgrading from v0.7
-The following are the steps to execute to upgrade an existing Kubo v0.7 cluster to the new v0.8:
+### Upgrading from 0.7.0
+The following are the steps to execute to upgrade an existing Kubo 0.7.0 cluster to the new 0.8.0:
 
-#### Update your BOSH director to get the latest components for Kubo v0.8
+#### Update your BOSH director to get the latest components for Kubo 0.8.0
 1. Clone the new version of [kubo-deployment](https://github.com/cloudfoundry-incubator/kubo-deployment)
 2. Log into Credhub
 3. Delete the current Kubernetes certificate from CredHub
@@ -91,7 +91,7 @@ See [Deploying Bosh Director](https://docs-kubo.cfapps.io/installing/gcp/deployi
 See [Deploying Kubo](https://docs-kubo.cfapps.io/installing/deploying-kubo/#step-3-deploy-kubo)
 
 
-## 0.7
+## 0.7.0
 
 **Release Date**: September 7, 2017
 
