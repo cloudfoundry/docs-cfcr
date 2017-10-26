@@ -8,7 +8,7 @@
 * Upgraded Kubernetes version to 1.8.1
 * Bosh DNS replaces Power DNS
 * Memory limit is configurable
-* Kubelet resource reservation flags exposed, `kube-reserved`, `system-reserved`, `eviction-hard`. See [Kubernetes docs] (https://kubernetes.io/docs/tasks/administer-cluster/reserve-compute-resources/) for more info
+* Kubelet resource reservation flags exposed, `kube-reserved`, `system-reserved`, `eviction-hard`. See [Kubernetes docs](https://kubernetes.io/docs/tasks/administer-cluster/reserve-compute-resources/) for more info
 * Added support for RBAC authorisation mode in Kubernetes (default option for Kubo since v0.8)
 * Internal routing from workers to masters through Bosh DNS (no need for HAProxy or LB to route cluster internal traffic) 
 
