@@ -6,15 +6,16 @@
 
 ### Features
 * Upgraded Kubernetes version to 1.8.1
-* Upgraded to CredHub 1.0.0
-* Bosh DNS replaces power dns
-* Virtual memory areas are configurable
-* Kubelet resource reservation flags exposed
-* Added support for RBAC authorisation mode in Kubernetes (default mode is still ABAC)
+* Bosh DNS replaces Power DNS
+* Memory limit is configurable
+* Kubelet resource reservation flags exposed (review exposed flags)
+* Added support for RBAC authorisation mode in Kubernetes (default option for Kubo since v0.8)
 * Internal routing from workers to masters through Bosh DNS (no need for HAProxy or LB to route cluster internal traffic) 
 
-### Bug Fixes
+### Improvements
 * Removed ```worker_node_tag``` property to set worker tags automatically for GCP load balancers
+
+### Bug Fixes
 * Support for bosh-lite [GitHub issue #109](https://github.com/cloudfoundry-incubator/kubo-release/issues/109)
 * Config file missing for vSphere [GitHub issue #110](https://github.com/cloudfoundry-incubator/kubo-release/issues/110)
 
@@ -32,32 +33,42 @@ The following table lists the component versions for Kubo v0.8.
   <tbody>
   <tr>
     <td>Kubernetes</td>
-    <td>Version number</td>
+    <td>1.8.1</td>
     <td>Details</td>
   </tr>
   <tr>
     <td>Flannel</td>
-    <td>Version number</td>
+    <td>TBC</td>
     <td>Details</td>
-  </tr>
-  <tr>
-    <td>Routesync</td>
-    <td>Version number</td>
-    <td>Details</td>
-  </tr>
-  <tr>
-    <td>Flannel</td>
-    <td>Version number</td>
-        <td>Details</td>
   </tr>
    <tr>
     <td>ETCD</td>
-     <td>Version number</td>
+     <td>3.1.8</td>
      <td>Details</td>
   </tr>
      <tr>
-    <td>Stemcell</td>
+    <td>Docker</td>
+    <td>TBC</td>
+    <td>Details</td>
+  </tr>
+     <tr>
+    <td>Stemcell (GCP)</td>
     <td>3445.11</td>
+    <td>Details</td>
+  </tr>
+  <tr>
+    <td>Stemcell (AWS)</td>
+    <td>3445.7</td>
+    <td>Details</td>
+  </tr>
+  <tr>
+    <td>Stemcell (vSphere)</td>
+    <td>TBC</td>
+    <td>Details</td>
+  </tr>
+     <tr>
+    <td>Stemcell (OpenStack)</td>
+    <td>TBC</td>
     <td>Details</td>
   </tr>
   </tbody>
@@ -72,7 +83,7 @@ The following are the steps to execute to upgrade an existing Kubo v0.7 cluster 
 3. Delete the current Kubernetes certificate from CredHub
 ``` credhub delete -n "${director_name}/${deployment_name}/tls-kubernetes" ```
 
-3. Verify stem cell 3445.11 is installed in bosh
+3. Verify the appropriate stemcell is installed in bosh
 4. Update the bosh director
 See [Deploying Bosh Director](https://docs-kubo.cfapps.io/installing/gcp/deploying-bosh-gcp/#step-5-deploy-bosh-director)
 
