@@ -1,6 +1,6 @@
 #Configuring Cloud Foundry Routing
 
-This topic describes how to configure Cloud Foundry to handle routing for Cloud Foundry Container Runtime (CFCR). 
+This topic describes how to configure Cloud Foundry to handle routing for SCloud Foundry Container Runtime (CFCR). 
 
 You configure Cloud Foundry routing by editing the BOSH configuration files before deploying BOSH for CFCR. The procedure for generating these files and using them to deploy BOSH for CFCR will vary depending on your IaaS.
 
@@ -27,7 +27,7 @@ You must edit your IaaS firewall rules to enable communication between the Cloud
 
 * Ensure that the Cloud Foundry routing components can reach your CFCR cluster on the `NodePort` port range.
 * Ensure that the Cloud Foundry TCP Router can reach the CFCR master nodes on port 8443 to communicate with the Kubernetes API server.
-* Ensure that the CFCR components can reach the Cloud Foundry NAT servers on port 4222.
+* Ensure that the CFCR components can reach the Cloud Foundry NATS servers on port 4222.
 * Ensure that the CFCR components can reach the Cloud Foundry API and UAA endpoints. Both are HTTPS endpoints in the Cloud Foundry system domain, accessible on port 443. 
 
 ##Step 2: Create a Routing UAA Client
@@ -63,20 +63,23 @@ Perform the following steps to configure CFCR for Cloud Foundry routing:
 		The `director-secrets.yml` file contains sensitive information and should not be under version control.
 
 1. Open the `director.yml` file.
+1. Comment out the `IaaS routing mode settings` section.
+1. Uncomment the `CF routing mode settings` section, and set appropriate values for your deployment.
+    1. Uncomment `routing_mode: cf`. 
+    1. Set the `kubernetes_master_host` to the TCP router hostname or IP address for Cloud Foundry. This is typically `tcp.YOUR-APPS-DOMAIN`, such as `tcp.apps.cf-example.com`.
+	
+	    !!! tip
+		    If you are using a domain, ensure that the DNS resolves correctly. For more information, see the [Pre-Deployment Steps](https://docs.cloudfoundry.org/adminguide/enabling-tcp-routing.html#-pre-deployment-steps) section of the <em>Enabling TCP Routing</em> topic in the Cloud Foundry documentation.
 
-1. Uncomment the `CF routing mode settings` section and comment out the `IaaS routing mode settings`.
-1. Set the `kubernetes_master_host` to the TCP router hostname or IP address for Cloud Foundry. This is typically `tcp.YOUR-APPS-DOMAIN`, such as `tcp.apps.cf-example.com`.
+    1. Set the `kubernetes_master_port` to an available port on the Cloud Foundry TCP router.
+    1. Set the `routing-cf-api-url` to the Cloud Foundry API URL, such as `https://api.sys.cf-example.com`.
+    1. Set the `routing-cf-client-id` to `routing_api_client`.
+    1. Set the `routing-cf-uaa-url` to the Cloud Foundry UAA URL, such as `https://uaa.sys.cf-example.com`.
+    1. Set the `routing-cf-app-domain-name` to the Cloud Foundry apps domain, such as `apps.cf-example.com.`
+    1. Set the `routing-cf-nats-internal-ips` to the array of internal IP addresses used by Cloud Foundry NATS, such as `[192.168.16.13]`. To obtain the IP addresses for your NATS instances, log in to the BOSH Director you used to deploy Cloud Foundry and run `bosh -e YOUR-ENV instances`.
+    1. Uncomment `routing-cf-nats-username: nats`.
+    1. Uncomment `routing-cf-nats-port: 4222`.
 
-	!!! tip
-		If you are using a domain, ensure that the DNS resolves correctly. For more information, see the [Pre-Deployment Steps](https://docs.cloudfoundry.org/adminguide/enabling-tcp-routing.html#-pre-deployment-steps) section of the <em>Enabling TCP Routing</em> topic in the Cloud Foundry documentation.
-
-1. Set the `kubernetes_master_port` to an available port on the Cloud Foundry TCP router.
-1. Set the `routing-cf-api-url` to the Cloud Foundry API URL, such as `https://api.sys.cf-example.com`.
-1. Set the `routing-cf-client-id` to `routing_api_client`.
-`. 
-1. Set the `routing-cf-uaa-url` to the Cloud Foundry UAA URL, such as `https://uaa.sys.cf-example.com`.
-1. Set the `routing-cf-app-domain-name` to the Cloud Foundry apps domain, such as `apps.cf-example.com.`
-1. Set the `routing-cf-nats-internal-ips` to the array of internal IP addresses used by Cloud Foundry NATS, such as `[192.168.16.13]`. To obtain the IP addresses for your NATS instances, log in to the BOSH Director you used to deploy Cloud Foundry and run `bosh -e YOUR-ENV instances`.
 1. Deploy BOSH for CFCR by performing the procedures specific to your IaaS:
 	* [Deploy on GCP](./gcp/deploying-bosh-gcp/#step-5-deploy-bosh-director)
 	* [Deploy on vSphere](./vsphere/deploying-bosh-vsphere/#step-5-deploy-bosh)
