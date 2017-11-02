@@ -2,14 +2,15 @@
 
 ## 0.8.0
 
-**Release Date**: November xx, 2017
+**Release Date**: November 3, 2017
 
 ### Features
 * Upgraded Kubernetes version to 1.8.1
 * Bosh DNS replaces Power DNS
 * Memory limit is configurable
-* Kubelet resource reservation flags exposed, `kube-reserved`, `system-reserved`, `eviction-hard`. See [Kubernetes docs](https://kubernetes.io/docs/tasks/administer-cluster/reserve-compute-resources/) for more info
+* Kubelet resource reservation flags exposed: `kube-reserved`, `system-reserved`, `eviction-hard`. See [Kubernetes docs](https://kubernetes.io/docs/tasks/administer-cluster/reserve-compute-resources/) for more info
 * Internal routing from workers to masters through Bosh DNS (no need for HAProxy or LB to route cluster internal traffic) 
+* User can load balance traffic from external load balancers
 
 ### Improvements
 * Removed ```worker_node_tag``` property to set worker tags automatically for GCP load balancers
@@ -26,54 +27,32 @@ The following table lists the component versions for Kubo 0.8.0
   <tr>
     <th>Component</th>
     <th>Version</th>
-     <th>Details</th>
   </tr>
   </thead>
   <tbody>
   <tr>
     <td>Kubernetes</td>
     <td>1.8.1</td>
-    <td>https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.8.md#v181</td>
   </tr>
   <tr>
     <td>Flannel</td>
-    <td>TBC</td>
-    <td>Details</td>
+    <td>0.5.5</td>
   </tr>
    <tr>
     <td>ETCD</td>
      <td>3.1.8</td>
-     <td>https://github.com/coreos/etcd/releases/tag/v3.1.8</td>
   </tr>   
   <tr>
     <td>Docker</td>
-    <td>TBC</td>
-    <td>Details</td>
+    <td>1.11.0</td>
   </tr>
   <tr>
     <td>CNI</td>
     <td>0.5.2</td>
-    <td>https://github.com/containernetworking/cni/releases/tag/v0.5.2</td>
   </tr>
   <tr>
-    <td>Stemcell (GCP)</td>
+    <td>Stemcell</td>
     <td>3445.11</td>
-    <td>http://bosh.cloudfoundry.org/stemcells/bosh-google-kvm-ubuntu-trusty-go_agent</td>
-  </tr>
-  <tr>
-    <td>Stemcell (AWS)</td>
-    <td>TBC</td>
-    <td>http://bosh.cloudfoundry.org/stemcells/bosh-aws-xen-ubuntu-trusty-go_agent</td>
-  </tr>
-  <tr>
-    <td>Stemcell (vSphere)</td>
-    <td>TBC</td>
-    <td>http://bosh.cloudfoundry.org/stemcells/bosh-vsphere-esxi-ubuntu-trusty-go_agent</td>
-  </tr>
-     <tr>
-    <td>Stemcell (OpenStack)</td>
-    <td>TBC</td>
-    <td>http://bosh.cloudfoundry.org/stemcells/bosh-openstack-kvm-ubuntu-trusty-go_agent</td>
   </tr>
   </tbody>
   </table>
