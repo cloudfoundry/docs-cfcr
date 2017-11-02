@@ -1,17 +1,20 @@
-#Deploying Kubo
+#Deploying CFCR
 
-This topic describes how to deploy Kubo.
+This topic describes how to deploy Cloud Foundry Container Runtime (CFCR).
 
-Before completing the procedures in this topic, you must have deployed BOSH for Kubo and configured routing. For more information, see the [Preparing](/installing/#step-1-prepare-your-iaas) section for your IaaS.
+Before completing the procedures in this topic, you must have deployed BOSH for CFCR and configured routing. For more information, see the [Preparing](/installing/#step-1-prepare-your-iaas) section for your IaaS.
 
-This topic describes how to deploy a standard Kubo installation. If you want to deploy a customized Kubo installation, see the [Customizing Kubo](customizing-kubo/) topic.
+This topic describes how to deploy a standard CFCR installation. If you want to deploy a customized CFCR installation, see the [Customizing CFCR](customizing-cfcr/) topic.
+
+!!! note
+	CFCR was formerly known as Kubo, and many CFCR assets described in this topic still use the Kubo name.
 
 !!! tip
-	If you encounter problems when installing Kubo, see the [Troubleshooting Kubo](../managing/troubleshooting.md) topic.
+	If you encounter problems when installing CFCR, see the [Troubleshooting CFCR](../managing/troubleshooting.md) topic.
 
-##Step 1: Access Your Kubo Environment
+##Step 1: Access Your CFCR Environment
 
-Access your Kubo environment. This is the environment that contains the `KUBO_ENV` directory with your Kubo configuration.
+Access your CFCR environment. This is the environment that contains the `KUBO_ENV` directory with your CFCR configuration.
 
 Follow the steps for your IaaS:
 
@@ -21,7 +24,7 @@ Follow the steps for your IaaS:
 		<p class="terminal">$ cd ~/kubo-deployment/docs/user-guide/platforms/aws</p>
 	1. SSH onto the bastion VM with the following command:
 		<p class="terminal">$ ssh -i ~/deployer.pem ubuntu@$(terraform output bosh-bastion-ip)</p>
-* **vSphere or OpenStack**: If you deployed BOSH for Kubo from a bastion VM, SSH into the VM. Otherwise, navigate to the Kubo environment on your local machine.
+* **vSphere or OpenStack**: If you deployed BOSH for CFCR from a bastion VM, SSH into the VM. Otherwise, navigate to the CFCR environment on your local machine.
 
 ##(Optional) Step 2: Configure Proxy Access
 
@@ -40,13 +43,13 @@ https_proxy: https://secure.proxy.local:5566
 no_proxy: '192.0.2.0,192.0.2.1'
 ```
 
-Kubo passes these settings to the Docker Engine daemon that runs in the Kubo workers.
+CFCR passes these settings to the Docker Engine daemon that runs in the CFCR workers.
 
-##Step 3: Deploy Kubo
+##Step 3: Deploy CFCR
 
-Perform the following steps to deploy Kubo:
+Perform the following steps to deploy CFCR:
 
-1. In your Kubo environment, navigate to the `kubo-deployment` directory. Enter the following command:
+1. In your CFCR environment, navigate to the `kubo-deployment` directory. Enter the following command:
 	<p class="terminal">$ cd /share/kubo-deployment</pre> 
 1. Execute the `deploy_k8s` script to download the packages necessary to deploy a Kubernetes cluster, and to spin up the master, worker, and etcd nodes. 
 
@@ -54,9 +57,9 @@ Perform the following steps to deploy Kubo:
 	`./bin/deploy_k8s KUBO_ENV CLUSTER_NAME [RELEASE_SOURCE]`<br><br>
 	Where:<br>
 
-	* `KUBO_ENV`: This is the directory that contains the Kubo configuration.
+	* `KUBO_ENV`: This is the directory that contains the CFCR configuration.
 	* `CLUSTER_NAME`: Choose a unique name for your Kubernetes cluster.
-	* `RELEASE_SOURCE`. Optionally select one of the following values to specify where to find the Kubo BOSH release. If you do not select an option, the script defaults to `local`: 
+	* `RELEASE_SOURCE`. Optionally select one of the following values to specify where to find the BOSH release. If you do not select an option, the script defaults to `local`: 
 		* `dev`: Manually builds a development release from the local version of the `kubo-release` repo
 		* `public`: Uses the published precompiled release on the internet, downloaded from the URL supplied by the `kubo_release_url` variable in `KUBO_ENV/director.yml`
 		* `local`: Uses the local tarball release
@@ -85,24 +88,20 @@ After deploying the cluster, perform the following steps:
 	monitoring-influxdb-564852376-67fdd      1/1       Running   0          2d
 	</p>
 
-After configuring `kubectl`, you can use the Kubernetes [Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). To access the Dashboard, run `kubectl proxy` and navigate to `http://localhost:8001/ui` in a browser. 
-
-For more information about using `kubectl`, see the [Kubernetes documentation](https://kubernetes.io/docs/user-guide/kubectl-overview/).
-
 ##Step 5: Enable Application Access
 
 The procedure for exposing applications run by the Kubernetes cluster to the internet varies depending on your routing configuration.
 
 ###IaaS Routing
 
-If you configured IaaS load balancers to handle routing for Kubo, you can expose routes using the service type `LoadBalancer` for your Kubernetes deployments. See the [Kubernetes documentation](https://kubernetes.io/docs/tutorials/kubernetes-basics/expose-intro/) for more information.
+If you configured IaaS load balancers to handle routing for CFCR, you can expose routes using the service type `LoadBalancer` for your Kubernetes deployments. See the [Kubernetes documentation](https://kubernetes.io/docs/tutorials/kubernetes-basics/expose-intro/) for more information.
 
 !!! warning 
-	Any resources that are provisioned by Kubernetes will not be deleted by BOSH if you delete your Kubo deployment. 
+	Any resources that are provisioned by Kubernetes will not be deleted by BOSH if you delete your CFCR deployment. 
 
 ###Cloud Foundry Routing
 
-If you [configured Cloud Foundry](cf-routing/) to handle routing for Kubo, perform the following steps to expose both TCP and HTTP routes to the Kubernetes services:
+If you [configured Cloud Foundry](cf-routing/) to handle routing for CFCR, perform the following steps to expose both TCP and HTTP routes to the Kubernetes services:
 
 !!! note
 	You must expose your Kubernetes services using a single `NodePort`. See the [Kubernetes documentation](https://kubernetes.io/docs/tutorials/kubernetes-basics/expose-intro/) for more information.
@@ -124,17 +123,17 @@ If you [configured Cloud Foundry](cf-routing/) to handle routing for Kubo, perfo
 
 ##(Optional) Step 6: Configure Persistence
 
-Persistent storage in Kubo requires configuring the `cloud-provider` job on the master and worker nodes. On AWS, GCP, and vSphere, Kubo deployments have the `cloud-provider` job enabled by default. For more information, see the `cloud-provider` [spec](https://github.com/cloudfoundry-incubator/kubo-release/blob/master/jobs/cloud-provider/spec) in `kubo-release` and the [Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
+Persistent storage in CFCR requires configuring the `cloud-provider` job on the master and worker nodes. On AWS, GCP, and vSphere, CFCR deployments have the `cloud-provider` job enabled by default. For more information, see the `cloud-provider` [spec](https://github.com/cloudfoundry-incubator/kubo-release/blob/master/jobs/cloud-provider/spec) in `kubo-release` and the [Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 
 ### Create a StorageClass
 
-Kubo supports [dynamic volume provisioning](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#dynamic), to allow storage volumes to be created on-demand. The dynamic provisioning feature eliminates the need to pre-provision persistent storage.
+CFCR supports [dynamic volume provisioning](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#dynamic), to allow storage volumes to be created on-demand. The dynamic provisioning feature eliminates the need to pre-provision persistent storage.
 
 To enable this feature for your cluster, you must define one or more [StorageClass](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#storageclasses) objects. Each StorageClass object enables operators to define and expose a different class of storage in the cluster.
 
 Perform the following steps to define a StorageClass:
 
-1. Download the StorageClass spec for your IaaS to your Kubo environment. Run the command for your IaaS:
+1. Download the StorageClass spec for your IaaS to your CFCR environment. Run the command for your IaaS:
 
 	* **AWS**: `wget https://raw.githubusercontent.com/pivotal-cf-experimental/kubo-ci/master/specs/storage-class-aws.yml`
 	* **GCP**: `wget https://raw.githubusercontent.com/pivotal-cf-experimental/kubo-ci/master/specs/storage-class-gcp.yml`
@@ -185,7 +184,7 @@ ci-claim   Bound     pvc-3e11131e-a1a0-11a1-3a2a-0a111e11111e   1Gi        RWO  
 
 ### Additional Information
 
-Kubo clusters support the following Kubernetes volume types:
+CFCR clusters support the following Kubernetes volume types:
 
 * `emptyDir`
 * `hostPath`
@@ -196,6 +195,6 @@ Kubo clusters support the following Kubernetes volume types:
 For more information about volumes, see the [Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/volumes/).
 
 !!! warning 
-	Any resources that are provisioned by Kubernetes will not be deleted by BOSH if you delete your Kubo deployment. 
+	Any resources that are provisioned by Kubernetes will not be deleted by BOSH if you delete your CFCR deployment. 
 
 

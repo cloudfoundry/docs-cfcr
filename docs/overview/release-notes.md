@@ -13,14 +13,14 @@
 * User can load balance traffic from external load balancers
 
 ### Improvements
-* Removed ```worker_node_tag``` property to set worker tags automatically for GCP load balancers
+* Removed `worker_node_tag` property to set worker tags automatically for GCP load balancers
 
 ### Bug Fixes
-* Support for bosh-lite [GitHub issue #109](https://github.com/cloudfoundry-incubator/kubo-release/issues/109)
-* Config file missing for vSphere [GitHub issue #110](https://github.com/cloudfoundry-incubator/kubo-release/issues/110)
+* Support for bosh-lite: [GitHub issue #109](https://github.com/cloudfoundry-incubator/kubo-release/issues/109)
+* Config file missing for vSphere: [GitHub issue #110](https://github.com/cloudfoundry-incubator/kubo-release/issues/110)
 
 ### Component Versions
-The following table lists the component versions for Kubo 0.8.0
+The following table lists the component versions for Cloud Foundry Container Runtime (CFCR) 0.8.0:
 
   <table>
   <thead>
@@ -58,7 +58,8 @@ The following table lists the component versions for Kubo 0.8.0
   </table>
 
 ### Upgrading from 0.7.0
-The following are the steps to execute to upgrade an existing Kubo 0.7.0 cluster to the new 0.8.0:
+
+Perform the following steps to upgrade an existing CFCR 0.7.0 cluster to 0.8.0:
 
 #### Update your BOSH director to get the latest components for Kubo 0.8.0
 1. Clone the new version of [kubo-deployment](https://github.com/cloudfoundry-incubator/kubo-deployment)
@@ -71,7 +72,7 @@ The following are the steps to execute to upgrade an existing Kubo 0.7.0 cluster
 See [Deploying Bosh Director](https://docs-kubo.cfapps.io/installing/gcp/deploying-bosh-gcp/#step-5-deploy-bosh-director)
 
 #### Upgrade your Kubo cluster
-See [Deploying Kubo](https://docs-kubo.cfapps.io/installing/deploying-kubo/#step-3-deploy-kubo)
+See [Deploying CFCR](https://docs-kubo.cfapps.io/installing/deploying-kubo/#step-3-deploy-cfcr)
 
 
 ## 0.7.0

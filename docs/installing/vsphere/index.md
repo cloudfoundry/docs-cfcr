@@ -1,11 +1,11 @@
-#Preparing vSphere for Kubo
+#Preparing vSphere for CFCR
 
-This topic describes how to prepare vSphere for Kubo.
+This topic describes how to prepare vSphere for Cloud Foundry Container Runtime (CFCR).
 
-##Step 1: Deploy BOSH for Kubo on vSphere
+##Step 1: Deploy BOSH for CFCR on vSphere
 
-Deploy the BOSH Director for Kubo by following the procedures in the [Deploying BOSH for Kubo on vSphere](deploying-bosh-vsphere/) topic.
+Deploy the BOSH Director for CFCR by following the procedures in the [Deploying BOSH for CFCR on vSphere](deploying-bosh-vsphere/) topic.
 
-##Step 2: Deploy Kubo
+##Step 2: Deploy CFCR
 
-After deploying BOSH for Kubo, continue to the [Deploying Kubo](../deploying-kubo/) topic to finish the Kubo installation.
+After deploying BOSH for CFCR, continue to the [Deploying CFCR](../deploying-cfcr/) topic to finish the CFCR installation.

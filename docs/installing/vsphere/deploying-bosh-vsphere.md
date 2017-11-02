@@ -1,12 +1,15 @@
-#Deploying BOSH for Kubo on vSphere
+#Deploying BOSH for CFCR on vSphere
 
-This topic describes how to deploy BOSH for Kubo on vSphere. Installing Kubo requires deploying a BOSH Director. 
+This topic describes how to deploy BOSH for Cloud Foundry Container Runtime (CFCR) on vSphere. Installing CFCR requires deploying a BOSH Director. 
 
-After completing the procedures in this topic, continue to the [Deploying Kubo](../deploying-kubo/) topic. 
+After completing the procedures in this topic, continue to the [Deploying CFCR](../deploying-cfcr/) topic. 
+
+!!! note
+	CFCR was formerly known as Kubo, and many CFCR assets described in this topic still use the Kubo name.
 
 ##Step 1: Create User Accounts
 
-Log in to vCenter and then complete the procedures in the sections below to create the user accounts required for your Kubo installation.
+Log in to vCenter and then complete the procedures in the sections below to create the user accounts required for your CFCR installation.
 
 ###Create a BOSH User 
 
@@ -138,7 +141,7 @@ If you plan to use the VSAN-policy-based volume provisioning feature in Kubernet
 
 ##Step 2: Retrieve Information
 
-Retrieve the following vSphere configuration details from vCenter. These values will be required later during the deployment of BOSH and Kubo.
+Retrieve the following vSphere configuration details from vCenter. These values will be required later during the deployment of BOSH and CFCR.
 
 - vCenter IP address
 - Username and password for the BOSH user
@@ -150,7 +153,7 @@ Retrieve the following vSphere configuration details from vCenter. These values 
 
 ##Step 3: Generate a Configuration Template
 
-Perform the following steps to generate a Kubo configuration template:
+Perform the following steps to generate a CFCR configuration template:
 
 1. Ensure you are using a machine that has access to the VMs on the vSphere network. Depending on your network topology, you may need to execute the commands below on a bastion host.
 1. Change into the home directory. Enter the following command:
@@ -161,38 +164,29 @@ Perform the following steps to generate a Kubo configuration template:
 	<p class="terminal">$ tar -xvf kubo-deployment-latest.tgz</p>
 1. Change into `kubo-deployment`. Enter the following command:
 	<p class="terminal">$ cd ~/kubo-deployment</p>
-1. Set three Kubo environment variables with the following commands:
+1. Set three environment variables with the following commands:
 	<p class="terminal">$ export kubo_env=~/kubo-env
 $ export kubo_env_name=kubo
 $ export kubo_env_path="\${kubo_env}/\${kubo_env_name}"</p>
 
     !!! note
-		`kubo_env_path` points to the directory containing the Kubo configuration. Later topics will refer to this path as `KUBO_ENV`.
+		`kubo_env_path` points to the directory containing the CFCR configuration. Later topics will refer to this path as `KUBO_ENV`.
 
 1. Make a new directory path with the following command:
 	<p class="terminal">$ mkdir -p "${kubo_env}"</p>
-1. Generate a Kubo configuration template:
+1. Generate a CFCR configuration template:
    <p class="terminal">$ ./bin/generate_env_config "${kubo_env}" ${kubo_env_name} vsphere</p>
 
-##Step 4: Configure HAProxy
+##Step 4: Configure Routing
 
-vSphere does not have first-party load-balancing support. But you can configure HAProxy to handle external access to the Kubernetes master nodes for administration traffic, and the Kubernetes worker nodes for application traffic.
+If you want to configure Cloud Foundry to handle routing for CFCR, perform the procedures in [Configuring Cloud Foundry Routing](../cf-routing/).
 
-If you want to use Cloud Foundry for routing instead of HAProxy, see the [Configuring Cloud Foundry Routing](../cf-routing/) topic.
+If you want to configure HAProxy to handle routing for CFCR, perform the procedures in [Configuring HAProxy](../haproxy/).
 
-Perform the following steps to configure HAProxy:
+!!! note 
+	vSphere does not have first-party load-balancing support. You can configure HAProxy to handle external access to the Kubernetes master nodes for administration traffic, and the Kubernetes worker nodes for application traffic.
 
-1. Navigate to `KUBO_ENV` and open the newly created `director.yml` file.
-1. Uncomment the `Proxy routing mode settings` section and comment out the `IaaS routing mode settings` section.
-1. Set the `kubernetes_master_host` to the IP address of the HAProxy master node.
-1. Set the `kubernetes_master_port` to the port for the Kubernetes API server on the HAProxy master node.
-1. Set the `worker_haproxy_ip_addresses` to the IP address(es) of the HAProxy worker node(s).
-1. Set the `worker_haproxy_tcp_frontend_port` to the front-end port for the HAProxy TCP pass-through.
-1. Set the `worker_haproxy_tcp_backend_port` to the back-end port for the HAProxy TCP pass-through.
-
-The current implementation of HAProxy routing is a single-port TCP pass-through. In order to route traffic to multiple Kubernetes services, use an Ingress controller. For more information, see the [Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/) and the [Ingress examples readme](https://github.com/kubernetes/ingress/tree/master/examples#ingress-examples)  in the Kubernetes GitHub repo.
-
-##Step 4: Deploy BOSH
+##Step 5: Deploy BOSH
 
 Perform the following steps to deploy a BOSH Director:
 
@@ -203,11 +197,17 @@ Perform the following steps to deploy a BOSH Director:
 	!!! warning
 		The `director-secrets.yml` file contains sensitive information and should not be under version control.
 
-1. Deploy the BOSH Director for Kubo. Enter the following command:
+1. Ensure your vSphere hostname can be resolved using `8.8.8.8` as the nameserver. For example:
+
+	<p class="terminal">$ dig @8.8.8.8 ab2-host-a101-11.foo-12.bar.cf-example.com</p>
+
+	If the hostname cannot be resolved, open `~/kubo-deployment/bosh-deployment/bosh.yml` and locate the `dns` property. Replace `8.8.8.8` with the nameserver of your vSphere environment.
+
+1. Deploy the BOSH Director for CFCR. Enter the following command:
 
 	<p class="terminal">$ ./bin/deploy_bosh "${kubo_env_path}"</p>
     
-	The `deploy_bosh` script deploys a BOSH Director with all of the necessary components to install Kubo. 
+	The `deploy_bosh` script deploys a BOSH Director with all of the necessary components to install CFCR. 
 
 	After the script completes, `KUBO_ENV` contains the following:
 
@@ -221,4 +221,4 @@ Perform the following steps to deploy a BOSH Director:
 		!!! note
 			Subsequent runs of `deploy_bosh` will use `creds.yml` and `state.json` to apply changes to the BOSH environment.
 
-After deploying the BOSH Director, continue to the [Deploying Kubo](../deploying-kubo/) topic.
+After deploying the BOSH Director, continue to the [Deploying CFCR](../deploying-cfcr/) topic.

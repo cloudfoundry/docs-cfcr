@@ -1,10 +1,11 @@
-#Deploying BOSH for Kubo on AWS
+#Deploying BOSH for CFCR on AWS
 
-This topic describes how to deploy BOSH for Kubo on Amazon Web Services (AWS). Installing Kubo requires deploying a BOSH Director. 
-
-After completing the procedures in this topic, continue to the [Configuring IaaS Routing for AWS](routing-aws/) topic.
+This topic describes how to deploy BOSH for Cloud Foundry Container Runtime (CFCR) on Amazon Web Services (AWS). Installing CFCR requires deploying a BOSH Director. 
 
 In the procedures below, you use [Terraform](https://www.terraform.io/docs/) to pave your infrastructure and create a bastion VM. Then you deploy a BOSH Director from the bastion VM. 
+
+!!! note
+	CFCR was formerly known as Kubo, and many CFCR assets described in this topic still use the Kubo name.
 
 ##Step 1: Set Up Your Shell Environment
 
@@ -14,32 +15,32 @@ In the procedures below, you use [Terraform](https://www.terraform.io/docs/) to 
 	<p class="terminal">$ mv ~/Downloads/deployer.pem ~/deployer.pem</p>
 1. Change the permissions of the private key file. Enter the following command:
 	<p class="terminal">$ chmod 600 ~/deployer.pem</p>
-1. If you are deploying Kubo more than once, you must set a unique prefix for every installation. Export an environment variable to set a prefix for your Kubo installation. Use letters and dashes only. For example:
+1. If you are deploying CFCR more than once, you must set a unique prefix for every installation. Export an environment variable to set a prefix for your CFCR installation. Use letters and dashes only. For example:
 	<p class="terminal">$ export prefix=my-kubo</p>
 1. Set the access key ID and secret access key for an IAM user with the AdministratorAccess policy as environment variables named `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`. For example:
 	<p class="terminal">$ export AWS_ACCESS_KEY_ID=AKIDZAAFAA0AOABCJ00Z
 $ export AWS_SECRET_ACCESS_KEY=dsfSDFKOSDFKOasdmasdKSADOK</p>
-1. Set the ID of your VPC as an environment variable named `vpc_id`. This VPC must be in the zone where you want to deploy Kubo, with a CIDR range that has at least an `/22` netmask. For example:
+1. Set the ID of your VPC as an environment variable named `vpc_id`. This VPC must be in the zone where you want to deploy CFCR, with a CIDR range that has at least an `/22` netmask. For example:
 	<p class="terminal">$ export vpc_id=vpc-2111120e</p>
 
 	!!! tip
 		To retrieve the ID for a VPC, navigate to the VPC Dashboard of the AWS Console and locate the **VPC ID** column.
 
 	!!! tip
-		If you plan to use [Cloud Foundry to handle routing](../cf-routing.html) for Kubo, deploy Kubo in the same VPC as Cloud Foundry.
+		If you plan to use [Cloud Foundry to handle routing](../cf-routing.html) for CFCR, deploy CFCR in the same VPC as Cloud Foundry.
 
-1. Set the name of the private key to use on Kubo VMs and the location of the private key file as environment variables named `key_name` and `private_key_filename`. Enter the following commands:
+1. Set the name of the private key to use on CFCR VMs and the location of the private key file as environment variables named `key_name` and `private_key_filename`. Enter the following commands:
 	<p class="terminal">$ export key_name=deployer
 $ export private_key_filename="~/${key_name}.pem"</p>
 
-1. Set the region and zone where you want to deploy Kubo as environment variables named `region` and `zone`. For example:
+1. Set the region and zone where you want to deploy CFCR as environment variables named `region` and `zone`. For example:
 	<p class="terminal">$ export region=us-west-2
 $ export zone=us-west-2a</p>
 
 1. Set the IP address prefix of the public subnet that will be used by the bastion VM, NAT gateway, and load balancers as an environment variable named `public_subnet_ip_prefix`. For example:
 	<p class="terminal">$ export public_subnet_ip_prefix="10.0.1"</p>
 
-1. Set the IP address prefix of the private subnet that will be used for Kubo VMs and the BOSH Director as an environment variable named `private_subnet_ip_prefix`. For example:
+1. Set the IP address prefix of the private subnet that will be used for CFCR VMs and the BOSH Director as an environment variable named `private_subnet_ip_prefix`. For example:
 	<p class="terminal">$ export private_subnet_ip_prefix="10.0.2"</p>
 
 	!!! note
@@ -50,7 +51,7 @@ $ export zone=us-west-2a</p>
 
 ##Step 2: Deploy Bastion VM
 
-Perform the following steps to deploy a bastion VM with a set of security group rules that secures access to the Kubo deployment:
+Perform the following steps to deploy a bastion VM with a set of security group rules that secures access to the CFCR deployment:
 
 1. Change into the home directory. Enter the following command:
 	<p class="terminal">$ cd ~</p>
@@ -104,7 +105,7 @@ Perform the following steps to deploy a bastion VM with a set of security group 
 	!!! warning
 		Subsequent runs of `terraform apply` will delete the bastion VM.
 
-##Step 3: Generate Kubo Configuration
+##Step 3: Generate CFCR Configuration
 
 1. SSH onto the bastion VM. Enter the following command:
 	<p class="terminal">$ ssh -i ~/deployer.pem ubuntu@$(terraform output bosh-bastion-ip)</p>
@@ -116,12 +117,12 @@ $ export kubo_env_name=kubo
 $ export kubo_env_path="\${kubo_envs}/\${kubo_env_name}"</p>
 
 	!!! note
-		`kubo_env_path` points to the directory containing the Kubo configuration. Later topics will refer to this path as `KUBO_ENV`.
+		`kubo_env_path` points to the directory containing the CFCR configuration. Later topics will refer to this path as `KUBO_ENV`.
 
 1. Make a new directory path with the following command:
 	<p class="terminal">$ mkdir -p "${kubo_envs}"</p>
 
-1. Generate a Kubo configuration template. Enter the following command:
+1. Generate a CFCR configuration template. Enter the following command:
 	<p class="terminal">$ ./bin/generate_env_config "\${kubo_envs}" "\${kubo_env_name}" aws</p>
 1. Apply the default network settings configured during the infrastructure paving to the template. Enter the following commands:
 	<p class="terminal">$ . docs/user-guide/platforms/aws/setup_helpers
@@ -193,6 +194,9 @@ Perform the following steps to create a new IAM user to deploy the BOSH Director
 
 1. Click **Apply Policy**.
 
+	!!! warning
+		If you want to configure Cloud Foundry to handle routing for CFCR, **do not continue to the next section**. Perform the procedures in [Configuring Cloud Foundry Routing](../cf-routing/) before deploying the BOSH Director. 
+
 ##Step 5: Deploy BOSH Director
 
 Perform the following steps to deploy a BOSH Director from the bastion VM:
@@ -202,7 +206,7 @@ Perform the following steps to deploy a BOSH Director from the bastion VM:
 	!!! warning
 		The `director-secrets.yml` file contains sensitive information and should not be under version control.
 
-1. Deploy the BOSH Director for Kubo. Enter the following command:
+1. Deploy the BOSH Director for CFCR. Enter the following command:
 	<p class="terminal">$ /share/kubo-deployment/bin/deploy_bosh "${kubo_env_path}" ~/deployer.pem</p>
 
 	After the script completes, `KUBO_ENV` contains the following:
@@ -217,4 +221,6 @@ Perform the following steps to deploy a BOSH Director from the bastion VM:
 		!!! note
 			Subsequent runs of `deploy_bosh` will use `creds.yml` and `state.json` to apply changes to the BOSH environment.
 
-After deploying the BOSH Director, continue to the [Configure IaaS Routing for AWS](routing-aws/) topic.
+If you plan to use IaaS routing for CFCR, continue to [Configure IaaS Routing for AWS](routing-aws/).
+
+If you have configured Cloud Foundry routing, continue to [Deploying CFCR](../deploying-cfcr/).

@@ -1,30 +1,33 @@
-#Deleting Kubo
+#Deleting CFCR
 
-This topic describes how to delete your Kubo deployment and destroy your BOSH environment.
+This topic describes how to delete your Cloud Foundry Container Runtime (CFCR) deployment and destroy your BOSH environment.
 
-##Delete Kubo
+!!! note
+	CFCR was formerly known as Kubo, and many CFCR assets described in this topic still use the Kubo name.
 
-To delete your Kubo deployment, perform the following steps:
+##Delete CFCR
+
+To delete your CFCR deployment, perform the following steps:
 
 1. Log in to your BOSH Director with `bosh-cli -e BOSH-ENV log-in`, where `BOSH-ENV` is the name of your BOSH environment. For example:
 <p class="terminal">$ bosh-cli -e my-bosh log-in
 User (): admin
 Password ():</p>
 When prompted, enter `admin` for the user name and the admin password located in `KUBO_ENV/creds.yml`.
-1. Delete your Kubo deployment. Run the following command:<br>
+1. Delete your CFCR deployment. Run the following command:<br>
 	`bosh-cli -e BOSH-ENV -d KUBO-DEPLOYMENT delete-deployment`
 
 	Where:
 
 	* `BOSH-ENV`: This is the name of your BOSH environment.
-	* `KUBO-DEPLOYMENT`: This is the name of your Kubo deployment. To list your deployments, run `bosh-cli -e BOSH-ENV deployments`.
+	* `KUBO-DEPLOYMENT`: This is the name of your CFCR deployment. To list your deployments, run `bosh-cli -e BOSH-ENV deployments`.
 
 	For example:
 	<p class="terminal">$ bosh-cli -e my-bosh -d my-kubo delete-deployment</p>
 
 ##Destroy BOSH Environment
 
-To destroy all of the resources you created when deploying Kubo, perform the procedures below for your IaaS.
+To destroy all of the resources you created when deploying CFCR, perform the procedures below for your IaaS.
 
 !!! note
 	This section is still under development.
@@ -41,15 +44,15 @@ Perform the following steps to destroy your BOSH environment on Google Cloud Pla
 
 	Where:
 
-	* `KUBO_ENV` is the directory that contains your Kubo configuration. 
-	* `SERVICE_ACCOUNT_KEY` is your GCP service account key. If you followed the procedures in [Deploying BOSH for Kubo on GCP](../installing/gcp/deploying-bosh-gcp/), this is `~/terraform.key.json`.
+	* `KUBO_ENV` is the directory that contains your CFCR configuration. 
+	* `SERVICE_ACCOUNT_KEY` is your GCP service account key. If you followed the procedures in [Deploying BOSH for CFCR on GCP](../installing/gcp/deploying-bosh-gcp/), this is `~/terraform.key.json`.
 
 	For example:
 	<p class="terminal">$ ./bin/destroy_bosh ~/kubo-env/kubo ~/terraform.key.json</p>
 
 1. Change into the directory that contains the GCP Terraform templates. This directory must also contain your `terraform.tfstate` file. Enter the following command:
 	<p class="terminal">$ cd ~/kubo-deployment/docs/user-guide/platforms/gcp</p>
-1. Use Terraform to destroy the resources created by infrastructure paving. You must have set the same environment variables as in [Deploying BOSH for Kubo on GCP](../installing/gcp/deploying-bosh-gcp/). Enter the following command:
+1. Use Terraform to destroy the resources created by infrastructure paving. You must have set the same environment variables as in [Deploying BOSH for CFCR on GCP](../installing/gcp/deploying-bosh-gcp/). Enter the following command:
 	<p class="terminal">$ docker run -i -t \
 	    -e CHECKPOINT_DISABLE=1 \
 	    -e "GOOGLE_CREDENTIALS=\${GOOGLE_CREDENTIALS}" \

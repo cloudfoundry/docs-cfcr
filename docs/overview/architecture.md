@@ -1,18 +1,18 @@
 #Product Architecture
 
-This topic describes the product architecture of Kubo.
+This topic describes the product architecture of Cloud Foundry Container Runtime (CFCR).
 
 ## Overview
 
-In Kubo, the [BOSH Director](https://bosh.io/docs/bosh-components.html#director) manages the VMs for the Kubo instance. The Director handles VM creation, health checking, and resurrection of missing or unhealthy VMs. 
+In CFCR, the [BOSH Director](https://bosh.io/docs/bosh-components.html#director) manages the VMs for the CFCR instance. The Director handles VM creation, health checking, and resurrection of missing or unhealthy VMs. 
 
-The Director uses [CredHub](https://github.com/cloudfoundry-incubator/credhub) and BOSH's [local DNS](https://bosh.io/docs/dns.html#enable) to handle certificate generation within the Kubo clusters. Credhub is also used to store the auto-generated passwords.
+The Director uses [CredHub](https://github.com/cloudfoundry-incubator/credhub) and BOSH's [local DNS](https://bosh.io/docs/dns.html#enable) to handle certificate generation within the CFCR clusters. Credhub is also used to store the auto-generated passwords.
 
-##Kubo Components
+##CFCR Components
 
-Kubo provisions a fully working Kubernetes cluster. See the [Kubernetes Components](#kubernetes-components) section below for more information about how a Kubernetes cluster works.
+CFCR provisions a fully working Kubernetes cluster. See the [Kubernetes Components](#kubernetes-components) section below for more information about how a Kubernetes cluster works.
 
-By default, Kubo deploys the following components:
+By default, CFCR deploys the following components:
 
 * 2 master nodes
 * 3 worker nodes
@@ -24,7 +24,7 @@ By default, Kubo deploys the following components:
 
 ### Internal Component Communication
 
-Kubo uses [Flannel](https://github.com/coreos/flannel) to create an overlay network for the worker nodes, so that they can all share a virtual IP subnet, regardless of the IP addressing set by the underlying IaaS. Flannel is the recognized standard for Kubernetes clusters.
+CFCR uses [Flannel](https://github.com/coreos/flannel) to create an overlay network for the worker nodes, so that they can all share a virtual IP subnet, regardless of the IP addressing set by the underlying IaaS. Flannel is the recognized standard for Kubernetes clusters.
 
 The [API server](#kubernetes-components) on the master nodes handles the communication between them and the worker nodes.
 
@@ -64,15 +64,15 @@ The etcd datastore nodes store the metadata used by the scheduler and the contro
 
 ##Network Topologies 
 
-Kubo can use different routing options to expose the applications run by the Kubernetes cluster.
+CFCR can use different routing options to expose the applications run by the Kubernetes cluster.
 
 ###IaaS Load Balancers
 
-If your IaaS provides load balancers, you can use them to handle traffic for your Kubo instance.
+If your IaaS provides load balancers, you can use them to handle traffic for your CFCR instance.
 
 Consult the following diagram for an example network topology.
 
-![Kubo Topology for IaaS LBs](../images/diagrams/topology-iaas-lbs.png)
+![CFCR Topology for IaaS LBs](../images/diagrams/topology-iaas-lbs.png)
 
 The IaaS-specific load balancer exposes the master nodes that run the Kubernetes API. The load balancer has an external static IP address that acts as both the public and the internal endpoint for traffic to the Kubernetes API.
 
@@ -80,15 +80,18 @@ You can also configure a second IaaS-specific load balancer to forward traffic t
 
 ###Cloud Foundry Routing
 
-If you deploy Kubo alongside [Cloud Foundry](https://docs.cloudfoundry.org), the Cloud Foundry routers handle traffic for your Kubo instance.
+If you deploy CFCR alongside [Cloud Foundry](https://docs.cloudfoundry.org), the Cloud Foundry routers handle traffic for your CFCR instance.
 
 Consult the following diagram for an example network topology.
 
-![Kubo Topology for Cloud Foundry](../images/diagrams/topology-cf-routers.png)
+![CFCR Topology for Cloud Foundry](../images/diagrams/topology-cf-routers.png)
 
-The master nodes that run the Kubernetes API register themselves with the Cloud Foundry TCP router. The TCP router acts as both the public and internal endpoint for the Kubernetes API to route traffic to the master nodes of a Kubo instance. All traffic to the API goes through the Cloud Foundry TCP router and then to a healthy node.
+!!! note
+	The diagram uses Kubo, the old name for CFCR.
 
-You should keep Cloud Foundry and Kubo in separate subnets, to avoid the BOSH Directors from trying to provision the same addresses. But the Cloud Foundry subnet must be able to route traffic directly to the Kubo subnet. 
+The master nodes that run the Kubernetes API register themselves with the Cloud Foundry TCP router. The TCP router acts as both the public and internal endpoint for the Kubernetes API to route traffic to the master nodes of a CFCR instance. All traffic to the API goes through the Cloud Foundry TCP router and then to a healthy node.
+
+You should keep Cloud Foundry and CFCR in separate subnets, to avoid the BOSH Directors from trying to provision the same addresses. But the Cloud Foundry subnet must be able to route traffic directly to the CFCR subnet. 
 
 The diagram above specifies CIDR ranges for demonstration purposes, as well as a public router in front of the Cloud Foundry `gorouter` and `tcp-router`, which is typical in Cloud Foundry deployments.
 
