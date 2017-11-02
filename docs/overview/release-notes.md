@@ -1,4 +1,91 @@
 # Release Notes
 
-!!! note
-	This topic is currently under development.
+## 0.8.0
+
+**Release Date**: November 3, 2017
+
+### Features
+* Upgraded Kubernetes version to 1.8.1
+* Bosh DNS replaces Power DNS
+* Memory limit is configurable
+* Kubelet resource reservation flags exposed: `kube-reserved`, `system-reserved`, `eviction-hard`. See [Kubernetes docs](https://kubernetes.io/docs/tasks/administer-cluster/reserve-compute-resources/) for more info
+* Internal routing from workers to masters through Bosh DNS (no need for HAProxy or LB to route cluster internal traffic) 
+* User can load balance traffic from external load balancers
+
+### Improvements
+* Removed `worker_node_tag` property to set worker tags automatically for GCP load balancers
+
+### Bug Fixes
+* Support for bosh-lite: [GitHub issue #109](https://github.com/cloudfoundry-incubator/kubo-release/issues/109)
+* Config file missing for vSphere: [GitHub issue #110](https://github.com/cloudfoundry-incubator/kubo-release/issues/110)
+
+### Component Versions
+The following table lists the component versions for Cloud Foundry Container Runtime (CFCR) 0.8.0:
+
+  <table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Kubernetes</td>
+    <td>1.8.1</td>
+  </tr>
+  <tr>
+    <td>Flannel</td>
+    <td>0.5.5</td>
+  </tr>
+   <tr>
+    <td>ETCD</td>
+     <td>3.1.8</td>
+  </tr>   
+  <tr>
+    <td>Docker</td>
+    <td>1.11.0</td>
+  </tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.5.2</td>
+  </tr>
+  <tr>
+    <td>Stemcell</td>
+    <td>3445.11</td>
+  </tr>
+  </tbody>
+  </table>
+
+### Upgrading from 0.7.0
+
+Perform the following steps to upgrade an existing CFCR 0.7.0 cluster to 0.8.0:
+
+#### Update your BOSH director to get the latest components for Kubo 0.8.0
+1. Clone the new version of [kubo-deployment](https://github.com/cloudfoundry-incubator/kubo-deployment)
+2. Log into Credhub
+3. Delete the current Kubernetes certificate from CredHub
+``` credhub delete -n "${director_name}/${deployment_name}/tls-kubernetes" ```
+
+3. Verify the appropriate stemcell is installed in bosh
+4. Update the bosh director
+See [Deploying Bosh Director](https://docs-kubo.cfapps.io/installing/gcp/deploying-bosh-gcp/#step-5-deploy-bosh-director)
+
+#### Upgrade your Kubo cluster
+See [Deploying CFCR](https://docs-kubo.cfapps.io/installing/deploying-kubo/#step-3-deploy-cfcr)
+
+
+## 0.7.0
+
+**Release Date**: September 7, 2017
+
+### Features
+* kubo-release tarball bundled with the kubo-deployment
+* The deploy-k8s script deploys local release by default
+* Cluster self healing capabilities: recover worker vms
+* Support for persistent volumes in GCP, AWS and vSphere
+* Improved documentation to install on GCP and AWS
+
+### Bug Fixes
+* Removed AWS-related tags for other platforms
+* Password issues in vSphere [GitHub issue #102](https://github.com/cloudfoundry-incubator/kubo-release/issues/102)
