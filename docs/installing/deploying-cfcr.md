@@ -66,7 +66,28 @@ Perform the following steps to deploy CFCR:
 		* `skip`: Uses the release already uploaded to the BOSH Director
 
 	For example:
-	<p class="terminal">$ ./bin/deploy_k8s ~/kubo-env/kubo my-cluster</pre>
+	<p class="terminal">$ ./bin/deploy_k8s ~/kubo-env/kubo my-cluster</p>
+	
+1. If you configured an external load balancer for [vSphere](/vsphere/deploying-bosh-vsphere/#step-4-configure-routing) or [OpenStack](/openstack/deploying-bosh-openstack/#step-2-configure-routing), perform the following steps:
+
+	1. [Download](https://bosh.io/) the latest version of the BOSH CLI v2 to your CFCR environment and place the binary in your PATH.
+	1. Create an alias for your BOSH Director, by running the following command:<br>
+
+		`bosh alias-env YOUR_ENV -e BOSH_DIRECTOR_IP` 
+
+		Where:
+
+		* `YOUR_ENV`: Choose an alias.
+		* `BOSH_DIRECTOR_IP`: Enter the IP address for the BOSH Director for CFCR.
+
+		For example:
+		<p class="terminal">$ bosh alias-env my-cfcr -e 10.0.0.3</p>
+
+	1. List your deployments and retrieve the name of your CFCR deployment, which may be named `kubo`. For example:
+		<p class="terminal">$ bosh -e my-cfcr deployments</p>
+	1. List the VMs in your deployment, specifying the name of your deployment retrieved above. For example:
+		<p class="terminal">$ bosh -e my-cfcr -d kubo vms</p>
+	1. From the above output, retrieve the IP addresses for the master node VMs. Add these IP addresses to your external load balancer.
 
 ##Step 4: Access Kubernetes
 

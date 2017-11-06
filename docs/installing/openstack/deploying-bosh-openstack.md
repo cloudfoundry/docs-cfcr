@@ -42,6 +42,14 @@ If you want to configure HAProxy to handle routing for CFCR, perform the procedu
 !!! note 
 	OpenStack does not have first-party load-balancing support. You can configure HAProxy to handle external access to the Kubernetes master nodes for administration traffic, and the Kubernetes worker nodes for application traffic.
 
+If you want to configure an external load balancer, perform the following steps:
+
+1. Navigate to `KUBO_ENV` and open the newly created `director.yml` file.
+1. Under the `IaaS routing mode settings` section, set the `routing_mode` to `external`.
+1. Set the `kubernetes_master_host` to the IP address of your external load balancer.
+1. Set the `kubernetes_master_port` to the port exposed by the external load balancer.
+1. Comment out the `master_target_pool` property.
+
 ##Step 3: Deploy BOSH
 
 Perform the following steps to deploy a BOSH Director:
