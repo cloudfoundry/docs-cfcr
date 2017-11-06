@@ -68,7 +68,7 @@ Perform the following steps to deploy CFCR:
 	For example:
 	<p class="terminal">$ ./bin/deploy_k8s ~/kubo-env/kubo my-cluster</p>
 	
-1. If you configured an external load balancer for [vSphere](/vsphere/deploying-bosh-vsphere/#step-4-configure-routing) or [OpenStack](/openstack/deploying-bosh-openstack/#step-2-configure-routing), perform the following steps:
+1. If you configured an external load balancer for [vSphere](vsphere/deploying-bosh-vsphere/#step-4-configure-routing) or [OpenStack](openstack/deploying-bosh-openstack/#step-2-configure-routing), perform the following steps:
 
 	1. [Download](https://bosh.io/) the latest version of the BOSH CLI v2 to your CFCR environment and place the binary in your PATH.
 	1. Create an alias for your BOSH Director, by running the following command:<br>
