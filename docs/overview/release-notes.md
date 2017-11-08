@@ -3,6 +3,55 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as Kubo, and some CFCR assets still use the Kubo name.
 
+## v0.8.1
+
+**Release Date**: November xxx, 2017
+
+### Features
+* Upgraded Kubernetes version to v1.8.2
+
+### Bug Fixes
+* Bug in authorization switch mechanism: all clusters were deployed in RBAC by default. New property in `director.yml` to set desired mode (ABAC|RBAC)
+
+### Component Versions
+The following table lists the component versions for CFCR v0.8.1:
+
+  <table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Kubernetes</td>
+    <td>1.8.2</td>
+  </tr>
+  <tr>
+    <td>Flannel</td>
+    <td>0.5.5</td>
+  </tr>
+   <tr>
+    <td>ETCD</td>
+     <td>3.1.8</td>
+  </tr>   
+  <tr>
+    <td>Docker</td>
+    <td>1.11.0</td>
+  </tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.5.2</td>
+  </tr>
+  <tr>
+    <td>Stemcell</td>
+    <td>3445.11</td>
+  </tr>
+  </tbody>
+  </table>
+
+
 ## v0.8.0
 
 **Release Date**: November 3, 2017
