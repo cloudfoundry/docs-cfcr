@@ -214,7 +214,7 @@ Perform the following steps to deploy a BOSH Director from the bastion VM:
 	* Credentials and SSL certificates for the BOSH Director, stored in `creds.yml`
 
 		!!! warning
-			The `cred.yml` file contains sensitive information and should not be under version control.
+			The `creds.yml` file contains sensitive information and should not be under version control.
 
 	* The [deployment state](https://bosh.io/docs/cli-envs.html#deployment-state), stored in `state.json`
 
