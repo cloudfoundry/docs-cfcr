@@ -5,7 +5,7 @@
 
 ## v0.8.1
 
-**Release Date**: November xxx, 2017
+**Release Date**: November 10, 2017
 
 ### Features
 * Upgraded Kubernetes version to v1.8.2
