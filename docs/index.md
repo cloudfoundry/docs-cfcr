@@ -43,4 +43,10 @@ The following topics describe how to manage and troubleshoot CFCR.
 [Using Docker Registries](./managing/using-docker/)  
 [Deploying Tested Workloads](./managing/tested-workloads/)  
 [Troubleshooting CFCR](./managing/troubleshooting/)  
-[Deleting CFCR](./managing/deleting/)  
+[Deleting CFCR](./managing/deleting/)
+
+## Certifications
+
+<img alt="Kubernetes 1.8 Certification logo" src="./images/common/certified_kubernetes_1.8_color.png" width="198px">
+
+Kubernetes® is a registered trademark of The Linux Foundation in the United States and other countries, and is used pursuant to a license from The Linux Foundation.
