@@ -1,18 +1,18 @@
-# Kubo
+# Cloud Foundry Container Runtime (CFCR)
 
-Welcome to the Kubo documentation!
+Welcome to the CFCR documentation!
 
-This repo contains the content for the Kubo documentation, published at https://docs-kubo.cfapps.io. The documentation is currently under development.
+This repo contains the content for the CFCR documentation, published at https://docs-cfcr.cfapps.io. The documentation is currently under development.
 
 ## Overview
 
-The Kubo documentation is published with [MkDocs](http://www.mkdocs.org/), using a customized version of the [Material](https://github.com/squidfunk/mkdocs-material) theme.
+The CFCR documentation is published with [MkDocs](http://www.mkdocs.org/), using a customized version of the [Material](https://github.com/squidfunk/mkdocs-material) theme.
 
-MkDocs is a Python application that generates a static web app from Markdown files. Each topic in the Kubo documentation is represented by a Markdown file in the [`docs`](https://github.com/cloudfoundry/docs-kubo/tree/master/docs) directory.
+MkDocs is a Python application that generates a static web app from Markdown files. Each topic in the CFCR documentation is represented by a Markdown file in the [`docs`](https://github.com/cloudfoundry/docs-cfcr/tree/master/docs) directory.
 
 ## How To Contribute
 
-Please help us improve the accuracy and completeness of the Kubo documentation by contributing.
+Please help us improve the accuracy and completeness of the CFCR documentation by contributing.
 
 The easiest way to contribute is to file a pull request through GitHub.
 
@@ -23,15 +23,15 @@ To a file a pull request, perform the following steps:
 1. Click the pencil icon to navigate to the GitHub page for the corresponding Markdown file.
 1. Make your changes in the GitHub editor and create a pull request.
 
-You can also [create an issue](https://github.com/cloudfoundry/docs-kubo/issues/new). Issues are repo-wide, so please indicate which topic or topics you are leaving feedback for.
+You can also [create an issue](https://github.com/cloudfoundry/docs-cfcr/issues/new). Issues are repo-wide, so please indicate which topic or topics you are leaving feedback for.
 
 ## How To Style and Format Your Changes
 
-The Kubo documentation is written in Markdown, but it also uses an MkDocs extension called Admonition that enables block-styled side content, such as notes, hints or warnings. See the [Admonition](https://squidfunk.github.io/mkdocs-material/extensions/admonition/) documentation for more information about usage.
+The CFCR documentation is written in Markdown, but it also uses an MkDocs extension called Admonition that enables block-styled side content, such as notes, hints or warnings. See the [Admonition](https://squidfunk.github.io/mkdocs-material/extensions/admonition/) documentation for more information about usage.
 
 ## How To Preview Your Changes with MkDocs
 
-You can use MkDocs to view a live version of the Kubo documentation on your local machine. This can be useful if you are submitting a pull request with substantial changes to the documentation.
+You can use MkDocs to view a live version of the CFCR documentation on your local machine. This can be useful if you are submitting a pull request with substantial changes to the documentation.
 
 Perform the following steps to preview your changes:
 
@@ -46,7 +46,7 @@ Perform the following steps to preview your changes:
 	
 1. Clone this repo:
 
-	`$ git clone https://github.com/cloudfoundry/docs-kubo.git`
+	`$ git clone https://github.com/cloudfoundry/docs-cfcr.git`
 	
 1. Navigate to the repo on your machine.
 1. Launch the MkDocs development server:
