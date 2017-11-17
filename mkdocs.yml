@@ -1,6 +1,6 @@
 # repo config
-repo_name: 'cloudfoundry/docs-kubo'
-repo_url: 'https://github.com/cloudfoundry/docs-kubo'
+repo_name: 'cloudfoundry/docs-cfcr'
+repo_url: 'https://github.com/cloudfoundry/docs-cfcr'
 edit_uri: edit/master/docs/
 site_name: CFCR 
 theme: 'material'
