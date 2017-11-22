@@ -5,11 +5,11 @@
 
 ## v0.9.0
 
-**Release Date**: November xx, 2017
+**Release Date**: November 22, 2017
 
 ### Features
 * C.F.C.R. added to the [Certified Kubernetes Conformance Program](https://www.cncf.io/certification/software-conformance/). Conformance test suite results for v0.9.0 below.
-* Updated Docker Bosh release to 30.1.3
+* Updated Docker Bosh release to 30.1.4
 * Colocated ETCD and master in the same VM. Deployments of v0.9.0 and upper will have 3 worker nodes and 1 master/ETCD node.
 * Updated Bosh to 264.1
 * Kubernetes Dashboard accessibe with RBAC mode as cluster admin (needs to be exposed via `kubectl proxy`)
