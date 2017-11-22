@@ -3,6 +3,62 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as Kubo, and some CFCR assets still use the Kubo name.
 
+## v0.9.0
+
+**Release Date**: November 22, 2017
+
+### Features
+* C.F.C.R. added to the [Certified Kubernetes Conformance Program](https://www.cncf.io/certification/software-conformance/). Conformance test suite results for v0.9.0 below.
+* Updated Docker Bosh release to 30.1.4
+* Colocated ETCD and master in the same VM. Deployments of v0.9.0 and upper will have 3 worker nodes and 1 master/ETCD node.
+* Updated Bosh to 264.1
+* Kubernetes Dashboard accessibe with RBAC mode as cluster admin (needs to be exposed via `kubectl proxy`)
+
+### Bug Fixes
+* Dashboard crashing after deployment [GitHub issue #227](https://github.com/cloudfoundry-incubator/kubo-deployment/issues/227)
+
+### Component Versions
+The following table lists the component versions for CFCR v0.9.0:
+
+ <table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Kubernetes</td>
+    <td>1.8.2</td>
+  </tr>
+  <tr>
+    <td>Flannel</td>
+    <td>0.5.5</td>
+  </tr>
+   <tr>
+    <td>ETCD</td>
+     <td>3.1.8</td>
+  </tr>   
+  <tr>
+    <td>Docker</td>
+    <td>1.11.0</td>
+  </tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.5.2</td>
+  </tr>
+  <tr>
+    <td>Stemcell</td>
+    <td>3445.11</td>
+  </tr>
+  </tbody>
+  </table>
+
+### Conformance tests results
+
+Conformance test results can be downloaded from [this link](https://storage.googleapis.com/conformance-results/conformance-results-0.9.0-dev.40.tar.gz)
+
 ## v0.8.1
 
 **Release Date**: November 10, 2017
