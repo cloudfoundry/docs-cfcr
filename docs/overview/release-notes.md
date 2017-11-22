@@ -8,11 +8,11 @@
 **Release Date**: November 22, 2017
 
 ### Features
-* C.F.C.R. added to the [Certified Kubernetes Conformance Program](https://www.cncf.io/certification/software-conformance/). Conformance test suite results for v0.9.0 below.
-* Updated Docker Bosh release to 30.1.4
-* Colocated ETCD and master in the same VM. Deployments of v0.9.0 and upper will have 3 worker nodes and 1 master/ETCD node.
-* Updated Bosh to 264.1
-* Kubernetes Dashboard accessibe with RBAC mode as cluster admin (needs to be exposed via `kubectl proxy`)
+* CFCR has been added to the [Certified Kubernetes Conformance Program](https://www.cncf.io/certification/software-conformance/). See the [Conformance Test Results](#conformance-tests-results) below.
+* The Docker BOSH release has been updated to v30.1.4.
+* The ETCD and master nodes are colocated on the same VM. Deployments of v0.9.0+ have 3 worker nodes and 1 master/ETCD node.
+* BOSH has been updated to v264.1.
+* The Kubernetes Dashboard is accessible with RBAC mode as cluster admin. The Dashboard needs to be exposed via `kubectl proxy`.
 
 ### Bug Fixes
 * Dashboard crashing after deployment [GitHub issue #227](https://github.com/cloudfoundry-incubator/kubo-deployment/issues/227)
@@ -55,9 +55,9 @@ The following table lists the component versions for CFCR v0.9.0:
   </tbody>
   </table>
 
-### Conformance tests results
+### Conformance Tests Results
 
-Conformance test results can be downloaded from [this link](https://storage.googleapis.com/conformance-results/conformance-results-0.9.0-dev.40.tar.gz)
+[Download](https://storage.googleapis.com/conformance-results/conformance-results-0.9.0-dev.40.tar.gz) the conformance test results.
 
 ## v0.8.1
 
