@@ -12,6 +12,7 @@
 * Updated Docker Bosh release to 30.1.3
 * Colocated ETCD and master in the same VM. Deployments of v0.9.0 and upper will have 3 worker nodes and 1 master/ETCD node.
 * Updated Bosh to 264.1
+* Kubernetes Dashboard accessibe with RBAC mode as cluster admin (needs to be exposed via `kubectl proxy`)
 
 ### Bug Fixes
 * Dashboard crashing after deployment [GitHub issue #227](https://github.com/cloudfoundry-incubator/kubo-deployment/issues/227)
