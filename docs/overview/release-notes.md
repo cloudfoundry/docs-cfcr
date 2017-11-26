@@ -42,7 +42,7 @@ The following table lists the component versions for CFCR v0.9.0:
   </tr>   
   <tr>
     <td>Docker</td>
-    <td>1.11.0</td>
+    <td>1.13.1</td>
   </tr>
   <tr>
     <td>CNI</td>
