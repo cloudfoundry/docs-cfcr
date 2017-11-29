@@ -1,6 +1,6 @@
 #Configuring Cloud Foundry Routing
 
-This topic describes how to configure Cloud Foundry to handle routing for SCloud Foundry Container Runtime (CFCR). 
+This topic describes how to configure Cloud Foundry to handle routing for Cloud Foundry Container Runtime (CFCR). 
 
 You configure Cloud Foundry routing by editing the BOSH configuration files before deploying BOSH for CFCR. The procedure for generating these files and using them to deploy BOSH for CFCR will vary depending on your IaaS.
 
