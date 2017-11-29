@@ -38,10 +38,10 @@ $ export private_key_filename="~/${key_name}.pem"</p>
 $ export zone=us-west-2a</p>
 
 1. Set the IP address prefix of the public subnet that will be used by the bastion VM, NAT gateway, and load balancers as an environment variable named `public_subnet_ip_prefix`. For example:
-	<p class="terminal">$ export public_subnet_ip_prefix="10.0.1"</p>
+	<p class="terminal">$ export public_subnet_ip_prefix="10.0.0.1"</p>
 
 1. Set the IP address prefix of the private subnet that will be used for CFCR VMs and the BOSH Director as an environment variable named `private_subnet_ip_prefix`. For example:
-	<p class="terminal">$ export private_subnet_ip_prefix="10.0.2"</p>
+	<p class="terminal">$ export private_subnet_ip_prefix="10.0.0.2"</p>
 
 	!!! note
 		You create the public and private subnets with Terraform in a later step, so you do not need to create them in the AWS Console.
