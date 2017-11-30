@@ -5,6 +5,7 @@ edit_uri: edit/master/docs/
 site_name: CFCR 
 theme: 'material'
 theme_dir: 'theme-overrides'
+site_favicon: favicon.ico
 
 # left nav
 pages:
