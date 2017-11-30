@@ -205,7 +205,7 @@ Perform the following steps to deploy a BOSH Director:
 	!!! warning
 		The `director-secrets.yml` file contains sensitive information and should not be under version control.
 
-1. Ensure your vSphere hostname can be resolved using `8.8.8.8` as the nameserver. For example:
+1. Ensure your vCenter hostname can be resolved using `8.8.8.8` as the nameserver. For example:
 
 	<p class="terminal">$ dig @8.8.8.8 ab2-host-a101-11.foo-12.bar.cf-example.com</p>
 
