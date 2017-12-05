@@ -36,7 +36,7 @@ You can use MkDocs to view a live version of the CFCR documentation on your loca
 Perform the following steps to preview your changes:
 
 1. Install MkDocs on your machine by following the [instructions](http://www.mkdocs.org/#installation) on the MkDocs site.
-1. Use `pip` to install the latest version of the Material theme:
+1. Use `pip` (or `sudo -H pip`) to install the latest version of the Material theme:
 
 	`$ pip install mkdocs-material`
 	
