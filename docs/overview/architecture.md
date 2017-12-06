@@ -83,18 +83,3 @@ You can also configure a second IaaS-specific load balancer to forward traffic t
 If you deploy CFCR alongside [Cloud Foundry](https://docs.cloudfoundry.org), the Cloud Foundry routers handle traffic for your CFCR deployment, and CFCR and Cloud Foundry each have their own BOSH Director.
 
 Keep Cloud Foundry and CFCR in separate subnets to avoid the BOSH Directors from trying to provision the same addresses, but ensure that the Cloud Foundry subnet can route traffic to the CFCR subnet. See [Configuring Cloud Foundry Routing](/installing/cf-routing/index.html) for how to configure Cloud Foundry to handle routing for CFCR.
-
-Consult the following diagram for an example network topology.
-
-![CFCR Topology for Cloud Foundry](../images/diagrams/topology-cf-routers.png)
-
-!!! note
-	The diagram uses Kubo, the old name for CFCR.
-
-The master nodes that run the Kubernetes API register themselves with the Cloud Foundry TCP router. The TCP router acts as both the public and internal endpoint for the Kubernetes API to route traffic to the master nodes of a CFCR instance. All traffic to the API goes through the Cloud Foundry TCP router and then to a healthy node.
-
-The diagram above specifies CIDR ranges for demonstration purposes, as well as a public router in front of the Cloud Foundry `gorouter` and `tcp-router`, which is typical in Cloud Foundry deployments.
-
-
-
-
