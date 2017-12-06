@@ -20,7 +20,7 @@ By default, CFCR provisions a Kubernetes cluster with the following components:
 	!!! note
 		The single proxy node front-loads the [kube-proxy](#kubernetes-components), the Kubernetes network proxy that runs on each worker node. For IaaSes that support load balancers, the proxy node is not required.
 
-See the [Kubernetes Components](#kubernetes-components) section for more information about how a Kubernetes cluster works.
+See the [How a Kubernetes Cluster Works](#kubernetes-components) section for more information.
 
 ### Internal Component Communication
 
