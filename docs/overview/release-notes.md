@@ -22,17 +22,13 @@
 
 * GCP bastion has a recent Ubuntu image -- [Deployment #230](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/230).
   Thanks [@alex-slynko](https://github.com/alex-slynko).
-* Change common_name for docker cert -- [Deployment #229](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/229).
+* Change `common_name` for the Docker cert -- [Deployment #229](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/229).
   Thanks [@alex-slynko](https://github.com/alex-slynko).
 * Support the `nats` link that is already implemented in template -- [Release #134](https://github.com/cloudfoundry-incubator/kubo-release/pull/134).
   Thanks [@drnic](https://github.com/drnic).
 * Add namespaces to the cluster, creds and context in `set_kubeconfig` -- [Deployment #235](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/235).
 * InfluxDB is not exposed via a `NodePort` anymore -- [Release #138](https://github.com/cloudfoundry-incubator/kubo-release/issues/138).
 * Fix in `route-sync` to avoid memory leak -- [Release #140](https://github.com/cloudfoundry-incubator/kubo-release/issues/140).
-
-### Breaking changes
-
-
 
 ## v0.9.0
 
