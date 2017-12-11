@@ -30,7 +30,6 @@
 * InfluxDB is not exposed via a `NodePort` anymore -- [Release #138](https://github.com/cloudfoundry-incubator/kubo-release/issues/138).
 * Fix in `route-sync` to avoid memory leak -- [Release #140](https://github.com/cloudfoundry-incubator/kubo-release/issues/140).
 
-
 ### Component Versions
 
 The following table lists the component versions for CFCR v0.10.0:
@@ -69,6 +68,10 @@ The following table lists the component versions for CFCR v0.10.0:
   </tr>
   </tbody>
   </table>
+  
+### Conformance Tests Results
+
+[Download](https://storage.googleapis.com/conformance-results/conformance-results-0.10.0-dev.52.tar.gz) the conformance test results.
   
 ## v0.9.0
 
