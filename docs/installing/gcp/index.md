@@ -10,10 +10,10 @@ You must have the following to install CFCR on GCP:
 
 1. A user account with the Owner role in the GCP project. For more information, see the [Understanding Roles](https://cloud.google.com/iam/docs/understanding-roles) topic in the GCP documentation.
 
-1. You must enable the Google Identity and Access Management (IAM) and Google Cloud Resource Manager APIs. To enable these APIs, perform the following steps:
+1. You must enable the Google Cloud Resource Manager API V2. To enable this API, perform the following steps:
 	1. Navigate to the GCP Console.
 	1. From the left-hand navigation, select **APIs & services > Library**.
-	1. Search for the **Google Cloud Resource Manager API** and the **Google Identity and Access Management API** entries. If they are disabled, click the **Enable** button to enable them.
+	1. Search for the **Google Cloud Resource Manager API V2** entry. If it is disabled, click the **Enable** button to enable it.
 
 ##Step 1: Deploy BOSH for CFCR on GCP
 
