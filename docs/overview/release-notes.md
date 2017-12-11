@@ -3,6 +3,37 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as Kubo, and some CFCR assets still use the Kubo name.
 
+## v0.10.0
+
+**Release Date:** December 8, 2017
+
+* New property `addons_spec_path` in `director.yml`. Operators can use it to provide a K8s spec file that will be applied to the cluster when it comes up -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/152647926).
+* New property `worker_count` in `director.yml`. Operators can use it configure the number of K8s workers -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153055729).
+* Enabled the K8s aggregation layer to support API server extensions -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/152931645).
+* CFCR was tested to run with 20 workers and 'chatty' workloads -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153171519).
+* Exposed the K8s API connection properties via a BOSH link -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153321194).
+* **[ACTION REQUIRED]** The HAProxy (`proxy`) routing mode is not longer supported -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/152231249).
+* **[ACTION REQUIRED]** **GCP:** The `service_account` property in `director.yml` is no longer supported. It has been replaced by `service_account_master` and `service_account_worker` which can be used to reference GCP service accounts that will be provided to master and worker VMs separately -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/150975060).
+* **GCP:** New properties `service_key_master` and `service_key_worker` in `director.yml`. Operators can use them to enable the K8s cloud provider use a GCP service account without having to change the BOSH cloud config -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153171508).
+* **GCP:** The GCP K8s Service Catalog was tested on CFCR -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153293570).
+* **GCP:** Predefined a `standard` storage class to be applied when CFCR is deployed on GCP. It uses the `gce-pd` PV provisioner -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/152853461).
+
+### Community contributions 
+
+* GCP bastion has a recent Ubuntu image -- [Deployment #230](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/230).
+  Thanks [@alex-slynko](https://github.com/alex-slynko).
+* Change common_name for docker cert -- [Deployment #229](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/229).
+  Thanks [@alex-slynko](https://github.com/alex-slynko).
+* Support the `nats` link that is already implemented in template -- [Release #134](https://github.com/cloudfoundry-incubator/kubo-release/pull/134).
+  Thanks [@drnic](https://github.com/drnic).
+* Add namespaces to the cluster, creds and context in `set_kubeconfig` -- [Deployment #235](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/235).
+* InfluxDB is not exposed via a `NodePort` anymore -- [Release #138](https://github.com/cloudfoundry-incubator/kubo-release/issues/138).
+* Fix in `route-sync` to avoid memory leak -- [Release #140](https://github.com/cloudfoundry-incubator/kubo-release/issues/140).
+
+### Breaking changes
+
+
+
 ## v0.9.0
 
 **Release Date**: November 22, 2017
