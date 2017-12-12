@@ -64,7 +64,7 @@ The following table lists the component versions for CFCR v0.10.0:
   </tr>
   <tr>
     <td>Stemcell</td>
-    <td>3445.11</td>
+    <td>3468.5</td>
   </tr>
   </tbody>
   </table>
