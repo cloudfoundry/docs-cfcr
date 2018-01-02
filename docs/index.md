@@ -33,7 +33,6 @@ The following topics describe how to install and configure CFCR on your cloud pl
 [Deploying CFCR](./installing/deploying-cfcr/)  
 [Customizing CFCR](./installing/customizing-cfcr/)  
 [Configuring Cloud Foundry Routing](./installing/cf-routing/)  
-[Configuring HAProxy](./installing/haproxy/) 
 
 ##Managing and Troubleshooting
 
