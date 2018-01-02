@@ -25,5 +25,4 @@ Follow the procedures below for your IaaS. You must deploy BOSH for CFCR and con
 ##Deployment Options
 
 * [Customizing CFCR](customizing-cfcr/): Deploy a customized CFCR installation.
-* [Configuring Cloud Foundry Routing](cf-routing/): Use Cloud Foundry to handle routing for CFCR instead of IaaS load balancers or HAProxy.
-* [Configuring HAProxy](haproxy/): Use HAProxy to handle routing for CFCR.
+* [Configuring Cloud Foundry Routing](cf-routing/): Use Cloud Foundry to handle routing for CFCR instead of IaaS load balancers.
