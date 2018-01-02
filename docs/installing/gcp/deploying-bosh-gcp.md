@@ -52,14 +52,14 @@ Perform the following steps to set up a GCP account for Terraform:
 1. From the Google Cloud Shell, create a service account for Terraform. Enter the following command:
 	<p class="terminal">$ gcloud iam service-accounts create ${prefix}terraform</p>
 1. Create a service account key. Enter the following command:
-	<p class="terminal">$ gcloud iam service-accounts keys create ~/terraform.key.json \
+	<p class="terminal">$ gcloud iam service-accounts keys create ~/${prefix}tf.key.json \
     --iam-account ${service_account_email}</p>
 1. Grant the new service account owner access to your project. Enter the following command:
 	<p class="terminal">$ gcloud projects add-iam-policy-binding \${project_id} \
 	  --member serviceAccount:${service_account_email} \
 	  --role roles/owner</p>
 1. Set your service account key as an environment variable. Enter the following command:
-	<p class="terminal">$ export GOOGLE_CREDENTIALS=$(cat ~/terraform.key.json)</p>
+	<p class="terminal">$ export GOOGLE_CREDENTIALS=$(cat ~/${prefix}tf.key.json)</p>
 
 	If Terraform refuses to accept the JSON key as the content of `GOOGLE_CREDENTIALS`, provide the path to the file instead, using `GOOGLE_APPLICATION_CREDENTIALS`. Enter the following command:
 		<p class="terminal">$ export GOOGLE_APPLICATION_CREDENTIALS=~/terraform.key.json</p>
@@ -94,7 +94,8 @@ Perform the following steps to deploy a bastion VM with a set of firewall rules 
     -var region=\${region} \
     -var prefix=\${prefix} \
     -var zone=\${zone} \
-    -var subnet_ip_prefix=\${subnet_ip_prefix}
+    -var subnet_ip_prefix=\${subnet_ip_prefix} \
+    -state ~/${prefix}.tfstate
 	</p>
 	This command takes between 60 and 90 seconds to complete.
 
@@ -102,7 +103,7 @@ Perform the following steps to deploy a bastion VM with a set of firewall rules 
 		To preview the Terraform execution plan before applying it, run `plan` instead of `apply`.
 
 1. Copy the service account key to the newly created bastion VM. Enter the following command:
-	<p class="terminal">$ gcloud compute scp ~/terraform.key.json "${prefix}bosh-bastion":./ --zone ${zone}</p>
+	<p class="terminal">$ gcloud compute scp ~/${prefix}tf.key.json "${prefix}bosh-bastion":./terraform.key.json --zone ${zone}</p>
 	If prompted to create SSH keys, enter `Y` and use an empty passphrase.
 
 ##Step 4: Generate BOSH Configuration
