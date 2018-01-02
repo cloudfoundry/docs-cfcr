@@ -32,6 +32,7 @@ You must have the following to install CFCR on OpenStack:
     - Incoming TCP traffic on port 8443 for the Kubernetes API server 
     - Incoming TCP traffic for port range 30000—32765
     - Incoming UDP traffic for port 8285 within the CFCR network
+    - Incoming UDP traffic for port 8472 within the CFCR network
     - Incoming TCP traffic for ports 8844 and 25555 for operators
     - Outgoing TCP traffic for port 53 within the CFCR network
    
