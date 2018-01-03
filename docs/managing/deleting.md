@@ -51,7 +51,7 @@ Perform the following steps to destroy your BOSH environment on Google Cloud Pla
 	<p class="terminal">$ ./bin/destroy_bosh ~/kubo-env/kubo ~/terraform.key.json</p>
 
 1. Change into the directory that contains the GCP Terraform templates. This directory must also contain your `terraform.tfstate` file. Enter the following command:
-	<p class="terminal">$ cd ~/kubo-deployment/docs/user-guide/platforms/gcp</p>
+	<p class="terminal">$ cd ~/kubo-deployment/docs/terraform/gcp/platform</p>
 1. Use Terraform to destroy the resources created by infrastructure paving. You must have set the same environment variables as in [Deploying BOSH for CFCR on GCP](../installing/gcp/deploying-bosh-gcp/). Enter the following command:
 	<p class="terminal">$ docker run -i -t \
 	    -e CHECKPOINT_DISABLE=1 \
