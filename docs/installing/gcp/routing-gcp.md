@@ -29,7 +29,7 @@ $ export zone=us-west1-a</p>
 ##Step 2: Configure Load Balancers
 
 1. Change into the GCP user guide directory of the `kubo-deployment` repo. Enter the following command:
-	<p class="terminal">$ cd /share/kubo-deployment/docs/user-guide/routing/gcp
+	<p class="terminal">$ cd /share/kubo-deployment/docs/terraform/gcp/routing
 </p>
 1. Export your state information as environment variables with the following commands:
 	<p class="terminal">$ export state_dir=~/kubo-env/${kubo_env_name}

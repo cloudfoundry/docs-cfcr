@@ -13,13 +13,13 @@ If you want to use Cloud Foundry for routing instead of IaaS load balancers, see
 
 1. If you are not in the same shell session as you were when completing the procedures in [Deploying BOSH for CFCR on AWS](deploying-bosh-aws/), perform the following steps:
 	1. Change into your Terraform working directory with the following command:
-		<p class="terminal">$ cd ~/kubo-deployment/docs/user-guide/platforms/aws</p>
+		<p class="terminal">$ cd ~/kubo-deployment/docs/terraform/aws/platform</p>
 	1. SSH onto the bastion VM with the following command:
 		<p class="terminal">$ ssh -i ~/deployer.pem ubuntu@$(terraform output bosh-bastion-ip)</p>
 	1. Set the `kubo_env_name` environment variable with the following command:
 		<p class="terminal">$ export kubo_env_name=kubo</p>
 1. On the bastion VM, change into the directory that contains the AWS user guide. Enter the following command:
-	<p class="terminal">$ cd /share/kubo-deployment/docs/user-guide/routing/aws</p>
+	<p class="terminal">$ cd /share/kubo-deployment/docs/terraform/aws/routing</p>
 1. Set the path of the state directory as an environment variable named `state_dir`. Enter the following command:
 	<p class="terminal">$ export state_dir=~/kubo-env/${kubo_env_name}</p> 
 1. Set the path of the Terraform state file as an environment variable named `kubo_terraform_state`. Enter the following command:
@@ -45,8 +45,7 @@ $ export AWS_SECRET_ACCESS_KEY=dsfSDFKOSDFKOasdmasdKSADOK</p>
 	<p class="terminal">$ export master_target_pool=\$(terraform output -state=${kubo_terraform_state} kubo_master_target_pool) 
 $ export kubernetes_master_host=\$(terraform output -state=${kubo_terraform_state} master_lb_ip_address) </p>
 1. Update the CFCR environment by running the the following commands:
-	<p class="terminal">$ . /share/kubo-deployment/docs/user-guide/platforms/aws/setup_helpers
-$ set_iaas_routing "${state_dir}/director.yml"</p>
+	<p class="terminal">$ /usr/bin/set_iaas_routing "${kubo_env_path}/director.yml"</p>
 
 	!!! tip
 		You can also set the configuration manually by editing `KUBO_ENV/director.yml`.

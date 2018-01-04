@@ -31,23 +31,23 @@ $ export AWS_SECRET_ACCESS_KEY=dsfSDFKOSDFKOasdmasdKSADOK</p>
 
 1. Set the name of the private key to use on CFCR VMs and the location of the private key file as environment variables named `key_name` and `private_key_filename`. Enter the following commands:
 	<p class="terminal">$ export key_name=deployer
-$ export private_key_filename="~/${key_name}.pem"</p>
+$ export private_key_filename="${HOME}/${key_name}.pem"</p>
 
 1. Set the region and zone where you want to deploy CFCR as environment variables named `region` and `zone`. For example:
 	<p class="terminal">$ export region=us-west-2
 $ export zone=us-west-2a</p>
 
-1. Set the IP address prefix of the public subnet that will be used by the bastion VM, NAT gateway, and load balancers as an environment variable named `public_subnet_ip_prefix`. For example:
-	<p class="terminal">$ export public_subnet_ip_prefix="10.0.0.1"</p>
+1. Set the IP address prefix of the public subnet that will be used by the bastion VM, NAT gateway, and load balancers as an environment variable named `public_subnet_ip_prefix`. This prefix must be within the VPC CIDR range. For example:
+	<p class="terminal">$ export public_subnet_ip_prefix="10.0.0"</p>
 
-1. Set the IP address prefix of the private subnet that will be used for CFCR VMs and the BOSH Director as an environment variable named `private_subnet_ip_prefix`. For example:
-	<p class="terminal">$ export private_subnet_ip_prefix="10.0.0.2"</p>
+1. Set the IP address prefix of the private subnet that will be used for CFCR VMs and the BOSH Director as an environment variable named `private_subnet_ip_prefix`. This prefix must be within the VPC CIDR range. For example:
+	<p class="terminal">$ export private_subnet_ip_prefix="10.0.1"</p>
 
 	!!! note
 		You create the public and private subnets with Terraform in a later step, so you do not need to create them in the AWS Console.
 
 1. Set the path of the Terraform state file as an environment variable named `kubo_terraform_state`. Enter the following command:
-	<p class="terminal">$ export kubo_terraform_state=~/terraform.tfstate</p>
+	<p class="terminal">$ export kubo_terraform_state="${HOME}/terraform.tfstate"</p>
 
 ##Step 2: Deploy Bastion VM
 
@@ -60,7 +60,7 @@ Perform the following steps to deploy a bastion VM with a set of security group 
 1. Expand the tarball. Enter the following command:
 	<p class="terminal">$ tar -xvf kubo-deployment-latest.tgz</p>
 1. Change into the directory that contains the AWS Terraform templates. Enter the following command:
-	<p class="terminal">$ cd kubo-deployment/docs/user-guide/platforms/aws</p>
+	<p class="terminal">$ cd kubo-deployment/docs/terraform/aws/platform</p>
 1. From the AWS Console, check if your VPC has an existing Internet Gateway (IGW) attached. If it does, perform the following steps to edit the Terraform template:
 	1. Open `kubo-infrastructure.tf`.
 	1. Use `//` to comment out the `aws_internet_gateway` section so that it looks like the following:
@@ -125,8 +125,7 @@ $ export kubo_env_path="\${kubo_envs}/\${kubo_env_name}"</p>
 1. Generate a CFCR configuration template. Enter the following command:
 	<p class="terminal">$ ./bin/generate_env_config "\${kubo_envs}" "\${kubo_env_name}" aws</p>
 1. Apply the default network settings configured during the infrastructure paving to the template. Enter the following commands:
-	<p class="terminal">$ . docs/user-guide/platforms/aws/setup_helpers
-$ update_aws_env "${kubo_env_path}/director.yml"</p>
+	<p class="terminal">$ /usr/bin/update_aws_env "${kubo_env_path}/director.yml"</p>
 
 	!!! tip
 		You can directly edit the configuration file located at `${kubo_env_path}/director.yml`.

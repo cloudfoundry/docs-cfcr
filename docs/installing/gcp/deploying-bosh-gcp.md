@@ -75,7 +75,7 @@ Perform the following steps to deploy a bastion VM with a set of firewall rules 
 1. Expand the tarball. Enter the following command:
 	<p class="terminal">$ tar -xvf kubo-deployment-latest.tgz</p>
 1. Change into the directory that contains the GCP Terraform templates. Enter the following command:
-	<p class="terminal">$ cd ~/kubo-deployment/docs/user-guide/platforms/gcp</p>
+	<p class="terminal">$ cd ~/kubo-deployment/docs/terraform/gcp/platform</p>
 1. Initialize the Terraform cloud provider. Enter the following command:
 	<p class="terminal">$ docker run -i -t \
   -v \$(pwd):/\$(basename \$(pwd)) \
