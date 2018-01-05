@@ -3,6 +3,71 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as Kubo, and some CFCR assets still use the Kubo name.
 
+## v0.11.0
+
+**Release Date:** December 20, 2017
+
+* The CF Routing properties in `director.yml` have been renamed to follow a consistent naming style -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153171539).
+  - **[ACTION REQUIRED]** if you are using CF Routing in CFCR, you will need to update your `director.yml` with the new CF Routing property names.
+* CFCR can now be deployed by using a single base BOSH manifest -- [PR](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/237).
+  - **[ACTION REQUIRED]** if you are deploying CFCR by means of `bosh deploy`, you may have to look again into the names of the manifest and the ops-files as various changes have been made.
+* Looked into an issue with the `kubernetes-system-spec` post-start script -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153535114) / [Github Issue](https://github.com/cloudfoundry-incubator/kubo-release/issues/143).
+* **vSphere:** Support persistent volumes on environments with no Resource Pools -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153646184).
+
+### Theme: Security
+
+* **AWS:** The IAM policies for the master and worker nodes are now restricted to the necessary permissions -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/151445255).
+  - **[ACTION REQUIRED]** if you are deploying CFCR on AWS, you need to re-run Terraform to update the IAM Policies.
+* CFCR is now using stemcell version 3468.13 -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153557143).
+* Anonymous requests to the API server have been disabled -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153561120).
+* Tweaked the permissions of files with sensitive information so that they cannot be seen by non-root users -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/152711831).
+* ETCD only listens to TLS connections -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153098701).
+* Disallow `exec` and `attach` commands to privileged pods -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153592296).
+* **vSphere:** Escapte bashslashes for vSphere users in cloud config -- [PR](https://github.com/cloudfoundry-incubator/kubo-release/pull/121).
+
+### Component Versions
+
+The following table lists the component versions for CFCR v0.11.0:
+
+ <table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Kubernetes</td>
+    <td>1.8.4</td>
+  </tr>
+  <tr>
+    <td>Flannel</td>
+    <td>0.5.5</td>
+  </tr>
+   <tr>
+    <td>ETCD</td>
+     <td>3.2.10</td>
+  </tr>   
+  <tr>
+    <td>Docker</td>
+    <td>1.13.1</td>
+  </tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.5.2</td>
+  </tr>
+  <tr>
+    <td>Stemcell</td>
+    <td>3468.13</td>
+  </tr>
+  </tbody>
+  </table>
+  
+### Conformance Tests Results
+
+[Download](https://storage.googleapis.com/conformance-results/conformance-results-0.11.0-dev.62.tar.gz) the conformance test results.
+
 ## v0.10.0
 
 **Release Date:** December 8, 2017
