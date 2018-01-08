@@ -7,23 +7,23 @@
 
 **Release Date:** December 20, 2017
 
-* The CF Routing properties in `director.yml` have been renamed to follow a consistent naming style -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153171539).
+* Rename the CF Routing properties in `director.yml` in order to follow a consistent naming style -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153171539).
   - **[ACTION REQUIRED]** if you are using CF Routing in CFCR, you will need to update your `director.yml` with the new CF Routing property names.
-* CFCR can now be deployed by using a single base BOSH manifest -- [PR](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/237).
+* Implement ability to deploy CFCR on an existing BOSH Director and make the experience for BOSH-native users comparable to the one in cf-deployment, bosh-deployment and concourse-deployment -- [PR](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/237).
   - **[ACTION REQUIRED]** if you are deploying CFCR by means of `bosh deploy`, you may have to look again into the names of the manifest and the ops-files as various changes have been made.
+* **vSphere:** Support persistent workloads on vSphere environments that don't use Resource Pools (Resource Pools are optional in vSphere and we are already supporting vSphere environments that make use of Resource Pools) -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153646184).
 * Looked into an issue with the `kubernetes-system-spec` post-start script -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153535114) / [Github Issue](https://github.com/cloudfoundry-incubator/kubo-release/issues/143).
-* **vSphere:** Support persistent volumes on environments with no Resource Pools -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153646184).
 
 ### Theme: Security
 
-* **AWS:** The IAM policies for the master and worker nodes are now restricted to the necessary permissions -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/151445255).
+* **AWS:** Reduce the permissions of the AWS IAM policies for the master and worker nodes so that if credentials get leaked from an AWS CFCR node, the permissions associated with it will be minimal -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/151445255).
   - **[ACTION REQUIRED]** if you are deploying CFCR on AWS, you need to re-run Terraform to update the IAM Policies.
-* CFCR is now using stemcell version 3468.13 -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153557143).
-* Anonymous requests to the API server have been disabled -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153561120).
-* Tweaked the permissions of files with sensitive information so that they cannot be seen by non-root users -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/152711831).
-* ETCD only listens to TLS connections -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153098701).
+* Use stemcell version 3468.13 -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153557143).
+* Disallow anonymous requests to the API server -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153561120).
+* Alter the permissions of files with sensitive information so that they cannot be read by non-root users -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/152711831).
+* Make ETCD only listen to TLS connections so that ETCD-bound traffic in the cluster cannot be sniffed -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153098701).
 * Disallow `exec` and `attach` commands to privileged pods -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153592296).
-* **vSphere:** Escapte bashslashes for vSphere users in cloud config -- [PR](https://github.com/cloudfoundry-incubator/kubo-release/pull/121).
+* **vSphere:** Escape bashslashes for vSphere users in cloud config -- [PR](https://github.com/cloudfoundry-incubator/kubo-release/pull/121).
 
 ### Component Versions
 
