@@ -8,7 +8,7 @@ Pluggable add-ons are deployed in parallel with a CFCR cluster. You can use this
 
 1. Create a YAML file describing the workloads of any add-ons you wish to use.
 1. Access the `director.yml` file and add the `add-ons_spec_path` property.
-1. In `director.yml`, set `add-ons_spec_path` to the path of the YAML file you created in step 1.
+1. In `director.yml`, set `add-ons_spec_path` to the path of the YAML file you created earlier.
 1. Deploy or redeploy the CFCR cluster.
 
 [comment]: <> ( ![Successful CFCR deployment](./images/common/cfcr-successful-deploy.png "Successful CFCR deployment") )
