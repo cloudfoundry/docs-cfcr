@@ -11,13 +11,13 @@ Pluggable add-ons are deployed in parallel with a CFCR cluster. You can use this
 1. In `director.yml`, set `add-ons_spec_path` to the path of the YAML file you created in step 1.
 1. Deploy or redeploy the CFCR cluster.
 
-![Successful CFCR deployment](./images/common/cfcr-successful-deploy.png)
+![Successful CFCR deployment](./images/common/cfcr-successful-deploy.png "Successful CFCR deployment")
 
 ### Troubleshooting Pluggable Add-ons
 
 If you're redeploying an existing CFCR cluster to include add-ons, and the `director.yml` file is not found or incorreclty configured, the deployment will complete with an error message.
 
-![Successful CFCR deployment with no director.yml](./images/common/cfcr-error-no-yml.png)
+![Successful CFCR deployment with no director.yml](./images/common/cfcr-error-no-yml.png "Successful CFCR deployment with no director.yml")
 
 If you're deploying a new CFCR cluster, deployment will fail if the `director.yml` file is not found. If the file is empty or incorrectly configured, the deployment will complete with an error message.
 
