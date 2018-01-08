@@ -2,7 +2,8 @@
 
 This topic describes how to troubleshoot commonly encountered problems with [installing](#troubleshoot-a-failed-installation) and [running](#troubleshoot-a-running-installation) Cloud Foundry Container Runtime (CFCR).
 
-!!! note CFCR was formerly known as Kubo, and many CFCR assets described in this topic still use the Kubo name.
+!!! note "Note"
+    CFCR was formerly known as Kubo, and many CFCR assets described in this topic still use the Kubo name.
 
 ##Troubleshoot a Failed Installation
 
