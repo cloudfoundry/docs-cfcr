@@ -33,6 +33,7 @@ pages:
     - 'Deploying CFCR': 'installing/deploying-cfcr.md'
     - 'Customizing CFCR': 'installing/customizing-cfcr.md'
     - 'Configuring Cloud Foundry Routing': 'installing/cf-routing.md'
+    - 'Configuring Pluggable Add-ons': 'installing/pluggable-addons.md'
   - Managing and Troubleshooting:
     - 'Home': 'managing/index.md'
     - 'Using Docker Registries': 'managing/using-docker.md'
