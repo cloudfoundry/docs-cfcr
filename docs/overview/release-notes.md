@@ -5,7 +5,8 @@
 
 ## v0.11.0
 
-**Release Date:** December 20, 2017
+**Release Date:** December 20, 2017.
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.11.0/kubo-deployment-0.11.0.tgz) the release artifact.
 
 * Rename the CF Routing properties in `director.yml` to follow a consistent naming style. [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153171539).
     - **[ACTION REQUIRED]**: If you use CF Routing in CFCR, you must update your `director.yml` with the new CF Routing property names.
@@ -70,7 +71,8 @@ The following table lists the component versions for CFCR v0.11.0:
 
 ## v0.10.0
 
-**Release Date:** December 8, 2017
+**Release Date:** December 8, 2017.
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.10.0/kubo-deployment-0.10.0.tgz) the release artifact.
 
 * New property `addons_spec_path` in `director.yml`. Operators can use this property to provide a K8s spec file that is applied to the cluster when it comes up. [story](https://www.pivotaltracker.com/n/projects/2093412/stories/152647926).
 * New property `worker_count` in `director.yml`. Operators can use this property to configure the number of K8s workers. [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153055729).
@@ -140,7 +142,8 @@ The following table lists the component versions for CFCR v0.10.0:
   
 ## v0.9.0
 
-**Release Date**: November 22, 2017
+**Release Date**: November 22, 2017.
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.9.0/kubo-deployment-0.9.0.tgz) the release artifact.
 
 ### Features
 * CFCR has been added to the [Certified Kubernetes Conformance Program](https://www.cncf.io/certification/software-conformance/). See the [Conformance Test Results](#conformance-tests-results) below.
@@ -196,7 +199,8 @@ The following table lists the component versions for CFCR v0.9.0:
 
 ## v0.8.1
 
-**Release Date**: November 10, 2017
+**Release Date**: November 10, 2017.
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.8.1/kubo-deployment-0.8.1.tgz) the release artifact.
 
 ### Features
 * Upgraded Kubernetes version to v1.8.2
@@ -245,7 +249,8 @@ The following table lists the component versions for CFCR v0.8.1:
 
 ## v0.8.0
 
-**Release Date**: November 3, 2017
+**Release Date**: November 3, 2017.
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.8.0/kubo-deployment-0.8.0.tgz) the release artifact.
 
 ### Features
 * Upgraded Kubernetes version to v1.8.1
@@ -316,7 +321,8 @@ Perform the following steps to upgrade an existing CFCR v0.7.0 cluster to v0.8.0
 
 ## v0.7.0
 
-**Release Date**: September 7, 2017
+**Release Date**: September 7, 2017.
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.7.0/kubo-deployment-0.7.0.tgz) the release artifact.
 
 ### Features
 * `kubo-release` tarball bundled with `kubo-deployment`
