@@ -26,3 +26,4 @@ Follow the procedures below for your IaaS. You must deploy BOSH for CFCR and con
 
 * [Customizing CFCR](customizing-cfcr/): Deploy a customized CFCR installation.
 * [Configuring Cloud Foundry Routing](cf-routing/): Use Cloud Foundry to handle routing for CFCR instead of IaaS load balancers.
+* [Configuring Pluggable Add-ons](pluggable-addons/): Pluggable add-ons are Kubernetes workloads that start immediately after CFCR cluster deployment. They let you add custom services to a CFCR cluster.
