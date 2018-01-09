@@ -27,7 +27,7 @@ Perform the following steps to create and apply a modified cloud config:
 	For example:
 	<p class="terminal">$ ./bin/generate_cloud_config ~/kubo-env/kubo > ~/kubo-env/kubo/cloud-config.yml</p>
 
-1. (Optional) Create and apply any [pluggable add-ons](pluggable-addon/).
+1. (Optional) Create and apply any [pluggable add-ons](pluggable-addons/).
 1. Modify the generated cloud config file as necessary.
 1. Log in to the BOSH Director as admin. Use the admin password located in `KUBO_ENV/creds.yml`. For example:
 	<p class="terminal">$ bosh-cli -e my-kubo log-in
