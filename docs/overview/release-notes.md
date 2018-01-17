@@ -2,6 +2,86 @@
 
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
+	
+## v0.12.0
+
+**Release Date:** January 10, 2017
+
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.12.0/kubo-deployment-0.12.0.tgz) the release artifact.
+
+* Use Kubernetes 1.8.6 -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154101118).
+* Enable secure access to the Dashboard via a `NodePort` when using RBAC -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154051302).
+* Privileged container support is turned off by default. There is a new property named `allow_privileged_containers` in `director.yml` which can be used to enable the feature -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153848167).
+  - also [cloudfoundry-incubator/kubo-deployment#252](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/252) and [cloudfoundry-incubator/kubo-release#153](https://github.com/cloudfoundry-incubator/kubo-release/pull/153)
+* Don't update the master node when scaling up workers -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154036901).
+* Switch to use `cfcr.internal` as a TLD instead of `.kubo` -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153849646).
+* Disable all profiling / tracing endpoints by default -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154051304).
+* Always validate `ServiceAccount` tokens exist in etcd as part of authentication -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153592391).
+* Stop the Kubernetes API Server from serving unsecured and unauthenticated access in localhost -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153592275). 
+* Remove unnecessary flag from `kube-proxy` -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/150079004).
+* Make applying addon specs not fail if the specs are empty -- [story](https://www.pivotaltracker.com/story/show/154030804) / [cloudfoundry-incubator/kubo-release#150](https://github.com/cloudfoundry-incubator/kubo-release/issues/150).
+* Bump system specs timeout to work with slower environments -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154051298).
+* Implement logic to never lose more than one worker nodes during update -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154051299).
+* Restrict the data directory permissions for etcd -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153592400).
+* Use SSL for etcd peer connections -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153782872).
+  - We are currently running single-node etcd clusters so no peer connections are established. Nevertheless, etcd would listen for peer connections over plain HTTP.
+* **Openstack:** `openstack_tenant` is not required in the `director.yml` as it is obsolete for OpenStack Keystone v3. The property still exists as it is needed by OpenStack Keystone v2 -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153137960).
+* **Openstack:** VMs deleted from the IaaS in OpenStack do not appear as ghost nodes -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153816342).
+  - The fix for this issue introduces new `director.yml` properties as the OpenStack K8s Cloud Provider needs to be configured: 
+     * `auth_url`, `openstack_username`, `openstack_password`, `openstack_project_id`, `openstack_domain`
+   - **Caveat:** the BOSH director needs to have `human_readable_vm_names` set to `false` in order for the Kubelet to register with the API Server successfully. See K8s issue: [kubernetes/kubernetes#57765](https://github.com/kubernetes/kubernetes/issues/57765).
+* **Fix:** `deploy_k8s` to fail when the addon specs are not successfully applied -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153401157).
+* **Fix:** regression in `abac` authorization mode -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153875025).
+* **vSphere** **PR** Support CFCR deployments on vSphere environments with multiple datacenters -- [cloudfoundry-incubator/kubo-release#127](https://github.com/cloudfoundry-incubator/kubo-release/issues/127) / [cloudfoundry-incubator/kubo-release#148](https://github.com/cloudfoundry-incubator/kubo-release/pull/148).
+
+## BOSH Release
+
+* Rename BOSH jobs to better reflect the Kubernetes processes names -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/151088854).
+* **PR** Expose parameters for logging level change -- [cloudfoundry-incubator/kubo-release#151](https://github.com/cloudfoundry-incubator/kubo-release/pull/151).
+* **PR** Expose Block Storage parameters for Openstack -- [cloudfoundry-incubator/kubo-release#152](https://github.com/cloudfoundry-incubator/kubo-release/pull/152).
+
+### Component Versions
+
+The following table lists the component versions for CFCR v0.11.0:
+
+ <table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Kubernetes</td>
+    <td>1.8.6</td>
+  </tr>
+  <tr>
+    <td>Flannel</td>
+    <td>0.5.5</td>
+  </tr>
+   <tr>
+    <td>ETCD</td>
+     <td>3.2.10</td>
+  </tr>   
+  <tr>
+    <td>Docker</td>
+    <td>1.13.1</td>
+  </tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.5.2</td>
+  </tr>
+  <tr>
+    <td>Stemcell</td>
+    <td>3468.13</td>
+  </tr>
+  </tbody>
+  </table>
+  
+### Conformance Tests Results
+
+[Download](https://storage.googleapis.com/conformance-results/conformance-results-aws-0.11.1-dev.59.tar.gz) the conformance test results.
 
 ## v0.11.0
 
