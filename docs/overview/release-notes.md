@@ -42,7 +42,7 @@
 
 ### Component Versions
 
-The following table lists the component versions for CFCR v0.11.0:
+The following table lists the component versions for CFCR v0.12.0:
 
  <table>
   <thead>
