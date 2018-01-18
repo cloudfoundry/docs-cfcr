@@ -29,7 +29,7 @@
 * **Openstack:** VMs deleted from the IaaS in OpenStack do not appear as ghost nodes -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153816342).
   - The fix for this issue introduces new `director.yml` properties as the OpenStack K8s Cloud Provider needs to be configured: 
      * `auth_url`, `openstack_username`, `openstack_password`, `openstack_project_id`, `openstack_domain`
-   - **Caveat:** the BOSH director needs to have `human_readable_vm_names` set to `false` in order for the Kubelet to register with the API Server successfully. See K8s issue: [kubernetes/kubernetes#57765](https://github.com/kubernetes/kubernetes/issues/57765).
+  - **Caveat:** the BOSH director needs to have `human_readable_vm_names` set to `false` in order for the Kubelet to register with the API Server successfully. See K8s issue: [kubernetes/kubernetes#57765](https://github.com/kubernetes/kubernetes/issues/57765).
 * **Fix:** `deploy_k8s` to fail when the addon specs are not successfully applied -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153401157).
 * **Fix:** regression in `abac` authorization mode -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153875025).
 * **vSphere** **PR** Support CFCR deployments on vSphere environments with multiple datacenters -- [cloudfoundry-incubator/kubo-release#127](https://github.com/cloudfoundry-incubator/kubo-release/issues/127) / [cloudfoundry-incubator/kubo-release#148](https://github.com/cloudfoundry-incubator/kubo-release/pull/148).
