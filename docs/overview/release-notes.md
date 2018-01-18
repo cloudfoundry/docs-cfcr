@@ -5,7 +5,7 @@
 	
 ## v0.12.0
 
-**Release Date:** January 10, 2017
+**Release Date:** January 10, 2018
 
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.12.0/kubo-deployment-0.12.0.tgz) the release artifact.
 
