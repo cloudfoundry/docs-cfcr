@@ -59,7 +59,7 @@ Perform the following steps to set up a GCP account for Terraform:
 	  --member serviceAccount:${service_account_email} \
 	  --role roles/owner</p>
 1. Set your service account key as an environment variable. Enter the following command:
-	<p class="terminal">$ export GOOGLE_CREDENTIALS=$(cat ~/${prefix}tf.key.json)</p>
+	<p class="terminal">$ export GOOGLE_CREDENTIALS=\$(cat ~/\${prefix}tf.key.json)</p>
 
 	If Terraform refuses to accept the JSON key as the content of `GOOGLE_CREDENTIALS`, provide the path to the file instead, using `GOOGLE_APPLICATION_CREDENTIALS`. Enter the following command:
 		<p class="terminal">$ export GOOGLE_APPLICATION_CREDENTIALS=~/terraform.key.json</p>
@@ -103,7 +103,7 @@ Perform the following steps to deploy a bastion VM with a set of firewall rules 
 		To preview the Terraform execution plan before applying it, run `plan` instead of `apply`.
 
 1. Copy the service account key to the newly created bastion VM. Enter the following command:
-	<p class="terminal">$ gcloud compute scp ~/${prefix}tf.key.json "${prefix}bosh-bastion":./terraform.key.json --zone ${zone}</p>
+	<p class="terminal">$ gcloud compute scp ~/\${prefix}tf.key.json "\${prefix}bosh-bastion":./terraform.key.json --zone \${zone}</p>
 	If prompted to create SSH keys, enter `Y` and use an empty passphrase.
 
 ##Step 4: Generate BOSH Configuration
