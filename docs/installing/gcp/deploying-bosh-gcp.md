@@ -50,7 +50,7 @@ Perform the following steps to set up your Google Cloud Shell environment:
 Perform the following steps to set up a GCP account for Terraform:
 
 1. From the Google Cloud Shell, create a service account for Terraform. Enter the following command:
-	<p class="terminal">$ gcloud iam service-accounts create ${prefix}terraform</p>
+	<p class="terminal">$ gcloud iam service-accounts create ${prefix}terraform --display-name ${prefix}terraform</p>
 1. Create a service account key. Enter the following command:
 	<p class="terminal">$ gcloud iam service-accounts keys create ~/${prefix}tf.key.json \
     --iam-account ${service_account_email}</p>
