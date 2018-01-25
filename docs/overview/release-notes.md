@@ -3,6 +3,76 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
 	
+## v0.13.0
+
+**Release Date:** January 25, 2018
+
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.13.0/kubo-deployment-0.13.0.tgz) the release artifact.
+
+* Kubernetes 1.9.2 -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154439228) and [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153627570).
+* Flannel 0.9.1 -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154474110).
+* RBAC as the default authorization mode.
+* Support for VM power-offs and restarts -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154554975).
+  - Reliance on certain functionality provided by BOSH was causing restarting VMs to fail.
+* Secure communications between system specs (Dashboard, Heapster and InfluxDB) -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154328284) and [story](https://www.pivotaltracker.com/story/show/154328283).
+* Ability to configure the timeout for system specs -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154439229).
+  - The BOSH property is `kubernetes-system-specs.timeout-sec` and is set to 20 minutes by default.
+* Ability to update addon specs without experiencing API downtime -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154312484).
+* Ability to get diagnostic information if a system pod fails to be applied -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154207050).
+* Ability to have the default storage class be used in PVCs that do not specify a storage class -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154536308).
+* Ability to rotate the Kubernetes API certificate -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154522561).
+* Ability to use the syslog addon in a CFCR deployment -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154357886).
+* **Fix:** to not print secrets in user-facing scripts -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153851093).
+* **Fix** to not have more than one nodes go down during an upgrade -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154051299).
+* **vSphere** **Fix:** to avoid a synchronization issue that was causing master to fail to start -- [story](https://www.pivotaltracker.com/story/show/154413170).
+* **OpenStack** **Fix** to have CFCR properly configure Kubernetes in order to communicate securely (TLS) to OpenStack -- [cloudfoundry-incubator/kubo-release#156](https://github.com/cloudfoundry-incubator/kubo-release/pull/156).
+
+### Component Versions
+
+The following table lists the component versions for CFCR v0.13.0:
+
+ <table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Kubernetes</td>
+    <td>1.9.2</td>
+  </tr>
+  <tr>
+    <td>Flannel</td>
+    <td>0.9.1</td>
+  </tr>
+   <tr>
+    <td>ETCD</td>
+     <td>3.2.14</td>
+  </tr>   
+  <tr>
+    <td>Docker</td>
+    <td>1.13.1</td>
+  </tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.5.2</td>
+  </tr>
+  <tr>
+    <td>Stemcell</td>
+    <td>3468.20</td>
+  </tr>
+  </tbody>
+  </table>
+  
+### Conformance Tests Results
+
+* [GCP](https://storage.googleapis.com/conformance-results/conformance-results-gcp-0.12.1-dev.76.tar.gz)
+* [AWS](https://storage.googleapis.com/conformance-results/conformance-results-aws-0.12.1-dev.76.tar.gz)
+* [vSphere](https://storage.googleapis.com/conformance-results/conformance-results-vsphere-0.12.1-dev.76.tar.gz)
+* [OpenStack](https://storage.googleapis.com/conformance-results/conformance-results-openstack-0.12.1-dev.76.tar.gz)
+
 ## v0.12.0
 
 **Release Date:** January 10, 2018
