@@ -95,7 +95,7 @@ Perform the following steps to deploy a bastion VM with a set of firewall rules 
     -var prefix=\${prefix} \
     -var zone=\${zone} \
     -var subnet_ip_prefix=\${subnet_ip_prefix} \
-    -state ~/${prefix}.tfstate
+    -state /\$(basename \$(pwd))/${prefix}.tfstate
 	</p>
 	This command takes between 60 and 90 seconds to complete.
 
