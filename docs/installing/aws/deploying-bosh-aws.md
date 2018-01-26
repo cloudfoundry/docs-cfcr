@@ -31,7 +31,7 @@ $ export AWS_SECRET_ACCESS_KEY=dsfSDFKOSDFKOasdmasdKSADOK</p>
 
 1. Set the name of the private key to use on CFCR VMs and the location of the private key file as environment variables named `key_name` and `private_key_filename`. Enter the following commands:
 	<p class="terminal">$ export key_name=deployer
-$ export private_key_filename="${HOME}/${key_name}.pem"</p>
+$ export private_key_filename="\${HOME}/\${key_name}.pem"</p>
 
 1. Set the region and zone where you want to deploy CFCR as environment variables named `region` and `zone`. For example:
 	<p class="terminal">$ export region=us-west-2
