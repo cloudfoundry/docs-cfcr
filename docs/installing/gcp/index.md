@@ -16,7 +16,7 @@ You must have the following to install CFCR on GCP:
 	* Google Cloud Resource Manager API V2 (both the original and V2 versions are required)
 	* Google Identity and Access Management (IAM) API
 
-	To enable this API, perform the following steps:
+	To enable these APIs, perform the following steps:
     
 	1. Navigate to the GCP Console.
 	1. From the left-hand navigation, select **APIs & services > Library**.
