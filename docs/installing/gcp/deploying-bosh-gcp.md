@@ -156,6 +156,28 @@ Perform the following steps to deploy a BOSH Director from the bastion VM:
 		!!! note
 			Subsequent runs of `deploy_bosh` will use `creds.yml` and `state.json` to apply changes to the BOSH environment.
 
+    Accessing BOSH Director -  You can use the following command to set your environment to access the BOSH Director.
+    
+	<p class="terminal">$ BOSH_ENV=${kubo_env_path} source /share/kubo-deployment/bin/set_bosh_environment
+    
+    Once the BOSH Director environment is set, you can use standard [BOSH CLI v2](https://bosh.io/docs/cli-v2.html) commands. This can be helpful to familiarize yourself with the CFCR BOSH deployment performed in a subsequent step.
+    
+	<p class="terminal">$ bosh environment
+Using environment '10.0.1.252' as client 'bosh_admin'
+
+Name      my-kubobosh
+UUID      a7e779dd-f9cc-43f2-b491-7358556bc730
+Version   264.1.0 (00000000)
+CPI       google_cpi
+Features  compiled_package_cache: disabled
+          config_server: enabled
+          dns: disabled
+          snapshots: disabled
+User      bosh_admin
+
+Succeeded
+$ 
+</p>
 If you plan to use IaaS routing for CFCR, continue to [Configure IaaS Routing for GCP](routing-gcp/).
 
 If you have configured Cloud Foundry routing, continue to [Deploying CFCR](../deploying-cfcr/).
