@@ -13,10 +13,10 @@
 * Flannel 0.9.1 -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154474110).
 * RBAC as the default authorization mode.
 * Support for VM power-offs and restarts -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154554975).
-  - Reliance on certain functionality provided by BOSH was causing restarting VMs to fail.
+    * Reliance on certain functionality provided by BOSH was causing restarting VMs to fail.
 * Secure communications between system specs (Dashboard, Heapster and InfluxDB) -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154328284) and [story](https://www.pivotaltracker.com/story/show/154328283).
 * Ability to configure the timeout for system specs -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154439229).
-  - The BOSH property is `kubernetes-system-specs.timeout-sec` and is set to 20 minutes by default.
+    * The BOSH property is `kubernetes-system-specs.timeout-sec` and is set to 20 minutes by default.
 * Ability to update addon specs without experiencing API downtime -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154312484).
 * Ability to get diagnostic information if a system pod fails to be applied -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154207050).
 * Ability to have the default storage class be used in PVCs that do not specify a storage class -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154536308).
