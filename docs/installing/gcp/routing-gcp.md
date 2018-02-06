@@ -39,7 +39,7 @@ $ export kubo_terraform_state=${state_dir}/terraform.tfstate</p>
     -var network=\${network} \
     -var projectid=\${project_id} \
     -var region=\${region} \
-    -var prefix=\${prefix} \
+    -var prefix=\${prefix:-cfcr} \
     -var ip_cidr_range="\${subnet_ip_prefix}.0/24" \
     -state=\${kubo_terraform_state}</p>
 1. Set the master target pool from the outputted Terraform state file as an environment variable. Enter the following command:

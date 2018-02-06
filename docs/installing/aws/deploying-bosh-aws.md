@@ -89,7 +89,7 @@ Perform the following steps to deploy a bastion VM with a set of security group 
   -var region="\${region}" \
   -var zone="\${zone}" \
   -var vpc_id="\${vpc_id}" \
-  -var prefix="\${prefix}" \
+  -var prefix="\${prefix:-cfcr}" \
   -var public_subnet_ip_prefix="\${public_subnet_ip_prefix}" \
   -var private_subnet_ip_prefix="\${private_subnet_ip_prefix}" \
   -var private_key_filename="\${private_key_filename}" \
