@@ -185,7 +185,7 @@ Perform the following steps to create a new IAM user to deploy the BOSH Director
 	        {
 	            "Effect": "Allow",
 	            "Action": "iam:PassRole",
-	            "Resource": "arn:aws:iam::YOUR-ACCOUNT-ID:role/*kubo*"
+	            "Resource": "arn:aws:iam::YOUR-ACCOUNT-ID:role/*cfcr*"
 	        }
 	    ]
 	}
