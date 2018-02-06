@@ -24,7 +24,7 @@ $ export zone=us-west1-a
 $ export network=kubo-network
 $ export subnet_ip_prefix="10.0.1"</p>
 1. SSH onto the bastion VM. Enter the following command:
-	<p class="terminal">$ gcloud compute ssh "${prefix}-bosh-bastion" --zone ${zone}</p>
+	<p class="terminal">$ gcloud compute ssh "${prefix:-cfcr}-bosh-bastion" --zone ${zone}</p>
 1. Set the `kubo_env_name` environment variable to `kubo`. Enter the following command:
 	<p class="terminal">$ export kubo_env_name=kubo</p> 
 
