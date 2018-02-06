@@ -39,7 +39,7 @@ Perform the following steps to set up your Google Cloud Shell environment:
 1. Set your zone where you want to deploy CFCR as an environment variable. For example:
 	<p class="terminal">$ export zone=us-west1-a</p>
 1. Set your service account email address as an environment variable. Enter the following command:
-	<p class="terminal">$ export service_account_email=\${prefix}terraform@\${project_id}.iam.gserviceaccount.com</p>
+	<p class="terminal">$ export service_account_email=\${prefix}-terraform@\${project_id}.iam.gserviceaccount.com</p>
 1. Configure `gcloud` to use your zone. Enter the following command:
 	<p class="terminal">$ gcloud config set compute/zone ${zone}</p>
 1. Configure `gcloud` to use your region. Enter the following command:
@@ -50,16 +50,16 @@ Perform the following steps to set up your Google Cloud Shell environment:
 Perform the following steps to set up a GCP account for Terraform:
 
 1. From the Google Cloud Shell, create a service account for Terraform. Enter the following command:
-	<p class="terminal">$ gcloud iam service-accounts create ${prefix}terraform --display-name ${prefix}terraform</p>
+	<p class="terminal">$ gcloud iam service-accounts create ${prefix}-terraform --display-name ${prefix}-terraform</p>
 1. Create a service account key. Enter the following command:
-	<p class="terminal">$ gcloud iam service-accounts keys create ~/${prefix}tf.key.json \
+	<p class="terminal">$ gcloud iam service-accounts keys create ~/${prefix}-tf.key.json \
     --iam-account ${service_account_email}</p>
 1. Grant the new service account owner access to your project. Enter the following command:
 	<p class="terminal">$ gcloud projects add-iam-policy-binding \${project_id} \
 	  --member serviceAccount:${service_account_email} \
 	  --role roles/owner</p>
 1. Set your service account key as an environment variable. Enter the following command:
-	<p class="terminal">$ export GOOGLE_CREDENTIALS=\$(cat ~/\${prefix}tf.key.json)</p>
+	<p class="terminal">$ export GOOGLE_CREDENTIALS=\$(cat ~/\${prefix}-tf.key.json)</p>
 
 	If Terraform refuses to accept the JSON key as the content of `GOOGLE_CREDENTIALS`, provide the path to the file instead, using `GOOGLE_APPLICATION_CREDENTIALS`. Enter the following command:
 		<p class="terminal">$ export GOOGLE_APPLICATION_CREDENTIALS=~/terraform.key.json</p>
@@ -103,7 +103,7 @@ Perform the following steps to deploy a bastion VM with a set of firewall rules 
 		To preview the Terraform execution plan before applying it, run `plan` instead of `apply`.
 
 1. Copy the service account key to the newly created bastion VM. Enter the following command:
-	<p class="terminal">$ gcloud compute scp ~/\${prefix}tf.key.json "\${prefix}bosh-bastion":./terraform.key.json --zone \${zone}</p>
+	<p class="terminal">$ gcloud compute scp ~/\${prefix}-tf.key.json "\${prefix}-bosh-bastion":./terraform.key.json --zone \${zone}</p>
 	If prompted to create SSH keys, enter `Y` and use an empty passphrase.
 
 ##Step 4: Generate BOSH Configuration
@@ -111,7 +111,7 @@ Perform the following steps to deploy a bastion VM with a set of firewall rules 
 Perform the following steps to generate the configuration for your BOSH Director:
 
 1. From the Google Cloud Shell, SSH onto the bastion VM. Enter the following command:
-	<p class="terminal">$ gcloud compute ssh "${prefix}bosh-bastion" --zone ${zone}</p>
+	<p class="terminal">$ gcloud compute ssh "${prefix}-bosh-bastion" --zone ${zone}</p>
 1. Change into the root of the `kubo-deployment` repo. Enter the following command:
 	<p class="terminal">$ cd /share/kubo-deployment</p>
 1. Set three environment variables with the following commands:
@@ -166,7 +166,7 @@ Perform the following steps to deploy a BOSH Director from the bastion VM:
   <p class="terminal">$ bosh environment</p>
   BOSH provides information about your environment. For example:
   <p class="terminal">Using environment '10.0.1.252' as client 'bosh_admin'<br>
-Name      my-kubobosh
+Name      my-kubo-bosh
 UUID      a7e779dd-f9cc-43f2-b491-7358556bc730
 Version   264.1.0 (00000000)
 CPI       google_cpi

@@ -22,7 +22,7 @@ If you have started a new Google Cloud Shell session, perform the following step
 	<p class="terminal">$ export prefix=my-kubo
 $ export zone=us-west1-a</p>
 1. SSH onto the bastion VM. Enter the following command:
-	<p class="terminal">$ gcloud compute ssh "${prefix}bosh-bastion" --zone ${zone}</p>
+	<p class="terminal">$ gcloud compute ssh "${prefix}-bosh-bastion" --zone ${zone}</p>
 1. Set the `kubo_env_name` environment variable to `kubo`. Enter the following command:
 	<p class="terminal">$ export kubo_env_name=kubo</p> 
 
@@ -43,7 +43,7 @@ $ export kubo_terraform_state=${state_dir}/terraform.tfstate</p>
     -var ip_cidr_range="\${subnet_ip_prefix}.0/24" \
     -state=\${kubo_terraform_state}</p>
 1. Set the master target pool from the outputted Terraform state file as an environment variable. Enter the following command:
-	<p class="terminal">$ export master_target_pool=\$(terraform output -state=\${kubo_terraform_state} kubo_master_target_pool)</p>
+	<p class="terminal">$ export master_target_pool=\$(terraform output -state=\${kubo_terraform_state} cfcr_master_target_pool)</p>
 1. Set the Kubernetes master host from the outputted Terraform state file as an environment variable. Enter the following command:
 	<p class="terminal">$ export kubernetes_master_host=\$(terraform output -state=\${kubo_terraform_state} master_lb_ip_address)</p>
 1. Update the CFCR environment by running the `set_iaas_routing` script. Enter the following command:
