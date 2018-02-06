@@ -20,7 +20,9 @@ If you have started a new Google Cloud Shell session, perform the following step
 
 1. Set the prefix and zone from the [Step 1: Set Up Your Shell Environment](deploying-bosh-gcp/#step-1-set-up-your-shell-environment) section of the [Deploying BOSH for CFCR on GCP](https://docs-kubo.cfapps.io/installing/gcp/deploying-bosh-gcp/) topic as environment variables. For example:
 	<p class="terminal">$ export prefix=my-kubo
-$ export zone=us-west1-a</p>
+$ export zone=us-west1-a
+$ export network=kubo-network
+$ export subnet_ip_prefix="10.0.1"</p>
 1. SSH onto the bastion VM. Enter the following command:
 	<p class="terminal">$ gcloud compute ssh "${prefix}-bosh-bastion" --zone ${zone}</p>
 1. Set the `kubo_env_name` environment variable to `kubo`. Enter the following command:
