@@ -63,7 +63,7 @@ Perform the following steps to destroy your BOSH environment on Google Cloud Pla
 	    -var projectid=\${project_id} \
 	    -var network=\${network} \
 	    -var region=\${region} \
-	    -var prefix=\${prefix} \
+	    -var prefix=\${prefix:-cfcr} \
 	    -var zone=\${zone} \
 	    -var subnet_ip_prefix=\${subnet_ip_prefix}</p>
 

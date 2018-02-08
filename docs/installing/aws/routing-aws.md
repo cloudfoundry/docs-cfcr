@@ -42,7 +42,7 @@ $ export AWS_SECRET_ACCESS_KEY=dsfSDFKOSDFKOasdmasdKSADOK</p>
    -var prefix=\${prefix:-cfcr} \
    -state=\${kubo_terraform_state}</p>
 1. Set the `master_target_pool` and `kubernetes_master_host` environment variables with the following commands:
-	<p class="terminal">$ export master_target_pool=\$(terraform output -state=${kubo_terraform_state} kubo_master_target_pool) 
+	<p class="terminal">$ export master_target_pool=\$(terraform output -state=${kubo_terraform_state} cfcr_master_target_pool)
 $ export kubernetes_master_host=\$(terraform output -state=${kubo_terraform_state} master_lb_ip_address) </p>
 1. Update the CFCR environment by running the the following commands:
 	<p class="terminal">$ /usr/bin/set_iaas_routing "${kubo_env_path}/director.yml"</p>
