@@ -23,7 +23,7 @@ Follow the steps for your IaaS:
 	1. Change into your Terraform working directory with the following command:
 		<p class="terminal">$ cd ~/kubo-deployment/docs/terraform/aws/platform</p>
 	1. SSH onto the bastion VM with the following command:
-		<p class="terminal">$ ssh -i ~/deployer.pem ubuntu@$(terraform output -state ~/terraform.tfstate bosh-bastion-ip)</p>
+		<p class="terminal">$ ssh -i ~/deployer.pem ubuntu@$(terraform output bosh-bastion-ip)</p>
 * **vSphere or OpenStack**: If you deployed BOSH for CFCR from a bastion VM, SSH into the VM. Otherwise, navigate to the CFCR environment on your local machine.
 
 ##(Optional) Step 2: Configure Proxy Access
