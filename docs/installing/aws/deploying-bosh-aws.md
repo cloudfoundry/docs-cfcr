@@ -108,9 +108,9 @@ Perform the following steps to deploy a bastion VM with a set of security group 
 ##Step 3: Generate CFCR Configuration
 
 1. SSH onto the bastion VM. Enter the following command:
-	<p class="terminal">ssh -i ~/deployer.pem ubuntu@$(terraform output -state=${kubo_terraform_state} bosh-bastion-ip)</p>
+	<p class="terminal">$ ssh -i ~/deployer.pem ubuntu@\$(terraform output -state=\${kubo_terraform_state} bosh-bastion-ip)</p>
 1. Change into the root of the `kubo-deployment` repo. Enter the following command:
-	<p class="terminal">cd /share/kubo-deployment</p> 
+	<p class="terminal">$ cd /share/kubo-deployment</p> 
 1. Set three Kubo environment variables with the following commands:
 	<p class="terminal">$ export kubo_envs=~/kubo-env
 $ export kubo_env_name=kubo
