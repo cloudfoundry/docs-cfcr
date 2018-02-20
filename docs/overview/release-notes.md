@@ -33,7 +33,7 @@
    - From the BPM readme: "[BPM] crucially provides a security barrier such that if one of the jobs on your machine is compromised then the incident is limited to just that job rather than all jobs on the same machine".
 * **OpenStack:** Exposed `cloud-provider.openstack.ignore-volume-az` BOSH property for the OpenStack Cloud Provider -- [cloudfoundry-incubator/kubo-release#166](https://github.com/cloudfoundry-incubator/kubo-release/pull/166).
 * **OpenStack:** Exposed `region` BOSH variable for the OpenStack Cloud Provider -- [cloudfoundry-incubator/kubo-deployment#262](https://github.com/cloudfoundry-incubator/kubo-deployment/issues/262).
-* **Fix:** UAA credentials and vCenter passwords are now redacted in BOSH logs -- [story].(https://www.pivotaltracker.com/n/projects/2093412/stories/154439227).
+* **Fix:** UAA credentials and vCenter passwords are now redacted in BOSH logs -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154439227).
 * **Fix:** to ensure that workers will pick the correct node name during rolling upgrades -- [cloudfoundry-incubator/kubo-release#170](https://github.com/cloudfoundry-incubator/kubo-release/pull/170).
 * **Fix:** to ensure that nodes get properly drained before they stop, in order to minimize workload downtime during a rolling upgrade -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/155218338).
 * **vSphere Fix:** vCenter password with special characters (`&`, `#`, etc) can now be used with CFCR without breaking the deployment -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154922900).
