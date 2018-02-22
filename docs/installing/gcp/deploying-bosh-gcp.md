@@ -103,7 +103,7 @@ Perform the following steps to deploy a bastion VM with a set of firewall rules 
 		To preview the Terraform execution plan before applying it, run `plan` instead of `apply`.
 
 1. Copy the service account key to the newly created bastion VM. Enter the following command:
-	<p class="terminal">$ gcloud compute scp ~/\${prefix}tf.key.json "\${prefix}bosh-bastion":./terraform.key.json --zone \${zone}</p>
+	<p class="terminal">$ gcloud compute scp ~/\${prefix}tf.key.json "\${prefix}-bosh-bastion":./terraform.key.json --zone \${zone}</p>
 	If prompted to create SSH keys, enter `Y` and use an empty passphrase.
 
 ##Step 4: Generate BOSH Configuration
@@ -111,7 +111,7 @@ Perform the following steps to deploy a bastion VM with a set of firewall rules 
 Perform the following steps to generate the configuration for your BOSH Director:
 
 1. From the Google Cloud Shell, SSH onto the bastion VM. Enter the following command:
-	<p class="terminal">$ gcloud compute ssh "${prefix}bosh-bastion" --zone ${zone}</p>
+	<p class="terminal">$ gcloud compute ssh "${prefix}-bosh-bastion" --zone ${zone}</p>
 1. Change into the root of the `kubo-deployment` repo. Enter the following command:
 	<p class="terminal">$ cd /share/kubo-deployment</p>
 1. Set three environment variables with the following commands:
