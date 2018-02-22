@@ -39,7 +39,7 @@ $ export AWS_SECRET_ACCESS_KEY=dsfSDFKOSDFKOasdmasdKSADOK</p>
    -var vpc_id=\${vpc_id} \
    -var node_security_group_id=\${default_security_groups} \
    -var public_subnet_id=\${public_subnet_id} \
-   -var prefix=\${prefix} \
+   -var prefix=\${prefix:-cfcr} \
    -state=\${kubo_terraform_state}</p>
 1. Set the `master_target_pool` and `kubernetes_master_host` environment variables with the following commands:
 	<p class="terminal">$ export master_target_pool=\$(terraform output -state=${kubo_terraform_state} cfcr_master_target_pool)
