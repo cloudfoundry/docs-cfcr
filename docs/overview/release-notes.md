@@ -3,6 +3,88 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
 	
+## v0.14.0
+
+**Release Date:** February 20, 2018
+
+* Kubernetes v1.9.3 -- [cloudfoundry-incubator/kubo-release#176](https://github.com/cloudfoundry-incubator/kubo-release/pull/176).
+* Flannel v0.10.0 -- [cloudfoundry-incubator/kubo-release#169](https://github.com/cloudfoundry-incubator/kubo-release/pull/169).
+* BOSH DNS v0.2.0 -- [cloudfoundry-incubator/kubo-deployment#261](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/261).
+* GOVC v0.16.0.
+* Golang v1.9.4.
+* BOSH Stemcell v3541.4.
+* CFCR can now be deployed on an environment paved by [BBL](https://github.com/cloudfoundry/bosh-bootloader) -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154592571).
+* Exposed OpenID authentication properties -- [cloudfoundry-incubator/kubo-release#101](https://github.com/cloudfoundry-incubator/kubo-release/pull/101).
+* `logging-level` BOSH property can be used to control the logging level of kube-proxy -- [cloudfoundry-incubator/kubo-release#163](https://github.com/cloudfoundry-incubator/kubo-release/pull/163).
+* HTTP(s) Proxy BOSH properties will be used for Kubernetes interactions with the IaaS -- [cloudfoundry-incubator/kubo-release#130](https://github.com/cloudfoundry-incubator/kubo-release/pull/130).
+* Nodes can now be deployed across multiple AZs on GCP -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154473040).
+  - Nodes get tagged appropriately by Kubernetes to ensure that workloads are properly spread across AZs.
+* System workloads are now applied as part of the `apply-addons` BOSH errand -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154838510).
+  - System workloads have been a cause of many deployment issues.
+* Enabled the API server audit logs -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154051305).
+  - Audit logs can be disabled if the `kube-apiserver.enable_audit_logs` BOSH property is set to `false`.
+* Disabled the read-only port in the Kubelet -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154536109).
+* Disabled cAdvisor in Kubelet -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154536108).
+* Disabled the security context manipulation when privileged containers are off -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154536111).
+* The API server will not try to fix malformed requests anymore for security reasons -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154727218).
+* The API Server will clean up terminated pods more often to avoid running out of disk space -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154727216).
+* The API server will unmount volumes of terminated pods for security reasons -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154727217).
+* Most BOSH jobs switched to use [BPM](https://github.com/cloudfoundry-incubator/bpm-release) -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153690804).
+   - From the BPM readme: "[BPM] crucially provides a security barrier such that if one of the jobs on your machine is compromised then the incident is limited to just that job rather than all jobs on the same machine".
+* **OpenStack:** Exposed `cloud-provider.openstack.ignore-volume-az` BOSH property for the OpenStack Cloud Provider -- [cloudfoundry-incubator/kubo-release#166](https://github.com/cloudfoundry-incubator/kubo-release/pull/166).
+* **OpenStack:** Exposed `region` BOSH variable for the OpenStack Cloud Provider -- [cloudfoundry-incubator/kubo-deployment#262](https://github.com/cloudfoundry-incubator/kubo-deployment/issues/262).
+* **Fix:** UAA credentials and vCenter passwords are now redacted in BOSH logs -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154439227).
+* **Fix:** to ensure that workers will pick the correct node name during rolling upgrades -- [cloudfoundry-incubator/kubo-release#170](https://github.com/cloudfoundry-incubator/kubo-release/pull/170).
+* **Fix:** to ensure that nodes get properly drained before they stop, in order to minimize workload downtime during a rolling upgrade -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/155218338).
+* **vSphere Fix:** vCenter password with special characters (`&`, `#`, etc) can now be used with CFCR without breaking the deployment -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154922900).
+* **Experimental:** An [ops-file](https://www.pivotaltracker.com/n/projects/2093412/stories/154472172) can now be used in conjunction to the `kubo-deployment` in order to experiment with the multi-master setup -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154472172).
+
+### Component Versions
+
+The following table lists the component versions for CFCR v0.14.0:
+
+ <table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Kubernetes</td>
+    <td>1.9.3</td>
+  </tr>
+  <tr>
+    <td>Flannel</td>
+    <td>0.10.0</td>
+  </tr>
+   <tr>
+    <td>ETCD</td>
+     <td>3.2.14</td>
+  </tr>   
+  <tr>
+    <td>Docker</td>
+    <td>1.13.1</td>
+  </tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.5.2</td>
+  </tr>
+  <tr>
+    <td>Stemcell</td>
+    <td>3541.4</td>
+  </tr>
+  </tbody>
+  </table>
+  
+### Conformance Tests Results
+
+* [GCP](https://storage.googleapis.com/conformance-results/conformance-results-gcp-0.14.0-dev.23.tar.gz)
+* [AWS](https://storage.googleapis.com/conformance-results/conformance-results-aws-0.14.0-dev.23.tar.gz)
+* [vSphere](https://storage.googleapis.com/conformance-results/conformance-results-vsphere-0.14.0-dev.23.tar.gz)
+* [OpenStack](https://storage.googleapis.com/conformance-results/conformance-results-openstack-0.13.1-dev.8.tar.gz)
+	
 ## v0.13.0
 
 **Release Date:** January 25, 2018

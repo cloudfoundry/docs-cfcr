@@ -89,7 +89,7 @@ Perform the following steps to deploy a bastion VM with a set of security group 
   -var region="\${region}" \
   -var zone="\${zone}" \
   -var vpc_id="\${vpc_id}" \
-  -var prefix="\${prefix:-cfcr}" \
+  -var prefix="\${prefix}" \
   -var public_subnet_ip_prefix="\${public_subnet_ip_prefix}" \
   -var private_subnet_ip_prefix="\${private_subnet_ip_prefix}" \
   -var private_key_filename="\${private_key_filename}" \
@@ -108,9 +108,9 @@ Perform the following steps to deploy a bastion VM with a set of security group 
 ##Step 3: Generate CFCR Configuration
 
 1. SSH onto the bastion VM. Enter the following command:
-	<p class="terminal">$ ssh -i ~/deployer.pem ubuntu@$(terraform output -state ${kubo_terraform_state} bosh-bastion-ip)</p>
+	<p class="terminal">$ ssh -i ~/deployer.pem ubuntu@\$(terraform output -state=\${kubo_terraform_state} bosh-bastion-ip)</p>
 1. Change into the root of the `kubo-deployment` repo. Enter the following command:
-	<p class="terminal">cd /share/kubo-deployment</p> 
+	<p class="terminal">$ cd /share/kubo-deployment</p> 
 1. Set three Kubo environment variables with the following commands:
 	<p class="terminal">$ export kubo_envs=~/kubo-env
 $ export kubo_env_name=kubo
@@ -185,7 +185,7 @@ Perform the following steps to create a new IAM user to deploy the BOSH Director
 	        {
 	            "Effect": "Allow",
 	            "Action": "iam:PassRole",
-	            "Resource": "arn:aws:iam::YOUR-ACCOUNT-ID:role/*cfcr*"
+	            "Resource": "arn:aws:iam::YOUR-ACCOUNT-ID:role/*kubo*"
 	        }
 	    ]
 	}
