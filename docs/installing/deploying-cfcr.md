@@ -35,8 +35,8 @@ If you want to configure Docker to allow proxy access, edit the `KUBO_ENV/direct
 
 The `http_proxy` is the proxy server for HTTP traffic, `https_proxy` is the proxy server for HTTPS traffic, and `no_proxy` specifies addresses to exclude from proxying.
 
-!!! note
-	If you set `http_proxy` and/or `https_proxy`, the `no_proxy` must contain the IPs for the master and worker CFCR nodes.  This can be easily achieved by using the same value as set for the internal CIDR property within `KUBO_ENV/director.yml`.  Please also add the kubernetes cluster IP ranges, `10.200.0.0/16,10.100.0.0/16`, to `no_proxy`. 
+If you set `http_proxy` or `https_proxy`, the `no_proxy` must contain the IP addresses for the master CFCR nodes, worker CFCR nodes, and Kubernetes clusters.
+For the master and worker node IPs, you can use the same value that you set for the internal CIDR property in `KUBO_ENV/director.yml`.
 
 For example:
 
