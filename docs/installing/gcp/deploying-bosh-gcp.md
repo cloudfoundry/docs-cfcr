@@ -72,7 +72,7 @@ Perform the following steps to deploy a bastion VM with a set of firewall rules 
 	<p class="terminal">$ cd ~</p>
 1. See the [release notes](../../overview/release-notes) for a link to the latest `kubo-deployment` release. Enter the following commands, replacing `KUBO-DEPLOYMENT-RELEASE-URL` with the release artifact URL:
   <p class="terminal">$ wget `KUBO-DEPLOYMENT-RELEASE-URL`</p>
-1. Expand the tarball. Enter the following command, replacing `KUBO-RELEASE` with the name of the file you downloaded in the previous step:
+1. Expand the tarball. Enter the following command, replacing `KUBO-DEPLOYMENT-RELEASE-URL` with the name of the file you downloaded in the previous step:
   <p class="terminal">$ tar -xvf $(basename `KUBO-DEPLOYMENT-RELEASE-URL`)</p>
 1. Change into the directory that contains the GCP Terraform templates. Enter the following command:
 	<p class="terminal">$ cd ~/$(basename `KUBO-DEPLOYMENT-RELEASE-URL` .tgz)/kubo-deployment/docs/terraform/gcp/platform</p>
