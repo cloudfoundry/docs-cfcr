@@ -76,4 +76,4 @@ Perform the following steps to destroy your BOSH environment on Google Cloud Pla
    <p class="terminal">$ gcloud iam service-accounts delete ${service_account_email}</p>
    
 1. Remove the service account key JSON from the bastion VM. Enter the following command:
-	<p class="terminal">$ rm ~/terraform.key.json</p>
+	<p class="terminal">$ rm ~/${prefix:-cfcr}-tf.key.json</p>
