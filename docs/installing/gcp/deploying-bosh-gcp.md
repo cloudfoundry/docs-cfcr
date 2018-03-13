@@ -62,7 +62,7 @@ Perform the following steps to set up a GCP account for Terraform:
 	<p class="terminal">$ export GOOGLE_CREDENTIALS=\$(cat ~/\${prefix:-cfcr}-tf.key.json)</p>
 
 	If Terraform refuses to accept the JSON key as the content of `GOOGLE_CREDENTIALS`, provide the path to the file instead, using `GOOGLE_APPLICATION_CREDENTIALS`. Enter the following command:
-		<p class="terminal">$ export GOOGLE_APPLICATION_CREDENTIALS=~/terraform.key.json</p>
+		<p class="terminal">$ export GOOGLE_APPLICATION_CREDENTIALS=~/${prefix:-cfcr}-tf.key.json</p>
 
 ##Step 3: Deploy Bastion VM
 
