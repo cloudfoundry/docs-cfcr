@@ -65,7 +65,8 @@ Perform the following steps to destroy your BOSH environment on Google Cloud Pla
 	    -var region=\${region} \
 	    -var prefix=\${prefix:-cfcr} \
 	    -var zone=\${zone} \
-	    -var subnet_ip_prefix=\${subnet_ip_prefix}</p>
+	    -var subnet_ip_prefix=\${subnet_ip_prefix} \
+            -state /$(basename $(pwd))/${prefix:-cfcr}.tfstate</p>
 
 1. Remove the Identity and Access Management (IAM) policy binding. Enter the following command:
 	<p class="terminal">$ gcloud projects remove-iam-policy-binding \${project_id} \
