@@ -2,7 +2,7 @@
 
 This topic describes how to configure the Google Cloud Platform (GCP) load balancers to handle routing for Cloud Foundry Container Runtime (CFCR).
 
-Before completing the procedures in this topic, you must have performed the steps in [Deploying BOSH for CFCR on GCP](deploying-bosh-gcp/). After finishing this topic, continue to [Deploying CFCR](../deploying-cfcr/).
+Before completing the procedures in this topic, you must have performed the steps in [Paving Infrastructure on GCP](paving-infrastructure-gcp/). After finishing this topic, continue to [Deploying CFCR](../deploying-cfcr/).
 
 If you want to use Cloud Foundry for routing instead of IaaS load balancers, see the [Configuring Cloud Foundry Routing](../cf-routing/) topic.
 
@@ -14,11 +14,11 @@ If you want to use Cloud Foundry for routing instead of IaaS load balancers, see
 
 ##(Optional) Step 1: Set Up Your Environment
 
-If you are still working in the same Google Cloud Shell session from the [Deploying BOSH for CFCR on GCP](deploying-bosh-gcp/) topic, skip to [Step 2: Configure Load Balancers](#step-2-configure-load-balancers).
+If you are still working in the same Google Cloud Shell session from the [Paving Infrastructure on GCP](paving-infrastructure-gcp/) topic, skip to [Step 2: Deploy BOSH Director](#step-2-deploy-bosh-director).
 
 If you have started a new Google Cloud Shell session, perform the following steps:
 
-1. Set the prefix and zone from the [Step 1: Set Up Your Shell Environment](deploying-bosh-gcp/#step-1-set-up-your-shell-environment) section of the [Deploying BOSH for CFCR on GCP](https://docs-kubo.cfapps.io/installing/gcp/deploying-bosh-gcp/) topic as environment variables. For example:
+1. Set the prefix and zone from the [Step 1: Set Up Your Shell Environment](paving-infrastructure-gcp/#step-1-set-up-your-shell-environment) section of the [Paving Infrastructure on GCP](https://docs-kubo.cfapps.io/installing/gcp/paving-infrastructure-gcp/) topic as environment variables. For example:
 	<p class="terminal">$ export prefix=my-kubo
 $ export zone=us-west1-a
 $ export network=kubo-network
