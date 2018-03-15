@@ -15,13 +15,13 @@ If you want to use Cloud Foundry for routing instead of IaaS load balancers, see
 	1. Change into your Terraform working directory with the following command:
 		<p class="terminal">$ cd ~/kubo-deployment/docs/terraform/aws/platform</p>
 	1. SSH onto the bastion VM with the following command:
-		<p class="terminal">$ ssh -i ~/deployer.pem ubuntu@$(terraform output bosh-bastion-ip)</p>
+		<p class="terminal">$ ssh -i ${private_key_filename} ubuntu@$(terraform output bosh-bastion-ip)</p>
 	1. Set the `kubo_env_name` environment variable with the following command:
 		<p class="terminal">$ export kubo_env_name=kubo</p>
 1. On the bastion VM, change into the directory that contains the AWS user guide. Enter the following command:
 	<p class="terminal">$ cd /share/kubo-deployment/docs/terraform/aws/routing</p>
 1. Set the path of the state directory as an environment variable named `state_dir`. Enter the following command:
-	<p class="terminal">$ export state_dir=~/kubo-env/${kubo_env_name}</p> 
+	<p class="terminal">$ export state_dir=~/kubo-env/${kubo_env_name}</p>
 1. Set the path of the Terraform state file as an environment variable named `kubo_terraform_state`. Enter the following command:
 	<p class="terminal">$ export kubo_terraform_state=${state_dir}/terraform.tfstate</p>
 1. Set the access key ID and secret access key for an IAM user with the AdministratorAccess policy as environment variables named `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`. For example:
