@@ -18,8 +18,9 @@ pages:
     - 'Home': 'installing/index.md'
     - Preparing GCP:
       - 'Preparing GCP for CFCR': 'installing/gcp/index.md'
-      - 'Deploying BOSH for CFCR on GCP': 'installing/gcp/deploying-bosh-gcp.md'
+      - 'Paving Infrastructure on GCP': 'installing/gcp/paving-infrastructure-gcp.md'
       - 'Configuring IaaS Routing for GCP': 'installing/gcp/routing-gcp.md'
+      - 'Deploying BOSH for CFCR on GCP': 'installing/gcp/deploying-bosh-gcp.md'
     - Preparing vSphere: 
       - 'Preparing vSphere for CFCR': 'installing/vsphere/index.md'
       - 'Deploying BOSH for CFCR on vSphere': 'installing/vsphere/deploying-bosh-vsphere.md'
