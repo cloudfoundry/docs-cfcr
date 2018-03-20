@@ -22,17 +22,21 @@ You must have the following to install CFCR on GCP:
 	1. From the left-hand navigation, select **APIs & services > Library**.
 	1. Search for each library listed above. If it is disabled, click the **Enable** button to enable it.
 
-##Step 1: Configure Routing
+##Step 1: Pave Infrastructure
+
+Pave your infrastructure by following the procedures in the [Paving Infrastructure on GCP](paving-infrastructure-gcp/) topic.
+
+##Step 2: Configure Routing
 
 Configure your load balancers for CFCR by following the procedures in the [Configuring IaaS Routing for GCP](routing-gcp/) topic.
 
 If you want to use Cloud Foundry for routing instead of IaaS load balancers, see the [Configuring Cloud Foundry Routing](../cf-routing/) topic.
 
-##Step 2: Deploy BOSH for CFCR on GCP
+##Step 3: Deploy BOSH for CFCR on GCP
 
-Pave your infrastructure and deploy the BOSH Director for CFCR by following the procedures in the [Deploying BOSH for CFCR on GCP](deploying-bosh-gcp/) topic.
+Deploy the BOSH Director for CFCR by following the procedures in the [Deploying BOSH for CFCR on GCP](deploying-bosh-gcp/) topic.
 
-##Step 3: Deploy CFCR
+##Step 4: Deploy CFCR
 
 After deploying BOSH for CFCR and configuring your load balancers, continue to the [Deploying CFCR](../deploying-cfcr/) topic to finish the CFCR installation.
 
