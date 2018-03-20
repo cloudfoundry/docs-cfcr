@@ -74,4 +74,4 @@ $ export kubo_terraform_state=${state_dir}/terraform.tfstate</p>
 	!!! tip
 		You can also set the configuration manually by editing `KUBO_ENV/director.yml`.
 
-After configuring routing, continue to the [Deploying BOSH for CFCR on GCP](../deploying-bosh-gcp/) topic.
+After configuring routing, continue to the [Deploying BOSH for CFCR on GCP](deploying-bosh-gcp/) topic.
