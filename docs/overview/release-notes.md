@@ -16,10 +16,10 @@
 * **Fix:** Made the node drain more robust -- [story #155549518](https://www.pivotaltracker.com/n/projects/2093412/stories/155549518), [story #156008895](https://www.pivotaltracker.com/n/projects/2093412/stories/156008895) and [cloudfoundry-incubator/kubo-release#181](https://github.com/cloudfoundry-incubator/kubo-release/issues/181).
 * **Fix:** Included a kube-proxy dependency (conntrack) to fix error logs -- [story](https://www.pivotaltracker.com/story/show/154818002).
 * **Fix:** Can use `kubectl top node` against a CFCR cluster. __Caveat:__ the `--heapster-scheme='https'` flag needs to be included -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154906631).
-* **GCP:** Stopped the Kube-Controller-Manager from creating unecessary routes -- [story](https://www.pivotaltracker.com/story/show/155977766).
-  - This was causing high Google Cloud API usage.
-* **AWS:** Added ability to provide AWS credentials in the BOSH manifest -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/155507606).
-  - Previously, AWS acceess could only be granted by setting the IAM profile in the cloud config. In cases of BOSH Directors that asre used by multiple deployments, it is necessary to provide the credentials in the BOSH manifest.
+* **GCP:** Stopped the Kube-Controller-Manager from creating unnecessary routes -- [story](https://www.pivotaltracker.com/story/show/155977766).
+    - This was causing high Google Cloud API usage.
+* **AWS:** Added the ability to provide AWS credentials in the BOSH manifest -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/155507606).
+    - Previously, AWS access could only be granted by setting the IAM profile in the cloud config. In cases of BOSH Directors that are used by multiple deployments, it is necessary to provide the credentials in the BOSH manifest.
 
 ### Other minor changes
 
