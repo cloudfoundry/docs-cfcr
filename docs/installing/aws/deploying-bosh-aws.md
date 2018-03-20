@@ -107,8 +107,8 @@ Perform the following steps to deploy a bastion VM with a set of security group 
 
 ##Step 3: Generate CFCR Configuration
 
-1. SSH in to the bastion VM. Enter the following command:
-	<p class="terminal">$ ssh -i \${private_key_filename} ubuntu@\$(terraform output -state=\${kubo_terraform_state} bosh-bastion-ip)</p>
+1. SSH onto the bastion VM. Enter the following command:
+	<p class="terminal">$ ssh -i "\${private_key_filename}" ubuntu@\$(terraform output -state=\${kubo_terraform_state} bosh-bastion-ip)</p>
 1. Change into the root of the `kubo-deployment` repo. Enter the following command:
 	<p class="terminal">$ cd /share/kubo-deployment</p>
 1. Set three Kubo environment variables with the following commands:
@@ -219,6 +219,9 @@ Perform the following steps to deploy a BOSH Director from the bastion VM:
 
 		!!! note
 			Subsequent runs of `deploy_bosh` will use `creds.yml` and `state.json` to apply changes to the BOSH environment.
+
+1. Target the bosh environment. Enter the following command:
+	<p class="terminal">$ BOSH_ENV=${kubo_env_path} source /share/kubo-deployment/bin/set_bosh_environment</p>
 
 If you plan to use IaaS routing for CFCR, continue to [Configure IaaS Routing for AWS](routing-aws/).
 
