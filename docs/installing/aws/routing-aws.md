@@ -15,7 +15,7 @@ If you want to use Cloud Foundry for routing instead of IaaS load balancers, see
 	1. Change into your Terraform working directory with the following command:
 		<p class="terminal">$ cd ~/kubo-deployment/docs/terraform/aws/platform</p>
 	1. SSH onto the bastion VM with the following command:
-		<p class="terminal">$ ssh -i ${private_key_filename} ubuntu@$(terraform output bosh-bastion-ip)</p>
+		<p class="terminal">$ ssh -i \${private_key_filename} ubuntu@$(terraform output bosh-bastion-ip)</p>
 	1. Set the `kubo_env_name` environment variable with the following command:
 		<p class="terminal">$ export kubo_env_name=kubo</p>
 1. On the bastion VM, change into the directory that contains the AWS user guide. Enter the following command:

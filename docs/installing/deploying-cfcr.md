@@ -19,11 +19,11 @@ Access your CFCR environment. This is the environment that contains the `KUBO_EN
 Follow the steps for your IaaS:
 
 * **Google Cloud Platform (GCP)**: Open the Google Cloud Shell and use `gcloud compute ssh` to SSH into your bastion VM. For more information, see the [(Optional) Step 1: Set Up Your Environment](./gcp/routing-gcp/#optional-step-1-set-up-your-environment) section of the <em>Configuring IaaS Routing for GCP</em>.
-* **Amazon Web Services (AWS)**: SSH onto the bastion VM from your local machine by performing the following the steps:
+* **Amazon Web Services (AWS)**: SSH in to the bastion VM from your local machine by performing the following the steps:
 	1. Change into your Terraform working directory with the following command:
 		<p class="terminal">$ cd ~/kubo-deployment/docs/terraform/aws/platform</p>
 	1. SSH onto the bastion VM with the following command:
-		<p class="terminal">$ ssh -i ${private_key_filename} ubuntu@$(terraform output -state ~/terraform.tfstate bosh-bastion-ip)</p>
+		<p class="terminal">$ ssh -i \${private_key_filename} ubuntu@$(terraform output -state ~/terraform.tfstate bosh-bastion-ip)</p>
 * **vSphere or OpenStack**: If you deployed BOSH for CFCR from a bastion VM, SSH into the VM. Otherwise, navigate to the CFCR environment on your local machine.
 
 ##(Optional) Step 2: Configure Proxy Access
