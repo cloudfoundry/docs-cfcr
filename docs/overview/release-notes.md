@@ -2,7 +2,79 @@
 
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
-	
+
+## v0.15.0
+
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.15.0/kubo-deployment-0.15.0.tgz) the release artifact.
+
+**Release Date:** March 20, 2018
+
+* Removed edge case where timeouts during upgrades could lead to Etcd data loss -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/155814661).
+* Added the ability to configure the HTTP(s) proxy to be used by the Kubernetes control plane -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154717574).
+* Made Kube-DNS use its own configuration so that the Kubelet configuration is not exposed in the Kube-DNS container -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154873779).
+- **Fix:** Allowed `\` and `|` to be used in vCenter passwords -- [cloudfoundry-incubator/kubo-release#180](https://github.com/cloudfoundry-incubator/kubo-release/issues/180).
+* **Fix:** Made the node drain more robust -- [story #155549518](https://www.pivotaltracker.com/n/projects/2093412/stories/155549518), [story #156008895](https://www.pivotaltracker.com/n/projects/2093412/stories/156008895) and [cloudfoundry-incubator/kubo-release#181](https://github.com/cloudfoundry-incubator/kubo-release/issues/181).
+* **Fix:** Included a kube-proxy dependency (conntrack) to fix error logs -- [story](https://www.pivotaltracker.com/story/show/154818002).
+* **Fix:** Can use `kubectl top node` against a CFCR cluster. __Caveat:__ the `--heapster-scheme='https'` flag needs to be included -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154906631).
+* **GCP:** Stopped the Kube-Controller-Manager from creating unecessary routes -- [story](https://www.pivotaltracker.com/story/show/155977766).
+  - This was causing high Google Cloud API usage.
+* **AWS:** Added ability to provide AWS credentials in the BOSH manifest -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/155507606).
+  - Previously, AWS acceess could only be granted by setting the IAM profile in the cloud config. In cases of BOSH Directors that asre used by multiple deployments, it is necessary to provide the credentials in the BOSH manifest.
+
+### Other minor changes
+
+- [cloudfoundry-incubator/kubo-release#178](https://github.com/cloudfoundry-incubator/kubo-release/pull/178)
+- [cloudfoundry-incubator/kubo-release#184](https://github.com/cloudfoundry-incubator/kubo-release/pull/184)
+- [cloudfoundry-incubator/kubo-deployment#266](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/266)
+- [cloudfoundry-incubator/kubo-deployment#276](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/276)
+- [cloudfoundry-incubator/kubo-deployment#271](https://github.com/cloudfoundry-incubator/kubo-deployment/issues/271)
+
+### Component Versions
+
+The following table lists the component versions for CFCR v0.15.0:
+
+ <table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Kubernetes</td>
+    <td>1.9.5</td>
+  </tr>
+  <tr>
+    <td>Flannel</td>
+    <td>0.10.0</td>
+  </tr>
+   <tr>
+    <td>ETCD</td>
+     <td>3.3.2</td>
+  </tr>   
+  <tr>
+    <td>Docker</td>
+    <td>1.13.1</td>
+  </tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.5.2</td>
+  </tr>
+  <tr>
+    <td>Stemcell</td>
+    <td>3541.9</td>
+  </tr>
+  </tbody>
+  </table>
+  
+### Conformance Tests Results
+
+* [GCP](https://storage.googleapis.com/conformance-results/conformance-results-gcp-0.14.1-dev.55.tar.gz)
+* [AWS](https://storage.googleapis.com/conformance-results/conformance-results-aws-0.14.1-dev.55.tar.gz)
+* [vSphere](https://storage.googleapis.com/conformance-results/conformance-results-vsphere-0.14.1-dev.55.tar.gz)
+* [OpenStack](https://storage.googleapis.com/conformance-results/conformance-results-openstack-0.14.1-dev.55.tar.gz)
+
 ## v0.14.0
 
 **Release Date:** February 20, 2018
