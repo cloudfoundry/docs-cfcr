@@ -50,4 +50,7 @@ $ export kubernetes_master_host=\$(terraform output -state=${kubo_terraform_stat
 	!!! tip
 		You can also set the configuration manually by editing `KUBO_ENV/director.yml`.
 
+1. Update the BOSH director cloud configuration to use the new load balancer:
+    <p class="terminal">$ /share/kubo-deployment/bin/deploy_bosh "${kubo_env_path}" ~/deployer.pem</p>
+
 After configuring routing, continue to the [Deploying CFCR](../deploying-cfcr/) topic.
