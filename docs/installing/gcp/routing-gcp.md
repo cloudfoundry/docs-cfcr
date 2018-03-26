@@ -10,9 +10,11 @@ Before completing the procedures in this topic, you must have performed the step
 !!! tip
 		Execute all of the commands in this topic from the Google Cloud Shell, not from your local machine.
 
-## Step 1: Set Up Your Shell Environment
+## (Optional) Step 1: Set Up Your Shell Environment
 
-Perform the following steps to set up your Google Cloud Shell environment:
+If you are still working in the same Google Cloud Shell session from the [Paving Infrastructure on GCP](paving-infrastructure-gcp/) topic, skip to [Step 2: Configure Load Balancers](#step-2-configure-load-balancers).
+
+If you have started a new Google Cloud Shell session, perform the following steps to set up your Google Cloud Shell environment:
 
 1. Log in to the GCP Console.
 1. From the left-hand navigation, click **VPC network**.
@@ -21,10 +23,6 @@ Perform the following steps to set up your Google Cloud Shell environment:
     !!! note
         If you plan to use [Cloud Foundry to handle routing](../cf-routing.html) for CFCR, do not create a new network. Instead, deploy CFCR in the same network as Cloud Foundry.
 
-   If you are still working in the same Google Cloud Shell session from the [Paving Infrastructure on GCP](paving-infrastructure-gcp/) topic, skip to [Step 2: Configure Load Balancers](#step-2-configure-load-balancers).
-   
-   If you have started a new Google Cloud Shell session, perform the following steps:
- 
 1. Set the prefix and zone from the [Step 1: Set Up Your Shell Environment](paving-infrastructure-gcp/#step-1-set-up-your-shell-environment) section of the [Paving Infrastructure on GCP](https://docs-cfcr.cfapps.io/installing/gcp/paving-infrastructure-gcp/) topic as environment variables. For example:
 	<p class="terminal">$ export prefix=my-kubo
 $ export zone=us-west1-a

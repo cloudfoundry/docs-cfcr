@@ -132,4 +132,4 @@ $ export kubo_env_path="\${kubo_envs}/\${kubo_env_name}"</p>
 
 If you plan to use IaaS routing for CFCR, continue to [Configure IaaS Routing for GCP](routing-gcp/).
 
-If you have configured Cloud Foundry routing, continue to [Deploying CFCR](../deploying-cfcr/).
+If you have configured Cloud Foundry routing, continue to [Deploying BOSH for CFCR on GCP](deploying-bosh-gcp/).
