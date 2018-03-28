@@ -220,7 +220,7 @@ Perform the following steps to deploy a BOSH Director from the bastion VM:
 		!!! note
 			Subsequent runs of `deploy_bosh` will use `creds.yml` and `state.json` to apply changes to the BOSH environment.
 
-1. Target the bosh environment. Enter the following command:
+1. Target the BOSH environment. Enter the following command:
 	<p class="terminal">$ BOSH_ENV=${kubo_env_path} source /share/kubo-deployment/bin/set_bosh_environment</p>
 
 If you plan to use IaaS routing for CFCR, continue to [Configure IaaS Routing for AWS](routing-aws/).
