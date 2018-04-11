@@ -3,6 +3,70 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
 
+## v0.16.0
+
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.16.0/kubo-deployment-0.16.0.tgz) the release artifact.
+
+**Release Date:** April 06, 2018
+
+* A new etcd bosh release is being used (cfcr-etcd-release), this is to enable deployments with multiple etcd nodes -- [story](https://www.pivotaltracker.com/story/show/155114966).
+* Prevent unnecessary route creation in default kube-controller-manager config -- [story](https://www.pivotaltracker.com/story/show/155977766).
+* System specs can be applied even when a cloud provider is not configured -- [story](https://www.pivotaltracker.com/story/show/155936152).
+* Enable inter-container communication in flannel, while retaining the original source ip.  -- [story](https://www.pivotaltracker.com/story/show/154384422).
+* CFCR can be deployed to BOSH-lite  -- [story](https://www.pivotaltracker.com/story/show/154589411).
+
+* **Fix:** Made the node drain (even) more robust -- [story](https://www.pivotaltracker.com/story/show/156164242).
+
+### Other minor changes
+
+- [Explicitly unmount overlayfs (#111)](https://github.com/cloudfoundry-incubator/kubo-release/pull/111)
+
+### Component Versions
+
+The following table lists the component versions for CFCR v0.16.0:
+
+ <table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Kubernetes</td>
+    <td>1.9.6</td>
+  </tr>
+  <tr>
+    <td>Flannel</td>
+    <td>0.10.0</td>
+  </tr>
+   <tr>
+    <td>ETCD</td>
+     <td>3.3.1</td>
+  </tr>   
+  <tr>
+    <td>Docker</td>
+    <td>1.13.1</td>
+  </tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.5.2</td>
+  </tr>
+  <tr>
+    <td>Stemcell</td>
+    <td>3541.10</td>
+  </tr>
+  </tbody>
+  </table>
+  
+### Conformance Tests Results
+
+* [GCP](https://storage.googleapis.com/conformance-results/conformance-results-gcp-0.14.1-dev.55.tar.gz)
+* [AWS](https://storage.googleapis.com/conformance-results/conformance-results-aws-0.14.1-dev.55.tar.gz)
+* [vSphere](https://storage.googleapis.com/conformance-results/conformance-results-vsphere-0.14.1-dev.55.tar.gz)
+* [OpenStack](https://storage.googleapis.com/conformance-results/conformance-results-openstack-0.14.1-dev.55.tar.gz)
+
 ## v0.15.0
 
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.15.0/kubo-deployment-0.15.0.tgz) the release artifact.
