@@ -14,7 +14,7 @@ Perform the following steps to set up your Google Cloud Shell environment:
 1. Click **Create VPC Network**.
 
 	!!! tip
-		If you plan to use [Cloud Foundry to handle routing](../cf-routing.html) for CFCR, do not create a new network. Instead, deploy CFCR in the same network as Cloud Foundry.
+		If you plan to use [Cloud Foundry to handle routing](../cf-routing/) for CFCR, do not create a new network. Instead, deploy CFCR in the same network as Cloud Foundry.
 
 1. Enter a name for your network, such as `kubo-network`.
 1. The form will force you to create a subnet for the VPC network. After the VPC has been created, you can delete this subnet.
