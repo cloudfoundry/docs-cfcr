@@ -28,7 +28,7 @@
 * Drain script improvements -- [story](https://www.pivotaltracker.com/story/show/156999207)
 * Enabled the automated vSphere cloud provider ([ref](https://vmware.github.io/vsphere-storage-for-kubernetes/documentation/existing.html#enabling-vsphere-cloud-provider)), and remove references to the cloud provider in vSphere deployed workers. -- stories:[1](https://www.pivotaltracker.com/story/show/157432912),[2](https://www.pivotaltracker.com/story/show/157735891)
 
-### Annocuement
+### Announcement
 In version v0.18 we are going to remove support for ABAC as a authorization mode.
 
 ### Component Versions
