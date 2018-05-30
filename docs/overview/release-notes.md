@@ -3,6 +3,73 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
 
+## v0.17.0
+
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.17.0/kubo-deployment-0.17.0.tgz) the release artifact.
+
+**Release Date:** May 30, 2018
+
+* Full support, hardening and validation of running multiple Kubernetes Master Nodes across Availability Zones [epic](https://www.pivotaltracker.com/epic/show/3887236)
+  * This will enable zero-downtime during upgrades
+  * The BOSH native manifest will deploy with 3 masters by default, our script based deployment will continue to deploy one
+
+* Upgraded to Kubernetes v1.10 [story](https://www.pivotaltracker.com/story/show/156501233)
+  * This release is packaging v1.10.3
+
+* Added smoke-tests to verify a deployed cluster [story](https://www.pivotaltracker.com/story/show/144108357), [readme](https://github.com/cloudfoundry-incubator/kubo-release/tree/master/src/smoke-tests)
+
+* Allow operators to control feature gates on Kubernetes components [PR](https://github.com/cloudfoundry-incubator/kubo-release/pull/201)
+
+### Other changes
+
+* Enable kube-controller-manager to issue certificates PR:[1](https://github.com/cloudfoundry-incubator/kubo-release/pull/199)[2](https://github.com/cloudfoundry-incubator/kubo-release/pull/187)[3](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/281)
+* Support AWS LoadBalancers when externalTrafficPolicy is set to Local [story](https://www.pivotaltracker.com/story/show/157044566)
+* Add BOSH instance IDs to the node labels [PR](https://github.com/cloudfoundry-incubator/kubo-release/pull/190)
+* Re-enable rpcbind to allow support for NFS [story](https://www.pivotaltracker.com/n/projects/2093412/stories/156686399)
+* Remove unused terraform variable from kubo-lbs.tf [PR](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/283)
+* Operator rename.yml to set deployment name and etcd certificate alter [PR](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/299)
+* Drain script improvements [story](https://www.pivotaltracker.com/story/show/156999207)
+* Enabled the automated vSphere cloud provider [ref](https://vmware.github.io/vsphere-storage-for-kubernetes/documentation/existing.html#enabling-vsphere-cloud-provider), and remove references to the cloud provider in vSphere deployed workers. story:[1](https://www.pivotaltracker.com/story/show/157432912),[2](https://www.pivotaltracker.com/story/show/157735891)
+
+### Component Versions
+
+The following table lists the component versions for CFCR v0.17.0:
+
+ <table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Kubernetes</td>
+    <td>1.10.3</td>
+  </tr>
+  <tr>
+    <td>Flannel</td>
+    <td>0.10.0</td>
+  </tr>
+   <tr>
+    <td>ETCD</td>
+     <td>3.3.1</td>
+  </tr>   
+  <tr>
+    <td>Docker</td>
+    <td>17.12.1-ce</td>
+  </tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.5.2</td>
+  </tr>
+  <tr>
+    <td>Stemcell</td>
+    <td>3586.8</td>
+  </tr>
+  </tbody>
+</table>
+
 ## v0.16.0
 
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.16.0/kubo-deployment-0.16.0.tgz) the release artifact.
