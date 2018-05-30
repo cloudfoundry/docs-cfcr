@@ -9,9 +9,9 @@
 
 **Release Date:** May 30, 2018
 
-* Full support, hardening and validation of running multiple Kubernetes Master Nodes across Availability Zones -- [epic](https://www.pivotaltracker.com/epic/show/3887236)
-  - This will enable zero-downtime during upgrades
+* Hardening and validation of running multiple Kubernetes Master Nodes across Availability Zones 
   - The BOSH native manifest will deploy with 3 masters by default, our script based deployment will continue to deploy one
+  - [epic](https://www.pivotaltracker.com/epic/show/3887236)
 
 * Upgraded to Kubernetes v1.10 -- [story](https://www.pivotaltracker.com/story/show/156501233)
   - This release is packaging v1.10.3
@@ -22,7 +22,7 @@
 
 ### Other changes
 
-* Enable kube-controller-manager to issue certificates PR:[1](https://github.com/cloudfoundry-incubator/kubo-release/pull/199)[2](https://github.com/cloudfoundry-incubator/kubo-release/pull/187)[3](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/281)
+* Enable kube-controller-manager to issue certificates PR:[1](https://github.com/cloudfoundry-incubator/kubo-release/pull/199),[2](https://github.com/cloudfoundry-incubator/kubo-release/pull/187)[3](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/281)
 * Support AWS LoadBalancers when externalTrafficPolicy is set to Local -- [story](https://www.pivotaltracker.com/story/show/157044566)
 * Add BOSH instance IDs to the node labels -- [PR](https://github.com/cloudfoundry-incubator/kubo-release/pull/190)
 * Re-enable rpcbind to allow support for NFS -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/156686399)
