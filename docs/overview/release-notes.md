@@ -10,11 +10,11 @@
 **Release Date:** May 30, 2018
 
 * Full support, hardening and validation of running multiple Kubernetes Master Nodes across Availability Zones -- [epic](https://www.pivotaltracker.com/epic/show/3887236)
-  * This will enable zero-downtime during upgrades
-  * The BOSH native manifest will deploy with 3 masters by default, our script based deployment will continue to deploy one
+  - This will enable zero-downtime during upgrades
+  - The BOSH native manifest will deploy with 3 masters by default, our script based deployment will continue to deploy one
 
 * Upgraded to Kubernetes v1.10 -- [story](https://www.pivotaltracker.com/story/show/156501233)
-  * This release is packaging v1.10.3
+  - This release is packaging v1.10.3
 
 * Added smoke-tests to verify a deployed cluster -- [story](https://www.pivotaltracker.com/story/show/144108357), [readme](https://github.com/cloudfoundry-incubator/kubo-release/tree/master/src/smoke-tests)
 
