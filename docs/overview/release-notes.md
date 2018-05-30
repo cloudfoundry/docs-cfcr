@@ -5,8 +5,6 @@
 
 ## v0.17.0
 
-[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.17.0/kubo-deployment-0.17.0.tgz) the release artifact.
-
 **Release Date:** May 30, 2018
 
 * Hardening and validation of running multiple Kubernetes Master Nodes across Availability Zones. The BOSH native manifest will deploy with three masters by default, our script based deployment will continue to deploy one. -- [epic](https://www.pivotaltracker.com/epic/show/3887236)
