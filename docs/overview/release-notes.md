@@ -17,7 +17,8 @@
  vSphere storage policies. [#157477844](https://www.pivotaltracker.com/story/show/157477844)
 * Ensure nodes will recover correctly with vSphere HA [#158142038](https://www.pivotaltracker.com/story/show/158142038) [#158180949](https://www.pivotaltracker.com/story/show/158180949)
 
-Other minor changes:
+### Other minor changes
+
 * Improved our tooling to deploy CFCR on BOSH-lite. [readme](https://github.com/cloudfoundry-incubator/kubo-deployment#deploy-cfcr-on-bosh-lite)
 * Changed the set_kubeconfig input parameters. Note: credhub login required before running set_kubeconfig. [story](https://www.pivotaltracker.com/story/show/157841437)
 
