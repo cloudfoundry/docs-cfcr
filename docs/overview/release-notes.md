@@ -3,6 +3,64 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
 
+## v0.18.0
+
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.18.0/kubo-deployment-0.18.0.tgz) the release artifact.
+
+**Release Date:** July 5, 2018
+
+* **Deprecation notice** Removal of ABAC as an authorization mode option [#157695924](https://www.pivotaltracker.com/story/show/157695924)
+
+* Improved the security of internal communication between kubernetes components. Stories: [#158357421](https://www.pivotaltracker.com/story/show/158357421) [#158356113](https://www.pivotaltracker.com/story/show/158356113) [#158356114](https://www.pivotaltracker.com/story/show/158356114)
+
+* Allow storage classes to be configured with
+ vSphere storage policies. [#157477844](https://www.pivotaltracker.com/story/show/157477844)
+* Ensure nodes will recover correctly with vSphere HA [#158142038](https://www.pivotaltracker.com/story/show/158142038) [#158180949](https://www.pivotaltracker.com/story/show/158180949)
+
+Other minor changes:
+* Improved our tooling to deploy CFCR on BOSH-lite. [readme](https://github.com/cloudfoundry-incubator/kubo-deployment#deploy-cfcr-on-bosh-lite)
+* Changed the set_kubeconfig input parameters. Note: credhub login required before running set_kubeconfig. [story](https://www.pivotaltracker.com/story/show/157841437)
+
+
+### Component Versions
+
+The following table lists the component versions for CFCR v0.18.0:
+
+ <table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Kubernetes</td>
+    <td>1.10.4</td>
+  </tr>
+  <tr>
+    <td>Flannel</td>
+    <td>0.10.0</td>
+  </tr>
+   <tr>
+    <td>ETCD</td>
+     <td>3.3.1</td>
+  </tr>   
+  <tr>
+    <td>Docker</td>
+    <td>17.12.1-ce</td>
+  </tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.5.2</td>
+  </tr>
+  <tr>
+    <td>Stemcell</td>
+    <td>3586.24</td>
+  </tr>
+  </tbody>
+</table>
+
 ## v0.17.0
 
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.17.0/kubo-deployment-0.17.0.tgz) the release artifact.
