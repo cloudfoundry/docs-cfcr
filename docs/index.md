@@ -13,7 +13,9 @@ See [What is CFCR?](./overview/what-is-cfcr/) to learn more.
 ## Installing and Configuring
 
 **DEPRECATED**
->We no longer support the following strategies to deploy Bosh and CFCR. Please see [Bosh Bootloader](https://github.com/cloudfoundry/bosh-bootloader) on how to deploy Bosh and [CFCR Repository](https://github.com/cloudfoundry-incubator/kubo-release) to deploy CFCR.
+>We no longer support the following strategies for deploying BOSH and CFCR.
+To deploy BOSH, see [BOSH Bootloader](https://github.com/cloudfoundry/bosh-bootloader).
+To deploy CFCR, see the [CFCR repository](https://github.com/cloudfoundry-incubator/kubo-release) on GitHub.
 
 The following topics describe how to install and configure CFCR on your cloud platform.
 
