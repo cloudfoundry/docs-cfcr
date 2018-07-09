@@ -10,7 +10,10 @@ CFCR was formerly known as Kubo, and many CFCR assets still use the Kubo name. C
 
 See [What is CFCR?](./overview/what-is-cfcr/) to learn more.
 
-##Installing and Configuring
+## Installing and Configuring
+
+**DEPRECATED**
+>We no longer support the following strategies to deploy Bosh and CFCR. Please see [Bosh Bootloader](https://github.com/cloudfoundry/bosh-bootloader) on how to deploy Bosh and [CFCR Repository](https://github.com/cloudfoundry-incubator/kubo-release) to deploy CFCR.
 
 The following topics describe how to install and configure CFCR on your cloud platform.
 
@@ -35,7 +38,7 @@ The following topics describe how to install and configure CFCR on your cloud pl
 [Configuring Cloud Foundry Routing](./installing/cf-routing/)   
 [Configuring Pluggable Add-ons](./installing/pluggable-addons/)
 
-##Managing and Troubleshooting
+## Managing and Troubleshooting
 
 The following topics describe how to manage and troubleshoot CFCR.
 
@@ -47,6 +50,6 @@ The following topics describe how to manage and troubleshoot CFCR.
 
 ## Certifications
 
-<img alt="Kubernetes 1.8 Certification logo" src="./images/common/certified_kubernetes_1.8_color.png" width="198px">
+<img alt="Kubernetes 1.10 Certification logo" src="https://github.com/cncf/artwork/blob/master/kubernetes/certified-kubernetes/1.10/color/certified-kubernetes-1.10-color.png" width="198px">
 
 Kubernetes® is a registered trademark of The Linux Foundation in the United States and other countries, and is used pursuant to a license from The Linux Foundation.
