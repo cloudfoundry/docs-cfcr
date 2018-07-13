@@ -123,7 +123,9 @@ If you configured IaaS load balancers to handle routing for CFCR, you can expose
 !!! warning 
 	Any resources that are provisioned by Kubernetes will not be deleted by BOSH if you delete your CFCR deployment. 
 
-###Cloud Foundry Routing
+### Cloud Foundry Routing
+**DEPRECATED**
+>Cloud Foundry Routing will be removed in the next release
 
 If you [configured Cloud Foundry](cf-routing/) to handle routing for CFCR, perform the following steps to expose both TCP and HTTP routes to the Kubernetes services:
 
