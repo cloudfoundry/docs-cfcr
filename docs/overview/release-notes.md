@@ -3,6 +3,59 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
 
+## v0.19.0
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.19.0/kubo-deployment-0.19.0.tgz) the release artifact.
+
+**Release Date:** July 18, 2018
+
+* **Deprecation notice** Future release will remove support of the CF routing feature documented [here](https://docs-cfcr.cfapps.io/installing/cf-routing/) – [#157695924](https://www.pivotaltracker.com/story/show/157695924)
+
+* Allow CIDRs to be configured for pods and services – [pr #220](https://github.com/cloudfoundry-incubator/kubo-release/pull/220),[#157480131](https://www.pivotaltracker.com/story/show/157480131) 
+* Update the admission-controllers based on kubernetes recommendations – [#156525910](https://www.pivotaltracker.com/story/show/156525910)
+* Kubernetes v1.10.5 version – [#158527191](https://www.pivotaltracker.com/story/show/158527191) 
+* Changed the docker storage driver from overlay to overlay2 – [#158495554](https://www.pivotaltracker.com/story/show/158495554)
+* Allow NTLM formatted usernames for vSphere – [pr #229](https://github.com/cloudfoundry-incubator/kubo-release/pull/229) 
+* **Fix:** improve drain script for upgrades on large clusters – [#158782574](https://www.pivotaltracker.com/story/show/158782574)
+
+### Component Versions
+
+The following table lists the component versions for CFCR v0.19.0:
+
+ <table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Kubernetes</td>
+    <td>1.10.5</td>
+  </tr>
+  <tr>
+    <td>Flannel</td>
+    <td>0.10.0</td>
+  </tr>
+   <tr>
+    <td>ETCD</td>
+     <td>3.3.1</td>
+  </tr>   
+  <tr>
+    <td>Docker</td>
+    <td>17.12.1-ce</td>
+  </tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.5.2</td>
+  </tr>
+  <tr>
+    <td>Stemcell</td>
+    <td>3586.25</td>
+  </tr>
+  </tbody>
+</table>
+
 ## v0.18.0
 
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.18.0/kubo-deployment-0.18.0.tgz) the release artifact.
