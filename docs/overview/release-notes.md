@@ -11,7 +11,8 @@
 * **Deprecation notice** Future release will remove support of the CF routing feature documented [here](https://docs-cfcr.cfapps.io/installing/cf-routing/) – [#157695924](https://www.pivotaltracker.com/story/show/157695924)
 
 * Allow CIDRs to be configured for pods and services – [pr #220](https://github.com/cloudfoundry-incubator/kubo-release/pull/220),[#157480131](https://www.pivotaltracker.com/story/show/157480131) 
-* Update the admission-controllers based on kubernetes recommendations – [#156525910](https://www.pivotaltracker.com/story/show/156525910)
+* Update the admission-controllers based on kubernetes recommendations – [#156525910](https://www.pivotaltracker.com/story/show/156525910)  
+_Added DefaultTolerationSeconds and ValidatingAdmissionWebhook. We removed NamespaceExists, as it is redunant._    
 * Kubernetes v1.10.5 version – [#158527191](https://www.pivotaltracker.com/story/show/158527191) 
 * Changed the docker storage driver from overlay to overlay2 – [#158495554](https://www.pivotaltracker.com/story/show/158495554)   
 _When upgrading, the old images will remain on each worker in the /var/vcap/data/docker/docker/overlay directory.  
