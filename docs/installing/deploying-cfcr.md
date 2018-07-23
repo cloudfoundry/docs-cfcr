@@ -96,9 +96,18 @@ Perform the following steps to deploy CFCR:
 
 After deploying the cluster, perform the following steps: 
 
-1. Execute the `set_kubeconfig` script to configure `kubectl`, the Kubernetes command line interface. Specify your `KUBO_ENV` and the name of your new cluster. For example: 
+1. Login to credhub, which was deployed with your bosh. Execute `credhub_login` and specify your `KUBO_ENV`. For example:
 
-	<p class="terminal">$ ./bin/set_kubeconfig ~/kubo-env/kubo my-cluster</p>
+	<p class="terminal">$ ./bin/credhub_login ~/kubo-env/kubo</p>
+
+1. Execute the `set_kubeconfig` script to configure `kubectl` the Kubernetes command line interface: 
+
+	`$ ./bin/set_kubeconfig DIRECTOR_NAME/DEPLOYMENT_NAME APISERVER_URL`
+	
+	Where:
+	* `DIRECTOR_NAME`: your bosh director name. Execute `bosh envs` and `bosh env -e YOUR_ENV` with your environment's name or URL. The "Name" output is the director name. 
+	* `DEPLOYMENT_NAME`: the name of your BOSH deployment, `bosh -e YOUR_ENV deployments`
+	* `APISERVER_URL` : the URL of your kubernetes master node or your load balancer or if you have are deploying muliple masters.
 
 1. Verify that the settings have been applied correctly by listing the Kubernetes pods in the `kubo-system` namespace. Enter the following command:
 
