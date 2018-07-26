@@ -119,7 +119,7 @@ directory. For example:
 		* To find your `DEPLOYMENT_NAME`, run the following command:
 			<p class="terminal">$ bosh -e YOUR_ENV deployments</p>
 	* `APISERVER_URL` is the URL of your Kubernetes master node or your load balancer. If you have deployed with multiple masters, you have a load balancer. 
-		* To find the APISERVER_URL, run the following command:
+		* To find the `APISERVER_URL`, run the following command:
 		<p class="terminal">$ kubectl cluster-info</p>
 
 1. Verify that the settings have been applied correctly by listing the Kubernetes pods in the `kubo-system` namespace. Enter the following command:
