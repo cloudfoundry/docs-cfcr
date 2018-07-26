@@ -105,12 +105,12 @@ directory. For example:
 
 1. Execute the `set_kubeconfig` script to configure `kubectl,` the Kubernetes command line interface: 
 
-	<p class="terminal">$ ./bin/set_kubeconfig DIRECTOR_NAME/DEPLOYMENT_NAME APISERVER_URL`</p>
+	<p class="terminal">$ ./bin/set_kubeconfig DIRECTOR_NAME/DEPLOYMENT_NAME APISERVER_URL</p>
 	
 	Where:
 
 	* `DIRECTOR_NAME` is the name of your BOSH Director. 
-		* To find your `DIRECTOR_NAME`:
+		* To find your `DIRECTOR_NAME`, perform the following steps:
 			1. Run the following command to find the name of your BOSH environment
 			 <p class="terminal">$ bosh envs</p>
 			1. Run the following command with your BOSH environment's name or URL. The output of this command contains your BOSH Director name. 
