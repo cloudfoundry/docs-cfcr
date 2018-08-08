@@ -2,6 +2,55 @@
 
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
+## v0.20.0
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.20.0/kubo-deployment-0.20.0.tgz) the release artifact.
+
+**Release Date:** August 8, 2018
+
+* Kubernetes update to v1.11 – [kubernetes release notes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.11.md#kubernetes-111-release-notes),[#159328985](https://www.pivotaltracker.com/story/show/159328985) 
+* We have upgraded the default stemcell to Ubuntu 16.04 Xenial  – [#158004796](https://www.pivotaltracker.com/story/show/158004796)
+_if you used CFCR’s ./deploy_bosh script to deploy your BOSH director, we recommend updating the bosh runtime-config as it has a reference to trusty_
+* We have BOSH Backup and Restore scripts to ([BBR]https://docs.cloudfoundry.org/bbr/) to restore the state of a cluster from the backup of itself – [#158945642](https://www.pivotaltracker.com/story/show/158945642),[#158946553](https://www.pivotaltracker.com/story/show/158946553)
+_This is verified against a single master cluster running stateless workloads, further verified scenarios to be supported in future versions._
+* We have upgraded the ETCD release, and increased the version to v3.3.9
+
+* **Deprecation notice** Heapster is officially deprecated in Kubernetes 1.11. We will remove it by default in favor of metrics-server in a future release.
+
+### Component Versions
+
+The following table lists the component versions for CFCR v0.20.0:
+
+ <table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Kubernetes</td>
+    <td>1.11.1</td>
+  </tr>
+  <tr>
+    <td>Flannel</td>
+    <td>0.10.0</td>
+  </tr>
+   <tr>
+    <td>ETCD</td>
+     <td>3.3.9</td>
+  </tr>   
+  <tr>
+    <td>Docker</td>
+    <td>17.12.1-ce</td>
+  </tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.5.2</td>
+  </tr>
+  </tbody>
+</table>
+
 
 ## v0.19.0
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.19.0/kubo-deployment-0.19.0.tgz) the release artifact.
