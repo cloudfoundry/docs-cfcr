@@ -2,13 +2,13 @@
 
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
+
 ## v0.20.0
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.20.0/kubo-deployment-0.20.0.tgz) the release artifact.
 
 **Release Date:** August 8, 2018
 
-     !!! note
-          There is a [known issue](https://github.com/cloudfoundry-incubator/kubo-release/issues/243) with deploying cfcr v0.20 in airgapped environments, related to an image dependency. This will be fixed in the next release.
+**Known Issue** There is an [issue](https://github.com/cloudfoundry-incubator/kubo-release/issues/243) with deploying cfcr v0.20 in airgapped environments, related to an image dependency. This will be fixed in the next release.
 
 ### Features
 
