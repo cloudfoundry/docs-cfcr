@@ -25,7 +25,8 @@ $ export subnet_ip_prefix="10.0.1"</p>
 ##Step 2: Deploy BOSH Director
 
 Perform the following steps to deploy a BOSH Director from the bastion VM:
-
+1. Change into the root of the kubo-deployment repo. Enter the following command:
+        <p class="terminal">$ cd /share/kubo-deployment</p>
 1. Deploy the BOSH Director for CFCR. Enter the following command:
 	<p class="terminal">$ ./bin/deploy_bosh "${kubo_env_path}" ~/terraform.key.json</p>
 
