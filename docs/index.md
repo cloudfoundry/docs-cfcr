@@ -52,6 +52,6 @@ The following topics describe how to manage and troubleshoot CFCR.
 
 ## Certifications
 
-<img alt="Kubernetes 1.10 Certification logo" src="https://github.com/cncf/artwork/blob/master/kubernetes/certified-kubernetes/1.10/color/certified-kubernetes-1.10-color.png" width="198px">
+<img alt="Kubernetes 1.11 Certification logo" src="https://github.com/cncf/artwork/raw/master/kubernetes/certified-kubernetes/1.11/color/certified-kubernetes-1.11-color.png" width="198px">
 
 Kubernetes® is a registered trademark of The Linux Foundation in the United States and other countries, and is used pursuant to a license from The Linux Foundation.
