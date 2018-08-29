@@ -3,6 +3,68 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
 
+## v0.21.0
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.21.0/kubo-deployment-0.21.0.tgz) the release artifact.
+
+**Release Date:** August 29, 2018
+
+    !!! note
+       The Kubernetes 1.11 release kicked off the deprecation timeline for the Heapster component, see https://github.com/kubernetes/heapster/blob/master/docs/deprecation.md for more info. As a result, we're in the process of replacing Heapster with Metrics Server in an upcoming releases of kubo-release. Once that process is complete, Heapster will no longer be a default addon applied in 'apply-specs' errand.
+
+* We are deploying metrics server by default as part of the _apply-specs_ errand. Heapster is still deployed but will be removed in a future release – [story](https://www.pivotaltracker.com/story/show/157915809)
+
+* With metrics server deployed securely, CFCR supports [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/). This includes optional HPA configuration flags as part of CFCR release spec. – [story](https://www.pivotaltracker.com/story/show/157915809)
+
+* **Fix:** We found and responded to an issue in kubernetes, which was causing issues with updating StatefulSet workloads on AWS. We have improved our drain behvaviour, and there is a manual workaround – [bug](https://www.pivotaltracker.com/story/show/159732987)
+_If you find the rare case, where a pod that uses volumes is stuck in ContainerCreating state after upgrade, also you can see FailedMount message when you run kubectl describe pod <pod name> command. To manually fix it, recreate a worker using bosh recreate worker/<id>_
+
+* We have included CoreDNS as an optional addon. This can be set by applying the _use-coredns.yml_ ops-file before running the apply-specs errand – [story](https://www.pivotaltracker.com/story/show/159696570) 
+_CoreDNS should be deployed in place of kube-dns. kube-dns deployment should be deleted from existing clusters, after deploying CoreDNS_
+
+* **Fix:** There problems deploying v0.20 in environments not connected an internet registry. We fixed the name in a packaged docker image – [bug](https://www.pivotaltracker.com/story/show/159706265)
+
+* We have enabled the HostPort feature, to allow pods to open external ports on the worker node. This includes an upgrade to the CNI component to v0.7.1 – [story](https://www.pivotaltracker.com/story/show/159167067)
+
+* We have incorporated Kubernetes release v1.11.2
+
+
+### Component Versions
+
+The following table lists the component versions for CFCR v0.21.0:
+
+ <table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Kubernetes</td>
+    <td>1.11.2</td>
+  </tr>
+  <tr>
+    <td>Flannel</td>
+    <td>0.10.0</td>
+  </tr>
+   <tr>
+    <td>ETCD</td>
+     <td>3.3.9</td>
+  </tr>   
+  <tr>
+    <td>Docker</td>
+    <td>17.12.1-ce</td>
+  </tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.7.1</td>
+  </tr>
+  </tbody>
+</table>
+
+
+
 ## v0.20.0
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.20.0/kubo-deployment-0.20.0.tgz) the release artifact.
 
