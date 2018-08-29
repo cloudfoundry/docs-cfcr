@@ -21,7 +21,7 @@ _If you find the rare case, where a pod that uses volumes is stuck in ContainerC
 * We have included CoreDNS as an optional addon. This can be set by applying the _use-coredns.yml_ ops-file before running the apply-specs errand – [story](https://www.pivotaltracker.com/story/show/159696570) 
 _CoreDNS should be deployed in place of kube-dns. kube-dns deployment should be deleted from existing clusters, after deploying CoreDNS_
 
-* **Fix:** There problems deploying v0.20 in environments not connected an internet registry. We fixed the name in a packaged docker image – [bug](https://www.pivotaltracker.com/story/show/159706265)
+* **Fix:** There is an issue deploying v0.20 in environments not connected an internet registry. We fixed the name in a packaged docker image – [bug](https://www.pivotaltracker.com/story/show/159706265)
 
 * We have enabled the HostPort feature, to allow pods to open external ports on the worker node. This includes an upgrade to the CNI component to v0.7.1 – [story](https://www.pivotaltracker.com/story/show/159167067)
 
