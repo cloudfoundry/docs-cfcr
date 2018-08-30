@@ -8,8 +8,8 @@
 
 **Release Date:** August 29, 2018
 
-    !!! note
-       The Kubernetes 1.11 release kicked off the deprecation timeline for the Heapster component, see https://github.com/kubernetes/heapster/blob/master/docs/deprecation.md for more info. As a result, we're in the process of replacing Heapster with Metrics Server in an upcoming releases of kubo-release. Once that process is complete, Heapster will no longer be a default addon applied in 'apply-specs' errand.
+!!! note
+	The Kubernetes 1.11 release kicked off the deprecation timeline for the Heapster component, see https://github.com/kubernetes/heapster/blob/master/docs/deprecation.md for more info. As a result, we're in the process of replacing Heapster with Metrics Server in an upcoming releases of kubo-release. Once that process is complete, Heapster will no longer be a default addon applied in 'apply-specs' errand.
 
 * We are deploying metrics server by default as part of the _apply-specs_ errand. Heapster is still deployed but will be removed in a future release – [story](https://www.pivotaltracker.com/story/show/157915809)
 
