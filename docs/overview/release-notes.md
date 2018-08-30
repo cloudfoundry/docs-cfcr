@@ -15,10 +15,10 @@
 
 * With metrics server deployed securely, CFCR supports [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/). This includes optional HPA configuration flags as part of CFCR release spec. – [story](https://www.pivotaltracker.com/story/show/157915809)
 
-* **Fix:** We found and responded to an issue in kubernetes, which was causing issues with updating StatefulSet workloads on AWS. We have improved our drain behvaviour, and there is a manual workaround – [bug](https://www.pivotaltracker.com/story/show/159732987)
+* **Fix:** We found and responded to an issue in kubernetes, which was causing issues with updating StatefulSet workloads on AWS. We have improved our drain behvaviour, and there is a manual workaround – [bug](https://www.pivotaltracker.com/story/show/159732987)  
 _If you find the rare case, where a pod that uses volumes is stuck in ContainerCreating state after upgrade, also you can see FailedMount message when you run kubectl describe pod <pod name> command. To manually fix it, recreate a worker using bosh recreate worker/<id>_
 
-* We have included CoreDNS as an optional addon. This can be set by applying the _use-coredns.yml_ ops-file before running the apply-specs errand – [story](https://www.pivotaltracker.com/story/show/159696570) 
+* We have included CoreDNS as an optional addon. This can be set by applying the _use-coredns.yml_ ops-file before running the apply-specs errand – [story](https://www.pivotaltracker.com/story/show/159696570)  
 _CoreDNS should be deployed in place of kube-dns. kube-dns deployment should be deleted from existing clusters, after deploying CoreDNS_
 
 * **Fix:** There is an issue deploying v0.20 in environments not connected an internet registry. We fixed the name in a packaged docker image – [bug](https://www.pivotaltracker.com/story/show/159706265)
