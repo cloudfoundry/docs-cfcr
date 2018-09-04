@@ -15,7 +15,7 @@ CFCR relies on **Kubernetes** and **BOSH**:
 	CFCR consumes the standard open-source distribution of Kubernetes, not a custom distribution. 
 
 !!! note
-	CFCR was formerly known as Kubo, and many CFCR assets still use the Kubo name. CFCR does not require Cloud Foundry, but you can optionally configure a Cloud Foundry deployment to handle routing for CFCR.
+	CFCR was formerly known as Kubo, and many CFCR assets still use the Kubo name. CFCR does not require Cloud Foundry.
 
 ##What problems does CFCR solve?
 
