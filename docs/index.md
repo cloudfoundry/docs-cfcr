@@ -17,37 +17,10 @@ See [What is CFCR?](./overview/what-is-cfcr/) to learn more.
 To deploy BOSH, see [BOSH Bootloader](https://github.com/cloudfoundry/bosh-bootloader).
 To deploy CFCR, see the [CFCR repository](https://github.com/cloudfoundry-incubator/kubo-release) on GitHub.
 
-The following topics describe how to install and configure CFCR on your cloud platform.
-
-[Home](./installing/)
-
-[Preparing GCP for CFCR](./installing/gcp/)  
-[Preparing BOSH for CFCR on GCP](./installing/gcp/deploying-bosh-gcp/)  
-[Configuring IaaS Routing for GCP](./installing/gcp/routing-gcp/)  
-
-[Preparing vSphere for CFCR](./installing/vsphere/)  
-[Deploying BOSH for CFCR on vSphere](./installing/vsphere/deploying-bosh-vsphere/)
-
-[Preparing AWS for CFCR](./installing/aws/)  
-[Deploying BOSH for CFCR on AWS](./installing/aws/deploying-bosh-aws/)  
-[Configuring IaaS Routing for AWS](./installing/aws/routing-aws/)  
-
-[Preparing OpenStack for CFCR](./installing/openstack/)  
-[Deploying BOSH for CFCR on Openstack](./installing/openstack/)  
-
-[Deploying CFCR](./installing/deploying-cfcr/)  
-[Customizing CFCR](./installing/customizing-cfcr/)  
-[Configuring Cloud Foundry Routing](./installing/cf-routing/)   
-[Configuring Pluggable Add-ons](./installing/pluggable-addons/)
-
 ## Managing and Troubleshooting
 
 The following topics describe how to manage and troubleshoot CFCR.
 
-[Home](./managing/)  
-[Using Docker Registries](./managing/using-docker/)  
-[Deploying Tested Workloads](./managing/tested-workloads/)  
-[Troubleshooting CFCR](./managing/troubleshooting/)  
 [Deleting CFCR](./managing/deleting/)
 
 ## Certifications
