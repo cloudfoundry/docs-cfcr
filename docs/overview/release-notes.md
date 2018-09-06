@@ -130,16 +130,16 @@ The following table lists the component versions for CFCR v0.20.0:
 
 **Release Date:** July 18, 2018
 
-* **Deprecation notice** Future release will remove support of the CF routing feature documented [here](https://docs-cfcr.cfapps.io/installing/cf-routing/) – [#157695924](https://www.pivotaltracker.com/story/show/157695924)
+* **Deprecation notice** Future release will remove support of the CF routing feature – [#157695924](https://www.pivotaltracker.com/story/show/157695924)
 
-* Allow CIDRs to be configured for pods and services – [pr #220](https://github.com/cloudfoundry-incubator/kubo-release/pull/220),[#157480131](https://www.pivotaltracker.com/story/show/157480131) 
+* Allow CIDRs to be configured for pods and services – [pr #220](https://github.com/cloudfoundry-incubator/kubo-release/pull/220),[#157480131](https://www.pivotaltracker.com/story/show/157480131)
 * Update the admission-controllers based on kubernetes recommendations – [#156525910](https://www.pivotaltracker.com/story/show/156525910)  
 _Added DefaultTolerationSeconds and ValidatingAdmissionWebhook. We removed NamespaceExists, as it is redunant._    
-* Kubernetes v1.10.5 version – [#158527191](https://www.pivotaltracker.com/story/show/158527191) 
+* Kubernetes v1.10.5 version – [#158527191](https://www.pivotaltracker.com/story/show/158527191)
 * Changed the docker storage driver from overlay to overlay2 – [#158495554](https://www.pivotaltracker.com/story/show/158495554)   
 _When upgrading, the old images will remain on each worker in the /var/vcap/data/docker/docker/overlay directory.  
 Recommended mitigation is to manually delete the directory after upgrading_
-* Allow NTLM formatted usernames for vSphere – [pr #229](https://github.com/cloudfoundry-incubator/kubo-release/pull/229) 
+* Allow NTLM formatted usernames for vSphere – [pr #229](https://github.com/cloudfoundry-incubator/kubo-release/pull/229)
 * **Fix:** improve drain script for upgrades on large clusters – [#158782574](https://www.pivotaltracker.com/story/show/158782574)
 
 ### Component Versions
@@ -363,7 +363,7 @@ The following table lists the component versions for CFCR v0.16.0:
   </tr>
   </tbody>
   </table>
-  
+
 ### Conformance Tests Results
 
 * [GCP](https://storage.googleapis.com/conformance-results/conformance-results-gcp-0.14.1-dev.55.tar.gz)
@@ -435,7 +435,7 @@ The following table lists the component versions for CFCR v0.15.0:
   </tr>
   </tbody>
   </table>
-  
+
 ### Conformance Tests Results
 
 * [GCP](https://storage.googleapis.com/conformance-results/conformance-results-gcp-0.14.1-dev.55.tar.gz)
@@ -517,14 +517,14 @@ The following table lists the component versions for CFCR v0.14.0:
   </tr>
   </tbody>
   </table>
-  
+
 ### Conformance Tests Results
 
 * [GCP](https://storage.googleapis.com/conformance-results/conformance-results-gcp-0.14.0-dev.23.tar.gz)
 * [AWS](https://storage.googleapis.com/conformance-results/conformance-results-aws-0.14.0-dev.23.tar.gz)
 * [vSphere](https://storage.googleapis.com/conformance-results/conformance-results-vsphere-0.14.0-dev.23.tar.gz)
 * [OpenStack](https://storage.googleapis.com/conformance-results/conformance-results-openstack-0.13.1-dev.8.tar.gz)
-	
+
 ## v0.13.0
 
 **Release Date:** January 25, 2018
@@ -587,7 +587,7 @@ The following table lists the component versions for CFCR v0.13.0:
   </tr>
   </tbody>
   </table>
-  
+
 ### Conformance Tests Results
 
 * [GCP](https://storage.googleapis.com/conformance-results/conformance-results-gcp-0.12.1-dev.76.tar.gz)
@@ -609,7 +609,7 @@ The following table lists the component versions for CFCR v0.13.0:
 * Switch to use `cfcr.internal` as a TLD instead of `.kubo` -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153849646).
 * Disable all profiling / tracing endpoints by default -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154051304).
 * Always validate `ServiceAccount` tokens exist in etcd as part of authentication -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153592391).
-* Stop the Kubernetes API Server from serving unsecured and unauthenticated access in localhost -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153592275). 
+* Stop the Kubernetes API Server from serving unsecured and unauthenticated access in localhost -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153592275).
 * Remove unnecessary flag from `kube-proxy` -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/150079004).
 * Make applying addon specs not fail if the specs are empty -- [story](https://www.pivotaltracker.com/story/show/154030804) / [cloudfoundry-incubator/kubo-release#150](https://github.com/cloudfoundry-incubator/kubo-release/issues/150).
 * Bump system specs timeout to work with slower environments -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/154051298).
@@ -619,7 +619,7 @@ The following table lists the component versions for CFCR v0.13.0:
   - We are currently running single-node etcd clusters so no peer connections are established. Nevertheless, etcd would listen for peer connections over plain HTTP.
 * **Openstack:** `openstack_tenant` is not required in the `director.yml` as it is obsolete for OpenStack Keystone v3. The property still exists as it is needed by OpenStack Keystone v2 -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153137960).
 * **Openstack:** VMs deleted from the IaaS in OpenStack do not appear as ghost nodes -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153816342).
-  - The fix for this issue introduces new `director.yml` properties as the OpenStack K8s Cloud Provider needs to be configured: 
+  - The fix for this issue introduces new `director.yml` properties as the OpenStack K8s Cloud Provider needs to be configured:
      * `auth_url`, `openstack_username`, `openstack_password`, `openstack_project_id`, `openstack_domain`
   - **Caveat:** the BOSH director needs to have `human_readable_vm_names` set to `false` in order for the Kubelet to register with the API Server successfully. See K8s issue: [kubernetes/kubernetes#57765](https://github.com/kubernetes/kubernetes/issues/57765).
 * **Fix:** `deploy_k8s` to fail when the addon specs are not successfully applied -- [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153401157).
@@ -670,7 +670,7 @@ The following table lists the component versions for CFCR v0.12.0:
   </tr>
   </tbody>
   </table>
-  
+
 ### Conformance Tests Results
 
 [Download](https://storage.googleapis.com/conformance-results/conformance-results-aws-0.11.1-dev.59.tar.gz) the conformance test results.
@@ -736,7 +736,7 @@ The following table lists the component versions for CFCR v0.11.0:
   </tr>
   </tbody>
   </table>
-  
+
 ### Conformance Tests Results
 
 [Download](https://storage.googleapis.com/conformance-results/conformance-results-0.11.0-dev.62.tar.gz) the conformance test results.
@@ -757,7 +757,7 @@ The following table lists the component versions for CFCR v0.11.0:
 * **GCP:** The GCP K8s Service Catalog was tested on CFCR. [story](https://www.pivotaltracker.com/n/projects/2093412/stories/153293570).
 * **GCP:** Predefined a `standard` storage class to be applied when CFCR is deployed on GCP. It uses the `gce-pd` PV provisioner. [story](https://www.pivotaltracker.com/n/projects/2093412/stories/152853461).
 
-### Community contributions 
+### Community contributions
 
 * GCP bastion has a recent Ubuntu image. [Deployment #230](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/230).
   Thanks [@alex-slynko](https://github.com/alex-slynko).
@@ -807,11 +807,11 @@ The following table lists the component versions for CFCR v0.10.0:
   </tr>
   </tbody>
   </table>
-  
+
 ### Conformance Tests Results
 
 [Download](https://storage.googleapis.com/conformance-results/conformance-results-0.10.0-dev.52.tar.gz) the conformance test results.
-  
+
 ## v0.9.0
 
 **Release Date**: November 22, 2017.
@@ -988,8 +988,12 @@ Perform the following steps to upgrade an existing CFCR v0.7.0 cluster to v0.8.0
 3. Verify that the appropriate stemcell is installed in BOSH. To view the uploaded stemcells, run the following command.
 	<p class="terminal">$ bosh stemcells</p>
 	To upload a new stemcell, run `bosh upload stemcell STEMCELL_URL`.
-4. See [Deploying Bosh Director](https://docs-kubo.cfapps.io/installing/gcp/deploying-bosh-gcp/#step-5-deploy-bosh-director) for information on how to update the BOSH Director.
-5. See [Deploying CFCR](https://docs-kubo.cfapps.io/installing/deploying-kubo/#step-3-deploy-cfcr) for information on how to upgrade your CFCR cluster.
+4. See the [BOSH Bootloader repository](https://github.com/cloudfoundry/bosh-bootloader) for information on how to update the BOSH Director.
+5. See [CFCR repository](https://github.com/cloudfoundry-incubator/kubo-release) for information about upgrading your CFCR cluster.
+
+
+1. Deploy the CFCR BOSH release. See the [CFCR repository](https://github.com/cloudfoundry-incubator/kubo-release) for instructions.
+
 
 ## v0.7.0
 
