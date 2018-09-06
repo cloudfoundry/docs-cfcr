@@ -12,10 +12,14 @@ See [What is CFCR?](./overview/what-is-cfcr/) to learn more.
 
 ## Installing and Configuring
 
-**DEPRECATED**
->We no longer support the following strategies for deploying BOSH and CFCR.
-To deploy BOSH, see [BOSH Bootloader](https://github.com/cloudfoundry/bosh-bootloader).
-To deploy CFCR, see the [CFCR repository](https://github.com/cloudfoundry-incubator/kubo-release) on GitHub.
+To deploy CFCR, you must first deploy and configure BOSH.
+You can deploy BOSH using the BOSH Bootloader (`bbl`) command-line utility.
+After configuring BOSH, you can deploy the CFCR BOSH release.
+
+Follow the steps below:
+
+1. Deploy BOSH using `bbl`. See the [BOSH Bootloader repository](https://github.com/cloudfoundry/bosh-bootloader) for instructions.
+1. Deploy the CFCR BOSH release. See the [CFCR repository](https://github.com/cloudfoundry-incubator/kubo-release) for instructions.
 
 ## Managing and Troubleshooting
 
