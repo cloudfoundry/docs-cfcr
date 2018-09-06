@@ -2,7 +2,7 @@
 repo_name: 'cloudfoundry/docs-cfcr'
 repo_url: 'https://github.com/cloudfoundry/docs-cfcr'
 edit_uri: edit/master/docs/
-site_name: CFCR 
+site_name: CFCR
 theme: 'material'
 theme_dir: 'theme-overrides'
 site_favicon: favicon.ico
@@ -13,8 +13,7 @@ pages:
     - 'Welcome to CFCR': 'index.md'
     - 'What is CFCR?': 'overview/what-is-cfcr.md'
     - 'Release Notes': 'overview/release-notes.md'
-  - Managing and Troubleshooting:
-    - 'Deleting CFCR': 'managing/deleting.md'
+    - 'Deleting CFCR': 'overview/deleting.md'
 
 # palette, logo, css, markdown extensions
 extra:
