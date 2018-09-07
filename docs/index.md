@@ -21,8 +21,6 @@ Follow the steps below:
 1. Deploy BOSH using `bbl`. See the [BOSH Bootloader repository](https://github.com/cloudfoundry/bosh-bootloader) for instructions.
 1. Deploy the CFCR BOSH release. See the [CFCR repository](https://github.com/cloudfoundry-incubator/kubo-release) for instructions.
 
-To delete CFCR, see [Deleting CFCR](./overview/deleting/).
-
 ## Certifications
 
 <img alt="Kubernetes 1.11 Certification logo" src="https://github.com/cncf/artwork/raw/master/kubernetes/certified-kubernetes/1.11/color/certified-kubernetes-1.11-color.png" width="198px">
