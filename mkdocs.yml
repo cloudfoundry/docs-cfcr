@@ -13,7 +13,6 @@ pages:
     - 'Welcome to CFCR': 'index.md'
     - 'What is CFCR?': 'overview/what-is-cfcr.md'
     - 'Release Notes': 'overview/release-notes.md'
-    - 'Deleting CFCR': 'overview/deleting.md'
 
 # palette, logo, css, markdown extensions
 extra:
