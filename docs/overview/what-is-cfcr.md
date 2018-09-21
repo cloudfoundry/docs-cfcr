@@ -26,7 +26,6 @@ CFCR aims to solve a range of problems that operators and developers face when d
 CFCR offers the following solutions to improve the experience of deploying Kubernetes clusters:
 
 * **Repeatability and consistency** when deploying “Kubernetes-as-a-service” within an organization
-* **Plans, quotas, and other constraints** defined by service operators
 * **A single control plane** to provision and manage Kubernetes services
 
 ###Managing Solutions
