@@ -3,6 +3,62 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
 
+## v0.22.0
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.22.0/kubo-deployment-0.22.0.tgz) the release artifact.
+
+**Release Date:** Sept 28, 2018
+
+* Upgraded to Kubernetes v1.11.3
+
+* In order to allow workloads that have a security context configuration, the SecurityContextDeny admission controller can now be disabled through a ops-file, it will continued to be enabled by default. The allow-privilege property and corresponding ops-file will no longer disable the SecurityContextDeny admission controller.  
+  _This is a change in behaviour, if you were using allow-privileged to disable SecurityContextDeny, you should now use the disable-security-context-deny.yml ops-file_
+
+* The kubo-release version set in manifest is configured to the most recent released version. It will no longer be _latest_ or bundled within the _kubo-deployment_ release artifact. The _kubo-deployment_ folder name specifies the version.
+
+* For GCP deployment we have allowed for the setting of the sub-network name. Doing this will allow for services using internal loadbalancers to be deployed – [GH issue](https://github.com/cloudfoundry-incubator/kubo-release/issues/183)
+
+* CFCR no longer supplies scripts to deploy BOSH. We assume a BOSH director has been provisioned, with some standard cloud config dependencies. If you need to deploy BOSH we recommend using [BOSH Boot Loader ](https://github.com/cloudfoundry/bosh-bootloader).
+
+* Added an [ops-file](https://github.com/cloudfoundry-incubator/kubo-deployment/blob/master/manifests/cloud-config/iaas/vsphere/use-vm-extensions.yml) to use vm_extensions to on vSphere, namely disk.enableUUID
+
+* **Documentation** We have provided instructions on how to configure Kubernetes with a Cloud Provider for each Iaas in our [docs](https://github.com/cloudfoundry-incubator/kubo-release/blob/master/docs/cloud-provider.md). The cloud provider interfaces with the IAAS to provision TCP Load Balancers, Nodes, Networking Routes, and Persistent Volumes.
+
+### Component Versions
+
+The following table lists the component versions for CFCR v0.22.0:
+
+ <table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Kubernetes</td>
+    <td>1.11.3</td>
+  </tr>
+  <tr>
+    <td>Flannel</td>
+    <td>0.10.0</td>
+  </tr>
+   <tr>
+    <td>ETCD</td>
+     <td>3.3.9</td>
+  </tr>   
+  <tr>
+    <td>Docker</td>
+    <td>17.12.1-ce</td>
+  </tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.7.1</td>
+  </tr>
+  </tbody>
+</table>
+
+
 ## v0.21.0
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.21.0/kubo-deployment-0.21.0.tgz) the release artifact.
 
