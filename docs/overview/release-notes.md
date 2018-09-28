@@ -17,11 +17,26 @@
 
 * For GCP deployment we have allowed for the setting of the sub-network name. Doing this will allow for services using internal loadbalancers to be deployed – [GH issue](https://github.com/cloudfoundry-incubator/kubo-release/issues/183)
 
-* CFCR no longer supplies scripts to deploy BOSH. We assume a BOSH director has been provisioned, with some standard cloud config dependencies. If you need to deploy BOSH we recommend using [BOSH Boot Loader ](https://github.com/cloudfoundry/bosh-bootloader).
+* CFCR no longer supplies scripts to deploy BOSH. We assume a BOSH director has been provisioned, with some standard cloud config dependencies. If you need to deploy BOSH we recommend using [BOSH Boot Loader](https://github.com/cloudfoundry/bosh-bootloader). See the guide below for migration away from _deploy_bosh_.
 
 * Added an [ops-file](https://github.com/cloudfoundry-incubator/kubo-deployment/blob/master/manifests/cloud-config/iaas/vsphere/use-vm-extensions.yml) to use vm_extensions to on vSphere, namely disk.enableUUID
 
 * **Documentation** We have provided instructions on how to configure Kubernetes with a Cloud Provider for each Iaas in our [docs](https://github.com/cloudfoundry-incubator/kubo-release/blob/master/docs/cloud-provider.md). The cloud provider interfaces with the IAAS to provision TCP Load Balancers, Nodes, Networking Routes, and Persistent Volumes.
+
+### deploy_bosh Migration Guide
+
+Going forward, we're encouraging users to discontinue using the deprecated deploy_bosh and deploy_k8s scripts. To help with the transition from the scripts to
+standard practices for managing bosh deployments, we've outlined a few changes to be aware of:
+
+**Cloud Config**
+
+Previously the _deploy_bosh_ scripts would generate a compatible cloud config for CFCR clusters. The generated cloud-configs are still valid and can be used. See our [documentation](https://github.com/cloudfoundry-incubator/kubo-release#prerequisites) for cloud-config for requirements.
+If you are configuring CFCR with a cloud provider, we've moved to using vm_extensions defined with BOSH generic configs. See our cloud-provider [documentation](https://github.com/cloudfoundry-incubator/kubo-release/blob/master/docs/cloud-provider.md) to see how to set this up.
+
+**Deployment Manifest**
+
+Instead of generating a manifest via the _deploy_k8s_ script, we encourage users to follow our deployment docs and create a bosh deploy command with ops-files appropriate for their CFCR clusters.
+One of the big reasons we deprecated these scripts was to decouple the bosh director provisioning steps when creating CFCR clusters. Previously, _deploy_bosh_ would create an artifact called _director.yml_ and this file was used in _deploy_k8s_ to provision CFCR clusters. The _director.yml_ file contains credentials that can still be used as vars to bosh deploy command. However the file itself is not required.
 
 ### Component Versions
 
