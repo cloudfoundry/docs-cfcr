@@ -1,6 +1,4 @@
-#
-
-![CFCR Logo](./images/common/cfcr-full.png)
+# Cloud Foundry Container Runtime
 
 This topic describes Cloud Foundry Container Runtime (CFCR), an open-source project that provides a solution for deploying and managing [Kubernetes](https://kubernetes.io/docs/home/) clusters using [BOSH](https://bosh.io/docs).
 
@@ -47,12 +45,10 @@ Self-healing VMs and monitoring via BOSH.
 
 To install CFCR, you must first deploy and configure BOSH.
 You can deploy BOSH using the BOSH Bootloader (`bbl`) command-line utility.
+See the [BOSH Bootloader repository](https://github.com/cloudfoundry/bosh-bootloader) for instructions.
+
 After configuring BOSH, you can deploy the CFCR BOSH release.
-
-Follow the steps below:
-
-1. Deploy BOSH using `bbl`. See the [BOSH Bootloader repository](https://github.com/cloudfoundry/bosh-bootloader) for instructions.
-1. Deploy the CFCR BOSH release. See the [CFCR repository](https://github.com/cloudfoundry-incubator/kubo-release) for instructions.
+See the [CFCR repository](https://github.com/cloudfoundry-incubator/kubo-release) for instructions.
 
 ## Certifications
 
