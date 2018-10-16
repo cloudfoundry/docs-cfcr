@@ -9,7 +9,7 @@
 **Release Date:** Oct 16, 2018
 
 * We have extended our multi-cloud support to **Azure**.  [PR #223](https://github.com/cloudfoundry-incubator/kubo-release/pull/223)
- _We consider this experimental as we learn, iterate and extended our test infrastructure._
+  _We consider this experimental as we learn, iterate and extended our test infrastructure._
 
 * As previously announced, the route-sync functionality is now removed. [#158559777](https://www.pivotaltracker.com/story/show/158559777)
 
@@ -19,7 +19,7 @@
 
 ### Component Versions
 
-The following table lists the component versions for CFCR v0.22.0:
+The following table lists the component versions for CFCR v0.23.0:
 
  <table>
   <thead>
