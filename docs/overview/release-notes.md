@@ -3,6 +3,55 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
 
+## v0.23.0
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.23.0/kubo-deployment-0.23.0.tgz) the release artifact.
+
+**Release Date:** Oct 16, 2018
+
+* We have extended our multi-cloud support to **Azure**.  [PR #223](https://github.com/cloudfoundry-incubator/kubo-release/pull/223)
+ _We consider this experimental as we learn, iterate and extended our test infrastructure._
+
+* As previously announced, the route-sync functionality is now removed. [#158559777](https://www.pivotaltracker.com/story/show/158559777)
+
+* In order to help automate the maintenance load balancers for master nodes during deploy and upgrade on GCP, we have added the _backend-service_ in our default vm_extensions - [#160417211](https://www.pivotaltracker.com/story/show/160417211)
+
+* Fix: Fixed an issue seen during drain: [#251](https://github.com/cloudfoundry-incubator/kubo-release/issues/251) 
+
+### Component Versions
+
+The following table lists the component versions for CFCR v0.22.0:
+
+ <table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Kubernetes</td>
+    <td>1.11.3</td>
+  </tr>
+  <tr>
+    <td>Flannel</td>
+    <td>0.10.0</td>
+  </tr>
+   <tr>
+    <td>ETCD</td>
+     <td>3.3.9</td>
+  </tr>   
+  <tr>
+    <td>Docker</td>
+    <td>17.12.1-ce</td>
+  </tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.7.1</td>
+  </tr>
+  </tbody>
+</table>
+
 ## v0.22.0
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.22.0/kubo-deployment-0.22.0.tgz) the release artifact.
 
