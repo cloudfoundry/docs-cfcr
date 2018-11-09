@@ -3,6 +3,72 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
 
+## v0.24.0
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.24.0/kubo-deployment-0.24.0.tgz) the release artifact.
+
+**Release Date:** Nov 9, 2018
+
+**BREAKING CHANGE** In order to expose all of the kubernetes configuration the manifest format has changed. All the properties for Kubernetes jobs, for example _[kube-apiserver](https://www.pivotaltracker.com/story/show/160558973), [kubelet](https://www.pivotaltracker.com/story/show/160885959), [kube-proxy](https://www.pivotaltracker.com/story/show/160896710), [cloud-provider](https://www.pivotaltracker.com/story/show/161421611) etc_. have been placed under `k8s-args` section. Now, every flag that Kubernetes job has can be passed to the Bosh release. All properties in `kubo-deployment` has been changed. If you have modified the manifest using custom operation files, change them before upgrade. 
+
+In addition to kubernetes job properties being exposed, [cloud provider](https://www.pivotaltracker.com/story/show/161421611) flags are now exposed to allows more flexible configuration. Any configuration in the source cloud provider will be exposed in the release, for all IaaS.  
+
+For more information on modifying kubernetes arguments refer to [this page](https://github.com/cloudfoundry-incubator/kubo-release/blob/master/docs/configuring-kubernetes-properties.md) in our docs.
+
+**NOTICE** While all the properties have been exposed in the release, CFCR team does not support properties that are not part of the `kubo-deployment` manifest or ops-files.
+
+### Kube-apiserver Admission Controllers
+In exposing the kubernetes configuration, we now expose the **admission-controllers**. We support the kubernetes defaults, and adding the following additional admission controllers: DenyEscalatingExec, SecurityContextDeny and [PodSecurity Policy](https://www.pivotaltracker.com/story/show/155793102).
+
+*  **SECURITY** The DenyEscalatingExec and SecurityContextDeny admission control plugins are no longer enabled by default. This change was made to better align CFCR with the Kubernetes admission controller defaults and to make it easier to for ops-files to incrementally enable or disable the additional plugins. We recommend that you harden your cluster by applying these ops-files to your manifest.: 
+  - `kubo-deployment/manifests/ops-files/enable-denyescalatingexec.yml`
+  - `kubo-deployment/manifests/ops-files/enable-securitycontextdeny.yml `
+
+* **SECURITY** we have modified our system add-ons PodSecurityPolicy controller works with system addons out-of-the-box. To enable the controller and use policies apply the following ops-file `kubo-deployment/manifests/ops-files/enable-podsecuritypolicy.yml`. CFCR **does not** create default Policy for applications. Please, follow the documentation to enable them https://kubernetes.io/docs/concepts/policy/pod-security-policy/. You need to create PodSecurityPolicy in advance if you upgrading the cluster in order to prevent application downtime. This can be done manually or using new `post-start-custom-specs` property on `kubernetes-roles` job.
+
+### Other changes
+* It is now possible to **backup and restore** the cluster control plane when there is 3 masters. This was done by updating the BBR scripts in our etcd release. Thank you Platform Recovery Team for their [PR](https://www.pivotaltracker.com/story/show/160512406)
+
+* **Azure** deployment now in Beta stage, with a number of changes in v0.24. Use stemcell from xenial 170 line to deploy it. We expect a number of changes to come in future releases to complete our support coverage.
+
+* We have [exposed the live-restore flag](https://www.pivotaltracker.com/story/show/161166008) in the docker release, and setting this to true in our manifest. This is to improve workload stability in failure scenarios where the docker daemon is restarted. 
+
+* In order for us to support NFS Storage Class in Kubernetes, we now install the the nfs-common library. This was removed in the Xenial stemcell line. – [bug](https://www.pivotaltracker.com/story/show/161318475)
+
+### Component Versions
+
+The following table lists the component versions for CFCR v0.24.0:
+
+ <table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Kubernetes</td>
+    <td>1.11.3</td>
+  </tr>
+  <tr>
+    <td>Flannel</td>
+    <td>0.10.0</td>
+  </tr>
+   <tr>
+    <td>ETCD</td>
+     <td>3.3.9</td>
+  </tr>   
+  <tr>
+    <td>Docker</td>
+    <td>17.12.1-ce</td>
+  </tr>
+  <tr>
+    <td>CNI</td>
+    <td>0.7.1</td>
+  </tr>
+  </tbody>
+</table>
+
 ## v0.23.0
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.23.0/kubo-deployment-0.23.0.tgz) the release artifact.
 
