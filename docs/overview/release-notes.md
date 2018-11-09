@@ -8,7 +8,7 @@
 
 **Release Date:** Nov 9, 2018
 
-**BREAKING CHANGE** In order to expose all of the kubernetes configuration the manifest format has changed. All the properties for Kubernetes jobs, for example _[kube-apiserver](https://www.pivotaltracker.com/story/show/160558973), [kubelet](https://www.pivotaltracker.com/story/show/160885959), [kube-proxy](https://www.pivotaltracker.com/story/show/160896710), [cloud-provider](https://www.pivotaltracker.com/story/show/161421611) etc_. have been placed under `k8s-args` section. Now, every flag that Kubernetes job has can be passed to the Bosh release. All properties in `kubo-deployment` has been changed. If you have modified the manifest using custom operation files, change them before upgrade. 
+**BREAKING CHANGE** In order to expose all of the kubernetes configuration the manifest format has changed. All the properties for Kubernetes jobs, for example _[kube-apiserver](https://www.pivotaltracker.com/story/show/160558973), [kubelet](https://www.pivotaltracker.com/story/show/160885959), [kube-proxy](https://www.pivotaltracker.com/story/show/160896710), [cloud-provider](https://www.pivotaltracker.com/story/show/161421611) etc_. have been placed under `k8s-args` section. Now, every flag that Kubernetes job has can be passed to the Bosh release. All properties in `kubo-deployment` have been changed. If you have custom operation files to modify the manifest, you will need to change them before you upgrade. 
 
 In addition to kubernetes job properties being exposed, [cloud provider](https://www.pivotaltracker.com/story/show/161421611) flags are now exposed to allows more flexible configuration. Any configuration in the source cloud provider will be exposed in the release, for all IaaS.  
 
