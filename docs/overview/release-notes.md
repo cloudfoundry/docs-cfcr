@@ -34,7 +34,7 @@ CFCR versions are now tied to a [specific version](https://www.pivotaltracker.co
 
 **BUG FIX**: Now possible to use services with Local externalTrafficPolicy in vSphere & AWS.
 
-**BUG FIX**: Fixed OIDC opts file to work with flexiable flag.
+**BUG FIX**: Fixed OIDC ops-file to work with flexible flag.
 
 **BUG FIX**: Fixed missing kubelet logs.
 
