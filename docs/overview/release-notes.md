@@ -10,29 +10,33 @@
 
 We upgraded to **Kubernetes 1.12.3**, which includes the patch for (CVE 2018-1002105)
 
-**BREAKING**: `--allow-privileged` and `--keep-terminated-pod-volumes` flags in kubelet configuration within the default manifest have both been removed since they have both been deprecated.
-
 **BREAKING**: Bosh-dns was removed as an addon.  CFCR now assumes it's already in the director's runtime config. The ops-file for using runtime config is now empty and will be removed in future versions of CFCR.
 
-Added an ops file to enable data [encryption at rest](https://www.pivotaltracker.com/story/show/162067187).
+`--allow-privileged` and `--keep-terminated-pod-volumes` flags in kubelet configuration within the default manifest have both been removed since they have both been deprecated.
+
+Added an ops-file to enable data [encryption at rest](https://www.pivotaltracker.com/story/show/162067187).
  
-CFCR now uses [pre-compiled releases](https://www.pivotaltracker.com/story/show/159895436) for etcd, docker, bpm to make deploys faster.
+CFCR now uses pre-compiled releases for kubo-release to make deploys faster.
 
-The number of [workers](https://www.pivotaltracker.com/story/show/161756564) is now configurable.
+Added an ops-file the configure the number of [workers](https://www.pivotaltracker.com/story/show/161756564).
 
-All certificates created by CFCR now have a default [duration of 4 years](https://www.pivotaltracker.com/story/show/160847352).
+Added an ops-file to change [certificate duration](https://www.pivotaltracker.com/story/show/160847352).
 
 CFCR now ships with Docker 18.06.
 
-CFCR versions are now tied to a [specific version](https://www.pivotaltracker.com/story/show/162013927) of a stemcell in manifest to ensure stemcell compatibility
+CFCR versions are now tied to a [specific version](https://www.pivotaltracker.com/story/show/162013927) of a stemcell in manifest to ensure stemcell compatibility.
 
-**Azure**: Added support for [CIFS volumes](https://www.pivotaltracker.com/story/show/161270158) for Azure Files or FlexVolumes 
+**Azure**: Added support for [CIFS volumes](https://www.pivotaltracker.com/story/show/161270158) for Azure Files or FlexVolumes.
 
 **Azure**: Azure cloud provider can now use [useManagedIdentityExtension](https://www.pivotaltracker.com/story/show/161338755) property
 
-**BUG FIX**: Azure load balancers now work with default configuration
+**BUG FIX**: Azure load balancers now work with default configuration.
 
-**BUG FIX:** Now possible to use services with Local externalTrafficPolicy in vSphere & AWS
+**BUG FIX**: Now possible to use services with Local externalTrafficPolicy in vSphere & AWS.
+
+**BUG FIX**: Fixed OIDC opts file to work with flexiable flag.
+
+**BUG FIX**: Fixed missing kubelet logs.
 
 ## v0.24.0
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.24.0/kubo-deployment-0.24.0.tgz) the release artifact.
