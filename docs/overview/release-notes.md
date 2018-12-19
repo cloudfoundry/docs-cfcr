@@ -24,9 +24,13 @@ CFCR now ensures that [BOSH DNS will be chosen first](https://www.pivotaltracker
 
 CFCR now ships as a pre-compiled release
 
+CFCR now allows the [audit log flag values to be configured by ops file](https://www.pivotaltracker.com/story/show/162165401)
+
 **vSphere** Wait for all [disks to be detached](https://www.pivotaltracker.com/n/projects/2093412/stories/162494119) before shutting down worker nodes
 
 **GCP** Change [GCP to use hostname override](https://www.pivotaltracker.com/n/projects/2093412/stories/162638723) due to change of behaviour in stemcell 170.13
+
+**BUG FIX**: The [default flag values for audit log](https://www.pivotaltracker.com/story/show/162165401) now allow the log file be handled correctly by BOSH logrotate
 
 ## v0.25.0
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.25.0/kubo-deployment-0.25.0.tgz) the release artifact.
