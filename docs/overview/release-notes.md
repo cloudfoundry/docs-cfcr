@@ -10,6 +10,8 @@
 
 We upgraded to **Kubernetes 1.12.4**
 
+We upgraded the Dashboard to v1.10.1, which includes the patch for (CVE-2018-18264)
+
 CFCR now ships with go 1.11.4
 
 CFCR now ships with JQ package 1.6
