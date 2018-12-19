@@ -20,7 +20,7 @@ CFCR now allows [configurable timeout for kubectl drain](https://www.pivotaltrac
 
 CFCR now ensures that [BOSH DNS will be chosen first](https://www.pivotaltracker.com/n/projects/2093412/stories/162158342) by Kube DNS during resolution 
 
-CFCR now ships as a pre-compiled releases
+CFCR now ships as a pre-compiled release
 
 **vSphere** Wait for all [disks to be detached](https://www.pivotaltracker.com/n/projects/2093412/stories/162494119) before shutting down worker nodes
 
