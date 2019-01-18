@@ -16,7 +16,7 @@ CFCR now ships with [etcd 3.3.11](https://github.com/cloudfoundry-incubator/cfcr
 
 CFCR now ships with [docker-bosh-release 33.0.1](https://github.com/cloudfoundry-incubator/docker-boshrelease/releases/tag/v33.0.1)
 
-CFCR now provides an ops-file for [deploying with persistent disks]()
+CFCR now provides an ops-file for [deploying workers with persistent disks](https://github.com/cloudfoundry-incubator/kubo-deployment/blob/v0.27.0/manifests/ops-files/use-persistent-disk-for-workers.yml)
 
 CFCR now provides documentation for disabling Linux swap.
 
