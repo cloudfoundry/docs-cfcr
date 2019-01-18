@@ -8,8 +8,6 @@
 
 **Release Date:** Jan 18, 2019
 
-We upgraded to **Kubernetes 1.12.5**
-
 CFCR now defaults to using [CoreDNS](https://coredns.io/) instead of kube-dns - When upgrading you may want to [remove kube-dns](https://github.com/cloudfoundry-incubator/kubo-release/tree/develop#dns)
 
 CFCR now provides an ops-file for [deploying with kube-dns](https://github.com/cloudfoundry-incubator/kubo-deployment/blob/v0.27.0/manifests/ops-files/use-kube-dns.yml)
