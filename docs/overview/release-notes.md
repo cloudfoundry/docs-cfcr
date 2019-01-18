@@ -6,7 +6,9 @@
 ## v0.27.0
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.27.0/kubo-deployment-0.27.0.tgz) the release artifact.
 
-**Release Date:** Jan 16, 2019
+**Release Date:** Jan 18, 2019
+
+We upgraded to **Kubernetes 1.12.5**
 
 CFCR now defaults to using [CoreDNS](https://coredns.io/) instead of kube-dns - When upgrading you may want to [remove kube-dns](https://github.com/cloudfoundry-incubator/kubo-release/tree/develop#dns)
 
