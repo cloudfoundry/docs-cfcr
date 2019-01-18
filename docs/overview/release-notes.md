@@ -3,6 +3,29 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
 
+## v0.27.0
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.27.0/kubo-deployment-0.27.0.tgz) the release artifact.
+
+**Release Date:** Jan 18, 2019
+
+CFCR now defaults to using [CoreDNS](https://coredns.io/) instead of kube-dns - When upgrading you may want to [remove kube-dns](https://github.com/cloudfoundry-incubator/kubo-release/tree/develop#dns)
+
+CFCR now provides an ops-file for [deploying with kube-dns](https://github.com/cloudfoundry-incubator/kubo-deployment/blob/v0.27.0/manifests/ops-files/use-kube-dns.yml)
+
+CFCR now ships with [etcd 3.3.11](https://github.com/cloudfoundry-incubator/cfcr-etcd-release/releases/tag/v1.9.0)
+
+CFCR now ships with [docker-bosh-release 33.0.1](https://github.com/cloudfoundry-incubator/docker-boshrelease/releases/tag/v33.0.1)
+
+CFCR now provides an ops-file for [deploying workers with persistent disks](https://github.com/cloudfoundry-incubator/kubo-deployment/blob/v0.27.0/manifests/ops-files/use-persistent-disk-for-workers.yml)
+
+CFCR now provides documentation for disabling Linux swap.
+
+Default stemcell bumped to Xenial v170.21
+
+**BUG FIX**: Configure [audit logging to preempt log rotation](https://www.pivotaltracker.com/n/projects/2093412/stories/162821963) to avoid corruption of audit logs due to  [kubernetes/kubernetes#52865](https://github.com/kubernetes/kubernetes/issues/52865)
+
+**BUG FIX**: [Unmount overlay2 mounts](https://github.com/cloudfoundry-incubator/docker-boshrelease/issues/125) during docker shutdown 
+
 ## v0.26.0
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.26.0/kubo-deployment-0.26.0.tgz) the release artifact.
 
