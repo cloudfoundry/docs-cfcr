@@ -3,6 +3,28 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
 
+## v0.28.0
+
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.28.0/kubo-deployment-0.28.0.tgz) the release artifact.
+
+**Release Date** Feb 7, 2019
+
+We upgraded to **Kubernetes 1.13.3**
+
+Default stemcell bumped to Xenial v250.4
+
+Added support for AWS tagging using `kubernetes.io/cluster/<cluster_tag>` format
+
+Removed bundling `heapster` and `influxdb` 
+
+Bumped version of CoreDNS to 1.3.1
+
+Updated the [system specs](https://github.com/cloudfoundry-incubator/kubo-release/commit/ec188538b569d66ab64f8c2a2ce84d8f20eac414) to be inline with the samples provided for k8s 1.13.3
+
+**DOC FIX**: Changed documentation on [encryption configuration](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/373)
+
+**DOC FIX**: Recommended values for `NO_PROXY` when using [proxy configuration](https://github.com/cloudfoundry-incubator/kubo-release/blob/develop/docs/using-proxy.md) 
+
 ## v0.27.0
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.27.0/kubo-deployment-0.27.0.tgz) the release artifact.
 
