@@ -7,7 +7,7 @@
 
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.28.0/kubo-deployment-0.28.0.tgz) the release artifact.
 
-**Release Date** Feb 5, 2019
+**Release Date** Feb 7, 2019
 
 We upgraded to **Kubernetes 1.13.3**
 
