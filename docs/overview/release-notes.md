@@ -3,6 +3,113 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
 
+## v0.29.0
+[Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.29.0/kubo-deployment-0.29.0.tgz) the release artifact.
+
+**Release Date:** Feb 14, 2019
+
+* **Important:** Bumped Docker to `v18.06.2-ce` in order to address `runc` [CVE-2019-5736](https://kubernetes.io/blog/2019/02/11/runc-and-cve-2019-5736/)
+* **Important:** Replaced the `etcd` certificates and authorities with a unique CA (`etcd_ca`) to address [CVE-2019-3779](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-3779). **Please consult the [Action Required](#action-required) section for details.**
+* Upgraded `flannel` to `v0.11.0`
+* Upgraded `bpm` to `v1.0.3`
+* Removed `kube-dns` as an option from `apply-addons`
+
+### Action Required
+
+Users upgrading from earlier versions of CFCR will need to perform a series of upgrade steps to facilitate a smooth rotation of the `etcd` certificates.
+With BOSH, certificate rotations require a three-step process that will generate a CA, generate and utilize a set of end-user certificates, then retiring the original CA.
+We often refer to these in phases:
+
+1. Generate the new `etcd_ca` and add it to the list of trust-anchors for `etcd`
+2. Generate the new client and server certificates from `etcd_ca` and begin using them.
+3. Remove the old CA (`kubo_ca`) from `etcd`'s trust anchors.
+
+#### Steps
+
+1. Redeploy the existing CFCR deployment, applying an additional ops-file for phase one:
+
+```yaml
+- type: replace
+  path: /variables/-
+  value:
+    name: etcd_ca
+    options:
+      common_name: etcd.ca
+      is_ca: true
+    type: certificate
+
+- type: replace
+  path: /instance_groups/name=master/jobs/name=etcd/properties/tls/etcd/ca
+  value: ((tls-etcd-v0-17-0.ca))((etcd_ca.certificate))
+
+- type: replace
+  path: /instance_groups/name=master/jobs/name=etcd/properties/tls/etcdctl/ca
+  value: ((tls-etcdctl.ca))((etcd_ca.certificate))
+
+- type: replace
+  path: /instance_groups/name=master/jobs/name=etcd/properties/tls/peer/ca
+  value: ((tls-etcd-v0-17-0.ca))((etcd_ca.certificate))
+```
+
+2. Redeploy the existing CFCR deployment, removing the ops-file for phase one and applying the ops-file for phase two:
+
+```yaml
+- type: replace
+  path: /variables/-
+  value:
+    name: etcd_ca
+    options:
+      common_name: etcd.ca
+      is_ca: true
+    type: certificate
+
+- type: replace
+  path: /variables/-
+  value:
+    name: tls-etcd-v0-29-0
+    options:
+      ca: etcd_ca
+      common_name: '*.etcd.cfcr.internal'
+      extended_key_usage:
+        - client_auth
+        - server_auth
+    type: certificate
+
+- type: replace
+  path: /variables/-
+  value:
+    name: tls-etcdctl-v0-29-0
+    options:
+      ca: etcd_ca
+      common_name: 'etcdClient'
+      extended_key_usage:
+        - client_auth
+    type: certificate
+
+- type: replace
+  path: /instance_groups/name=master/jobs/name=etcd/properties/tls/etcd
+  value:
+    ca: ((tls-etcd-v0-17-0.ca))((etcd_ca.certificate))
+    certificate: ((tls-etcd-v0-29-0.certificate))
+    private_key: ((tls-etcd-v0-29-0.private_key))
+
+- type: replace
+  path: /instance_groups/name=master/jobs/name=etcd/properties/tls/etcdctl
+  value:
+    ca: ((tls-etcdctl.ca))((etcd_ca.certificate))
+    certificate: ((tls-etcdctl-v0-29-0.certificate))
+    private_key: ((tls-etcdctl-v0-29-0.private_key))
+
+- type: replace
+  path: /instance_groups/name=master/jobs/name=etcd/properties/tls/peer
+  value:
+    ca: ((tls-etcd-v0-17-0.ca))((etcd_ca.certificate))
+    certificate: ((tls-etcd-v0-29-0.certificate))
+    private_key: ((tls-etcd-v0-29-0.private_key))
+```
+
+3. Upgrade to `v0.29.0`, completing phase three.
+
 ## v0.28.0
 
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.28.0/kubo-deployment-0.28.0.tgz) the release artifact.
@@ -15,7 +122,7 @@ Default stemcell bumped to Xenial v250.4
 
 Added support for AWS tagging using `kubernetes.io/cluster/<cluster_tag>` format
 
-Removed bundling `heapster` and `influxdb` 
+Removed bundling `heapster` and `influxdb`
 
 Bumped version of CoreDNS to 1.3.1
 
@@ -23,7 +130,7 @@ Updated the [system specs](https://github.com/cloudfoundry-incubator/kubo-releas
 
 **DOC FIX**: Changed documentation on [encryption configuration](https://github.com/cloudfoundry-incubator/kubo-deployment/pull/373)
 
-**DOC FIX**: Recommended values for `NO_PROXY` when using [proxy configuration](https://github.com/cloudfoundry-incubator/kubo-release/blob/develop/docs/using-proxy.md) 
+**DOC FIX**: Recommended values for `NO_PROXY` when using [proxy configuration](https://github.com/cloudfoundry-incubator/kubo-release/blob/develop/docs/using-proxy.md)
 
 ## v0.27.0
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.27.0/kubo-deployment-0.27.0.tgz) the release artifact.
@@ -46,7 +153,7 @@ Default stemcell bumped to Xenial v170.21
 
 **BUG FIX**: Configure [audit logging to preempt log rotation](https://www.pivotaltracker.com/n/projects/2093412/stories/162821963) to avoid corruption of audit logs due to  [kubernetes/kubernetes#52865](https://github.com/kubernetes/kubernetes/issues/52865)
 
-**BUG FIX**: [Unmount overlay2 mounts](https://github.com/cloudfoundry-incubator/docker-boshrelease/issues/125) during docker shutdown 
+**BUG FIX**: [Unmount overlay2 mounts](https://github.com/cloudfoundry-incubator/docker-boshrelease/issues/125) during docker shutdown
 
 ## v0.26.0
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.26.0/kubo-deployment-0.26.0.tgz) the release artifact.
@@ -65,7 +172,7 @@ CFCR now allows [audit policy to be configurable](https://www.pivotaltracker.com
 
 CFCR now allows [configurable timeout for kubectl drain](https://www.pivotaltracker.com/n/projects/2093412/stories/161739221)
 
-CFCR now ensures that [BOSH DNS will be chosen first](https://www.pivotaltracker.com/n/projects/2093412/stories/162158342) by Kube DNS during resolution 
+CFCR now ensures that [BOSH DNS will be chosen first](https://www.pivotaltracker.com/n/projects/2093412/stories/162158342) by Kube DNS during resolution
 
 CFCR now ships as a pre-compiled release
 
@@ -89,7 +196,7 @@ We upgraded to **Kubernetes 1.12.3**, which includes the patch for (CVE 2018-100
 `--allow-privileged` and `--keep-terminated-pod-volumes` flags in kubelet configuration within the default manifest have both been removed since they have both been deprecated.
 
 Added an ops-file to enable data [encryption at rest](https://www.pivotaltracker.com/story/show/162067187).
- 
+
 CFCR now uses pre-compiled releases for kubo-release to make deploys faster.
 
 Added an ops-file the configure the number of [workers](https://www.pivotaltracker.com/story/show/161756564).
@@ -117,9 +224,9 @@ CFCR versions are now tied to a [specific version](https://www.pivotaltracker.co
 
 **Release Date:** Nov 9, 2018
 
-**BREAKING CHANGE** In order to expose all of the kubernetes configuration the manifest format has changed. All the properties for Kubernetes jobs, for example _[kube-apiserver](https://www.pivotaltracker.com/story/show/160558973), [kubelet](https://www.pivotaltracker.com/story/show/160885959), [kube-proxy](https://www.pivotaltracker.com/story/show/160896710), [cloud-provider](https://www.pivotaltracker.com/story/show/161421611) etc_. have been placed under `k8s-args` section. Now, every flag that Kubernetes job has can be passed to the Bosh release. All properties in `kubo-deployment` have been changed. If you have custom operation files to modify the manifest, you will need to change them before you upgrade. 
+**BREAKING CHANGE** In order to expose all of the kubernetes configuration the manifest format has changed. All the properties for Kubernetes jobs, for example _[kube-apiserver](https://www.pivotaltracker.com/story/show/160558973), [kubelet](https://www.pivotaltracker.com/story/show/160885959), [kube-proxy](https://www.pivotaltracker.com/story/show/160896710), [cloud-provider](https://www.pivotaltracker.com/story/show/161421611) etc_. have been placed under `k8s-args` section. Now, every flag that Kubernetes job has can be passed to the Bosh release. All properties in `kubo-deployment` have been changed. If you have custom operation files to modify the manifest, you will need to change them before you upgrade.
 
-In addition to kubernetes job properties being exposed, [cloud provider](https://www.pivotaltracker.com/story/show/161421611) flags are now exposed to allows more flexible configuration. Any configuration in the source cloud provider will be exposed in the release, for all IaaS.  
+In addition to kubernetes job properties being exposed, [cloud provider](https://www.pivotaltracker.com/story/show/161421611) flags are now exposed to allows more flexible configuration. Any configuration in the source cloud provider will be exposed in the release, for all IaaS.
 
 For more information on modifying kubernetes arguments refer to [this page](https://github.com/cloudfoundry-incubator/kubo-release/blob/master/docs/configuring-kubernetes-properties.md) in our docs.
 
@@ -128,7 +235,7 @@ For more information on modifying kubernetes arguments refer to [this page](http
 ### Kube-apiserver Admission Controllers
 In exposing the kubernetes configuration, we now expose the **admission-controllers**. We support the kubernetes defaults, and adding the following additional admission controllers: DenyEscalatingExec, SecurityContextDeny and [PodSecurity Policy](https://www.pivotaltracker.com/story/show/155793102).
 
-*  **SECURITY** The DenyEscalatingExec and SecurityContextDeny admission control plugins are no longer enabled by default. This change was made to better align CFCR with the Kubernetes admission controller defaults and to make it easier to for ops-files to incrementally enable or disable the additional plugins. We recommend that you harden your cluster by applying these ops-files to your manifest.: 
+*  **SECURITY** The DenyEscalatingExec and SecurityContextDeny admission control plugins are no longer enabled by default. This change was made to better align CFCR with the Kubernetes admission controller defaults and to make it easier to for ops-files to incrementally enable or disable the additional plugins. We recommend that you harden your cluster by applying these ops-files to your manifest.:
   - `kubo-deployment/manifests/ops-files/enable-denyescalatingexec.yml`
   - `kubo-deployment/manifests/ops-files/enable-securitycontextdeny.yml `
 
@@ -139,7 +246,7 @@ In exposing the kubernetes configuration, we now expose the **admission-controll
 
 * **Azure** deployment now in Beta stage, with a number of changes in v0.24. Use stemcell from xenial 170 line to deploy it. We expect a number of changes to come in future releases to complete our support coverage.
 
-* We have [exposed the live-restore flag](https://www.pivotaltracker.com/story/show/161166008) in the docker release, and setting this to true in our manifest. This is to improve workload stability in failure scenarios where the docker daemon is restarted. 
+* We have [exposed the live-restore flag](https://www.pivotaltracker.com/story/show/161166008) in the docker release, and setting this to true in our manifest. This is to improve workload stability in failure scenarios where the docker daemon is restarted.
 
 * In order for us to support NFS Storage Class in Kubernetes, we now install the the nfs-common library. This was removed in the Xenial stemcell line. – [bug](https://www.pivotaltracker.com/story/show/161318475)
 
@@ -166,7 +273,7 @@ The following table lists the component versions for CFCR v0.24.0:
    <tr>
     <td>ETCD</td>
      <td>3.3.9</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>17.12.1-ce</td>
@@ -190,7 +297,7 @@ The following table lists the component versions for CFCR v0.24.0:
 
 * In order to help automate the maintenance load balancers for master nodes during deploy and upgrade on GCP, we have added the _backend-service_ in our default vm_extensions - [#160417211](https://www.pivotaltracker.com/story/show/160417211)
 
-* Fix: Fixed an issue seen during drain: [#251](https://github.com/cloudfoundry-incubator/kubo-release/issues/251) 
+* Fix: Fixed an issue seen during drain: [#251](https://github.com/cloudfoundry-incubator/kubo-release/issues/251)
 
 ### Component Versions
 
@@ -215,7 +322,7 @@ The following table lists the component versions for CFCR v0.23.0:
    <tr>
     <td>ETCD</td>
      <td>3.3.9</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>17.12.1-ce</td>
@@ -234,7 +341,7 @@ The following table lists the component versions for CFCR v0.23.0:
 
 * Upgraded to Kubernetes v1.11.3
 
-* In order to allow workloads that have a security context configuration, the SecurityContextDeny admission controller can now be disabled through a ops-file, it will continued to be enabled by default. The allow-privilege property and corresponding ops-file will no longer disable the SecurityContextDeny admission controller.  
+* In order to allow workloads that have a security context configuration, the SecurityContextDeny admission controller can now be disabled through a ops-file, it will continued to be enabled by default. The allow-privilege property and corresponding ops-file will no longer disable the SecurityContextDeny admission controller.
   _This is a change in behaviour, if you were using allow-privileged to disable SecurityContextDeny, you should now use the disable-security-context-deny.yml ops-file_
 
 * The kubo-release version set in manifest is configured to the most recent released version. It will no longer be _latest_ or bundled within the _kubo-deployment_ release artifact. The _kubo-deployment_ folder name specifies the version.
@@ -285,7 +392,7 @@ The following table lists the component versions for CFCR v0.22.0:
    <tr>
     <td>ETCD</td>
      <td>3.3.9</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>17.12.1-ce</td>
@@ -310,10 +417,10 @@ The following table lists the component versions for CFCR v0.22.0:
 
 * With metrics server deployed securely, CFCR supports [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/). This includes optional HPA configuration flags as part of CFCR release spec. – [story](https://www.pivotaltracker.com/story/show/157915809)
 
-* **Fix:** We found and responded to an issue in kubernetes, which was causing issues with updating StatefulSet workloads on AWS. We have improved our drain behvaviour, and there is a manual workaround – [bug](https://www.pivotaltracker.com/story/show/159732987)  
+* **Fix:** We found and responded to an issue in kubernetes, which was causing issues with updating StatefulSet workloads on AWS. We have improved our drain behvaviour, and there is a manual workaround – [bug](https://www.pivotaltracker.com/story/show/159732987)
 _If you find the rare case, where a pod that uses volumes is stuck in ContainerCreating state after upgrade, also you can see FailedMount message when you run kubectl describe pod <pod name> command. To manually fix it, recreate a worker using bosh recreate worker/<id>_
 
-* We have included CoreDNS as an optional addon. This can be set by applying the _use-coredns.yml_ ops-file before running the apply-specs errand – [story](https://www.pivotaltracker.com/story/show/159696570)  
+* We have included CoreDNS as an optional addon. This can be set by applying the _use-coredns.yml_ ops-file before running the apply-specs errand – [story](https://www.pivotaltracker.com/story/show/159696570)
 _CoreDNS should be deployed in place of kube-dns. kube-dns deployment should be deleted from existing clusters, after deploying CoreDNS_
 
 * **Fix:** There is an issue deploying v0.20 in environments not connected an internet registry. We fixed the name in a packaged docker image – [bug](https://www.pivotaltracker.com/story/show/159706265)
@@ -346,7 +453,7 @@ The following table lists the component versions for CFCR v0.21.0:
    <tr>
     <td>ETCD</td>
      <td>3.3.9</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>17.12.1-ce</td>
@@ -407,7 +514,7 @@ The following table lists the component versions for CFCR v0.20.0:
    <tr>
     <td>ETCD</td>
      <td>3.3.9</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>17.12.1-ce</td>
@@ -428,11 +535,11 @@ The following table lists the component versions for CFCR v0.20.0:
 * **Deprecation notice** Future release will remove support of the CF routing feature – [#157695924](https://www.pivotaltracker.com/story/show/157695924)
 
 * Allow CIDRs to be configured for pods and services – [pr #220](https://github.com/cloudfoundry-incubator/kubo-release/pull/220),[#157480131](https://www.pivotaltracker.com/story/show/157480131)
-* Update the admission-controllers based on kubernetes recommendations – [#156525910](https://www.pivotaltracker.com/story/show/156525910)  
-_Added DefaultTolerationSeconds and ValidatingAdmissionWebhook. We removed NamespaceExists, as it is redunant._    
+* Update the admission-controllers based on kubernetes recommendations – [#156525910](https://www.pivotaltracker.com/story/show/156525910)
+_Added DefaultTolerationSeconds and ValidatingAdmissionWebhook. We removed NamespaceExists, as it is redunant._
 * Kubernetes v1.10.5 version – [#158527191](https://www.pivotaltracker.com/story/show/158527191)
-* Changed the docker storage driver from overlay to overlay2 – [#158495554](https://www.pivotaltracker.com/story/show/158495554)   
-_When upgrading, the old images will remain on each worker in the /var/vcap/data/docker/docker/overlay directory.  
+* Changed the docker storage driver from overlay to overlay2 – [#158495554](https://www.pivotaltracker.com/story/show/158495554)
+_When upgrading, the old images will remain on each worker in the /var/vcap/data/docker/docker/overlay directory.
 Recommended mitigation is to manually delete the directory after upgrading_
 * Allow NTLM formatted usernames for vSphere – [pr #229](https://github.com/cloudfoundry-incubator/kubo-release/pull/229)
 * **Fix:** improve drain script for upgrades on large clusters – [#158782574](https://www.pivotaltracker.com/story/show/158782574)
@@ -460,7 +567,7 @@ The following table lists the component versions for CFCR v0.19.0:
    <tr>
     <td>ETCD</td>
      <td>3.3.1</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>17.12.1-ce</td>
@@ -519,7 +626,7 @@ The following table lists the component versions for CFCR v0.18.0:
    <tr>
     <td>ETCD</td>
      <td>3.3.1</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>17.12.1-ce</td>
@@ -586,7 +693,7 @@ The following table lists the component versions for CFCR v0.17.0:
    <tr>
     <td>ETCD</td>
      <td>3.3.1</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>17.12.1-ce</td>
@@ -643,7 +750,7 @@ The following table lists the component versions for CFCR v0.16.0:
    <tr>
     <td>ETCD</td>
      <td>3.3.1</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>1.13.1</td>
@@ -715,7 +822,7 @@ The following table lists the component versions for CFCR v0.15.0:
    <tr>
     <td>ETCD</td>
      <td>3.3.2</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>1.13.1</td>
@@ -797,7 +904,7 @@ The following table lists the component versions for CFCR v0.14.0:
    <tr>
     <td>ETCD</td>
      <td>3.2.14</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>1.13.1</td>
@@ -867,7 +974,7 @@ The following table lists the component versions for CFCR v0.13.0:
    <tr>
     <td>ETCD</td>
      <td>3.2.14</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>1.13.1</td>
@@ -950,7 +1057,7 @@ The following table lists the component versions for CFCR v0.12.0:
    <tr>
     <td>ETCD</td>
      <td>3.2.10</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>1.13.1</td>
@@ -1016,7 +1123,7 @@ The following table lists the component versions for CFCR v0.11.0:
    <tr>
     <td>ETCD</td>
      <td>3.2.10</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>1.13.1</td>
@@ -1087,7 +1194,7 @@ The following table lists the component versions for CFCR v0.10.0:
    <tr>
     <td>ETCD</td>
      <td>3.2.10</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>1.13.1</td>
@@ -1144,7 +1251,7 @@ The following table lists the component versions for CFCR v0.9.0:
    <tr>
     <td>ETCD</td>
      <td>3.1.8</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>1.13.1</td>
@@ -1197,7 +1304,7 @@ The following table lists the component versions for CFCR v0.8.1:
    <tr>
     <td>ETCD</td>
      <td>3.1.8</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>1.11.0</td>
@@ -1256,7 +1363,7 @@ The following table lists the component versions for CFCR v0.8.0:
    <tr>
     <td>ETCD</td>
      <td>3.1.8</td>
-  </tr>   
+  </tr>
   <tr>
     <td>Docker</td>
     <td>1.11.0</td>
