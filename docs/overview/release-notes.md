@@ -8,105 +8,107 @@
 
 **Release Date:** Feb 14, 2019
 
-* **Important:** Bumped Docker to `v18.06.2-ce` in order to address `runc` [CVE-2019-5736](https://kubernetes.io/blog/2019/02/11/runc-and-cve-2019-5736/)
-* **Important:** Replaced the `etcd` certificates and authorities with a unique CA (`etcd_ca`) to address [CVE-2019-3779](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-3779). **Please consult the [Action Required](#action-required) section for details.**
-* Upgraded `flannel` to `v0.11.0`
-* Upgraded `bpm` to `v1.0.3`
-* Removed `kube-dns` as an option from `apply-addons`
+* **Important:** Bumped Docker to `v18.06.2-ce` in order to address `runc` [CVE-2019-5736](https://kubernetes.io/blog/2019/02/11/runc-and-cve-2019-5736/).
+* **Important:** Replaced the `etcd` certificates and authorities with a unique CA (`etcd_ca`) to address [CVE-2019-3779](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-3779). **See the [Action Required](#action-required) section for details.**
+* Upgraded `flannel` to `v0.11.0`.
+* Upgraded `bpm` to `v1.0.3`.
+* Removed `kube-dns` as an option from `apply-addons`.
 
 ### Action Required
 
-Users upgrading from earlier versions of CFCR will need to perform a series of upgrade steps to facilitate a smooth rotation of the `etcd` certificates.
-With BOSH, certificate rotations require a three-step process that will generate a CA, generate and utilize a set of end-user certificates, then retiring the original CA.
-We often refer to these in phases:
+Users upgrading from earlier versions of CFCR must perform a series of upgrade steps to facilitate a smooth rotation of the `etcd` certificates.
 
-1. Generate the new `etcd_ca` and add it to the list of trust-anchors for `etcd`
+With BOSH, certificate rotations require a three-phase process that generates a CA, generates and utilizes a set of end-user certificates, and retires the original CA.
+
+The three phases are as follows:
+
+1. Generate the new `etcd_ca` and add it to the list of trust anchors for `etcd`.
 2. Generate the new client and server certificates from `etcd_ca` and begin using them.
 3. Remove the old CA (`kubo_ca`) from `etcd`'s trust anchors.
+
+Perform the steps below.
 
 #### Steps
 
 1. Redeploy the existing CFCR deployment, applying an additional ops-file for phase one:
+  ```yaml
+  - type: replace
+    path: /variables/-
+    value:
+      name: etcd_ca
+      options:
+        common_name: etcd.ca
+        is_ca: true
+      type: certificate
 
-```yaml
-- type: replace
-  path: /variables/-
-  value:
-    name: etcd_ca
-    options:
-      common_name: etcd.ca
-      is_ca: true
-    type: certificate
+  - type: replace
+    path: /instance_groups/name=master/jobs/name=etcd/properties/tls/etcd/ca
+    value: ((tls-etcd-v0-17-0.ca))((etcd_ca.certificate))
 
-- type: replace
-  path: /instance_groups/name=master/jobs/name=etcd/properties/tls/etcd/ca
-  value: ((tls-etcd-v0-17-0.ca))((etcd_ca.certificate))
+  - type: replace
+    path: /instance_groups/name=master/jobs/name=etcd/properties/tls/etcdctl/ca
+    value: ((tls-etcdctl.ca))((etcd_ca.certificate))
 
-- type: replace
-  path: /instance_groups/name=master/jobs/name=etcd/properties/tls/etcdctl/ca
-  value: ((tls-etcdctl.ca))((etcd_ca.certificate))
-
-- type: replace
-  path: /instance_groups/name=master/jobs/name=etcd/properties/tls/peer/ca
-  value: ((tls-etcd-v0-17-0.ca))((etcd_ca.certificate))
-```
+  - type: replace
+    path: /instance_groups/name=master/jobs/name=etcd/properties/tls/peer/ca
+    value: ((tls-etcd-v0-17-0.ca))((etcd_ca.certificate))
+  ```
 
 2. Redeploy the existing CFCR deployment, removing the ops-file for phase one and applying the ops-file for phase two:
+  ```yaml
+  - type: replace
+    path: /variables/-
+    value:
+      name: etcd_ca
+      options:
+        common_name: etcd.ca
+        is_ca: true
+      type: certificate
 
-```yaml
-- type: replace
-  path: /variables/-
-  value:
-    name: etcd_ca
-    options:
-      common_name: etcd.ca
-      is_ca: true
-    type: certificate
+  - type: replace
+    path: /variables/-
+    value:
+      name: tls-etcd-v0-29-0
+      options:
+        ca: etcd_ca
+        common_name: '*.etcd.cfcr.internal'
+        extended_key_usage:
+          - client_auth
+          - server_auth
+      type: certificate
 
-- type: replace
-  path: /variables/-
-  value:
-    name: tls-etcd-v0-29-0
-    options:
-      ca: etcd_ca
-      common_name: '*.etcd.cfcr.internal'
-      extended_key_usage:
-        - client_auth
-        - server_auth
-    type: certificate
+  - type: replace
+    path: /variables/-
+    value:
+      name: tls-etcdctl-v0-29-0
+      options:
+        ca: etcd_ca
+        common_name: 'etcdClient'
+        extended_key_usage:
+          - client_auth
+      type: certificate
 
-- type: replace
-  path: /variables/-
-  value:
-    name: tls-etcdctl-v0-29-0
-    options:
-      ca: etcd_ca
-      common_name: 'etcdClient'
-      extended_key_usage:
-        - client_auth
-    type: certificate
+  - type: replace
+    path: /instance_groups/name=master/jobs/name=etcd/properties/tls/etcd
+    value:
+      ca: ((tls-etcd-v0-17-0.ca))((etcd_ca.certificate))
+      certificate: ((tls-etcd-v0-29-0.certificate))
+      private_key: ((tls-etcd-v0-29-0.private_key))
 
-- type: replace
-  path: /instance_groups/name=master/jobs/name=etcd/properties/tls/etcd
-  value:
-    ca: ((tls-etcd-v0-17-0.ca))((etcd_ca.certificate))
-    certificate: ((tls-etcd-v0-29-0.certificate))
-    private_key: ((tls-etcd-v0-29-0.private_key))
+  - type: replace
+    path: /instance_groups/name=master/jobs/name=etcd/properties/tls/etcdctl
+    value:
+      ca: ((tls-etcdctl.ca))((etcd_ca.certificate))
+      certificate: ((tls-etcdctl-v0-29-0.certificate))
+      private_key: ((tls-etcdctl-v0-29-0.private_key))
 
-- type: replace
-  path: /instance_groups/name=master/jobs/name=etcd/properties/tls/etcdctl
-  value:
-    ca: ((tls-etcdctl.ca))((etcd_ca.certificate))
-    certificate: ((tls-etcdctl-v0-29-0.certificate))
-    private_key: ((tls-etcdctl-v0-29-0.private_key))
-
-- type: replace
-  path: /instance_groups/name=master/jobs/name=etcd/properties/tls/peer
-  value:
-    ca: ((tls-etcd-v0-17-0.ca))((etcd_ca.certificate))
-    certificate: ((tls-etcd-v0-29-0.certificate))
-    private_key: ((tls-etcd-v0-29-0.private_key))
-```
+  - type: replace
+    path: /instance_groups/name=master/jobs/name=etcd/properties/tls/peer
+    value:
+      ca: ((tls-etcd-v0-17-0.ca))((etcd_ca.certificate))
+      certificate: ((tls-etcd-v0-29-0.certificate))
+      private_key: ((tls-etcd-v0-29-0.private_key))
+  ```
 
 3. Upgrade to `v0.29.0`, completing phase three.
 
