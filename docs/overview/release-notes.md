@@ -8,7 +8,7 @@
 
 **Release Date:** Feb 14, 2019
 
-* **Important:** Bumped Docker to `v18.06.2-ce` in order to address `runc` [CVE-2019-5736](https://kubernetes.io/blog/2019/02/11/runc-and-cve-2019-5736/).
+* **Important:** Bumped Docker to `v18.06.2-ce`.
 * **Important:** Replaced the `etcd` certificates and authorities with a unique CA (`etcd_ca`) to address [CVE-2019-3779](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-3779). **See the [Action Required](#action-required) section for details.**
 * Upgraded `flannel` to `v0.11.0`.
 * Upgraded `bpm` to `v1.0.3`.
