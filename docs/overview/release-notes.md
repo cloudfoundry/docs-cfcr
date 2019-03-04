@@ -3,6 +3,22 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
 
+## v0.30.0
+
+[Download Release](https://github.com/cloudfoundry-incubator/kubo-release/releases/download/v0.30.0/kubo-release-0.30.0.tgz)
+
+[Download Deployment Manifests](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.30.0/kubo-deployment-0.30.0.tgz)
+
+**Release Date** Mar 4, 2019
+
+* Bumped Stemcell to v250.9
+* Bumped Docker to 18.06.3-ce
+
+
+**Fix** Quote and escape strings in cloud-provider's ini formatting to accept special charcters in cloud provider configuration.
+
+**Fix** Deployment CFCR manifests reference a release of docker with the runc CVE-2019-5736 addressed.
+
 ## v0.29.0
 [Download](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.29.0/kubo-deployment-0.29.0.tgz) the release artifact.
 
