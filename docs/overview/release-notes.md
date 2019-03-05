@@ -15,7 +15,7 @@
 * Bumped Docker to 18.06.3-ce
 
 
-**Fix** Quote and escape strings in cloud-provider's ini formatting to accept special charcters in cloud provider configuration.
+**Fix** Quote and escape strings in cloud-provider's ini formatting to accept special characters in cloud provider configuration.
 
 **Fix** Deployment CFCR manifests reference a release of docker with the runc CVE-2019-5736 addressed.
 
