@@ -3,6 +3,30 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
 
+## v0.31.0
+
+**Release Date**: March 25, 2019
+
+### Downloads
+* [Release](https://github.com/cloudfoundry-incubator/kubo-release/releases/download/v0.31.0/kubo-release-0.31.0.tgz)
+* [Deployment manifests](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.31.0/kubo-deployment-0.31.0.tgz)
+
+### Features and Updates
+
+* Updated to Kubernetes 1.13.5
+* Updated to Stemcell v250.23
+* Updated golang to v1.12.1
+* Added the ability to deploy Windows Workers through the [kubo-release-windows](https://github.com/cloudfoundry-incubator/kubo-release-windows).
+  See [ops-files/windows/add-worker.yml](https://github.com/cloudfoundry-incubator/kubo-deployment/blob/master/manifests/ops-files/windows/add-worker.yml) for details.
+* Added [an ops-file](https://github.com/cloudfoundry-incubator/kubo-deployment/blob/master/manifests/ops-files/set-fs-inotify-limit.yml) to set `fs.inotify.max_user_watches`.
+
+### Bug Fixes
+
+* Fixed an issue with unbound variables in HTTP and HTTPS proxy envs for in the Docker job ([commit](https://github.com/cloudfoundry-incubator/docker-boshrelease/commit/346a68729e20598c277d55283034553cfca32acb))
+* Set the Kubelet's `root-dir` to a partition that is intended for ephemeral data ([Issue #351](https://github.com/cloudfoundry-incubator/kubo-deployment/issues/351))
+* Removed Kubelet's [`labels` property](https://github.com/cloudfoundry-incubator/kubo-release/commit/cea69999be1e96bd2fc0f0fc9da118a085d67a4c)
+  and merge [`k8s-args.root-dir` property with default labels](https://github.com/cloudfoundry-incubator/kubo-release/commit/b2e1b0487ad29d6218f63b283d16198655ea04a3)
+
 ## v0.30.0
 
 [Download Release](https://github.com/cloudfoundry-incubator/kubo-release/releases/download/v0.30.0/kubo-release-0.30.0.tgz)
