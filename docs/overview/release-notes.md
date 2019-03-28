@@ -17,9 +17,8 @@
 * Updated to Stemcell v250.23
 * Updated golang to v1.12.1
 * Added the ability to deploy Windows Workers through the [kubo-release-windows](https://github.com/cloudfoundry-incubator/kubo-release-windows).
-  See [ops-files/windows/add-worker.yml](https://github.com/cloudfoundry-incubator/kubo-deployment/blob/master/manifests/ops-files/windows/add-worker.yml) for details.
-  Please note that, as of now, `kubo-release-windows` is _only_ compatible on vSphere
-  in an internet-connected environment.
+  See [ops-files/windows/add-worker.yml](https://github.com/cloudfoundry-incubator/kubo-deployment/blob/master/manifests/ops-files/windows/add-worker.yml) for details. Currently, `kubo-release-windows`
+	is _only_ compatible on vSphere in an internet-connected environment.
 * Added [an ops-file](https://github.com/cloudfoundry-incubator/kubo-deployment/blob/master/manifests/ops-files/set-fs-inotify-limit.yml) to set `fs.inotify.max_user_watches`.
 
 ### Bug Fixes
