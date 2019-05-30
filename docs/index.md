@@ -52,6 +52,6 @@ See the [CFCR repository](https://github.com/cloudfoundry-incubator/kubo-release
 
 ## Certifications
 
-<img alt="Kubernetes 1.13 Certification logo" src="https://github.com/cncf/artwork/blob/master/projects/kubernetes/certified-kubernetes/1.13/color/certified-kubernetes-1.13-color.png" width="198px">
+<img alt="Kubernetes 1.13 certification logo" src="https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/certified-kubernetes/1.13/color/certified-kubernetes-1.13-color.png"  width="198px">
 
 Kubernetes® is a registered trademark of The Linux Foundation in the United States and other countries, and is used pursuant to a license from The Linux Foundation.
