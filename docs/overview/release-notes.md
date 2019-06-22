@@ -3,6 +3,25 @@
 !!! note
 	Cloud Foundry Container Runtime (CFCR) was formerly known as **Kubo**. Some CFCR assets still use the Kubo name.
 
+## v0.34.0
+
+**Release Date**: June 21, 2019
+
+### Downloads
+* [Release](https://github.com/cloudfoundry-incubator/kubo-release/releases/download/v0.34.0/kubo-0.34.0-ubuntu-xenial-315.41-20190621-181712-51217485.tgz)
+* [Deployment manifests](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.34.0/kubo-deployment-0.34.0.tgz)
+
+### Features and Updates
+* Add flannel etcd certs to Windows
+* Configure Kubelet force drain settings
+* Allow customization of vxlan VNI and port
+* Updated to go1.12.6.linux-amd64
+* Updated to Stemcell v315.41
+
+## v0.33.0 (skipped due to internal issue)
+
+**Release Date**: N/A
+
 ## v0.32.0
 
 **Release Date**: May 3, 2019
