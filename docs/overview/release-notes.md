@@ -15,6 +15,7 @@
 * Updated to etcd 3.3.18
 * Updated to Stemcell 621.59 
 
+CFCR is back, and will be publishing bumps to Kubernetes 1.16 in the coming days, followed shortly thereafter by extra features, other dependency bumps, etc.
 
 ## v0.41.0
 
