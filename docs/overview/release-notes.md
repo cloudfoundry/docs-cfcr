@@ -8,7 +8,7 @@
 
 ### Downloads
 * [Release](https://github.com/cloudfoundry-incubator/kubo-release/releases/download/v0.43.0/kubo-0.43.0-ubuntu-xenial-621.76-20200711-071815-674078355.tgz)
-* [Deployment manifests](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/untagged-4ef96e25ebe70044e797/kubo-deployment-0.43.0.tgz)
+* [Deployment manifests](https://github.com/cloudfoundry-incubator/kubo-deployment/releases/download/v0.43.0/kubo-deployment-0.43.0.tgz)
 
 ### Features and Updates
 * Updated to Kubernetes v1.16.8
