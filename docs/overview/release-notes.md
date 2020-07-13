@@ -25,7 +25,7 @@
 ### Features and Updates
 * Updated to Kubernetes v1.16.8
 * Updated to etcd 3.3.22
-* Updated to Stemcell 621.67
+* Updated to Stemcell 621.76
 * Fixed an issue with etcd 3rd node addition by reverting etcdctl to 3.3.12
 
 NOTE: Do NOT use this with Windows workers, please use 0.43.1
