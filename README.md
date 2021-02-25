@@ -2,7 +2,7 @@
 
 Welcome to the CFCR documentation!
 
-This repo contains the content for the CFCR documentation, published at https://docs-cfcr.cfapps.io. The documentation is currently under development.
+This repo contains the content for the CFCR documentation, published at https://docs.cloudfoundry.org/cfcr. The documentation is currently under development.
 
 ## Overview
 
